@@ -153,3 +153,17 @@ footer {
     text-align: center;
     padding-bottom: 20px;
 }
+
+/*    BUY LABEL    */
+
+.buy {
+    width: 80px;
+    position: absolute;
+    top: -30.5px;
+    right: 0;
+    z-index: 10;
+}
+
+.buy:hover {
+    cursor: pointer;
+}

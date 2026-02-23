@@ -1,3 +1,7 @@
+main {
+    position: relative;
+}
+
 .products {
     padding: 50px;
     display: flex;
@@ -6,14 +10,6 @@
     flex-wrap: wrap;
     gap: 50px;
     background-color: var(--light);
-}
-
-.buy {
-    width: 80px;
-    position: absolute;
-    top: 152px;
-    right: 0;
-    z-index: 10;
 }
 
 .peluches {
