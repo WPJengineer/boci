@@ -15,6 +15,10 @@ main {
     border-radius: 25px;
 }
 
+.price {
+    color: var(--green);
+}
+
 .quantity {
     display: flex;
     align-items: center;
