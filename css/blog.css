@@ -1,0 +1,11 @@
+body {
+  min-height: 100vH;
+}
+
+main {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* min-height: calc(100vH - 183.2); */
+}
