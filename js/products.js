@@ -2,6 +2,7 @@ const btnHome = document.querySelector("#btnHome");
 const btnProducts = document.querySelector("#btnProducts");
 const btnAboutUs = document.querySelector("#btnAboutUs");
 const btnBlog = document.querySelector("#btnBlog");
+const articles = document.querySelectorAll("article");
 
 btnHome.addEventListener('click', () => {
     window.location.href = "../index.html";
@@ -17,4 +18,10 @@ btnAboutUs.addEventListener('click', () => {
 
 btnBlog.addEventListener('click', () => {
     window.location.href = "./blog.html";
+});
+
+articles.forEach(article => {
+    article.addEventListener("click", () => {
+        window.location.href = `./views/products.html?id=${article.dataset.id}`;
+    });
 });
