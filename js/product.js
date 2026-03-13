@@ -20,14 +20,14 @@ async function loadProduct(productId) {
     try {
         const response = await fetch(
             // need a webpage to retrieve data from
-            `https://github.com/WPJengineer/Boci/tree/main/backend/endpoints/product_frontend.php`
+            // `127.0.0.1:8000/Boci/backend/endpoints/product_frontend.php`
         );
         const products = await response.json();
         const product = products.find(p => String(p.product_id) === String(productId));
         if (!product) throw new Error("Product not found");
         productData = product;
         renderProduct(product);
-        console.log(product);
+        // console.log(product);
 
     } catch (err) {
         console.error(err);
