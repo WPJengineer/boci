@@ -20,14 +20,14 @@ async function loadProduct(productId) {
     try {
         const response = await fetch(
             // need a webpage to retrieve data from
-            `https://`
-            // `https://remotehost.es/student014/shop/backend/endpoints/products_frontend.php`
+            `https://github.com/WPJengineer/Boci/tree/main/backend/endpoints/product_frontend.php`
         );
         const products = await response.json();
         const product = products.find(p => String(p.product_id) === String(productId));
         if (!product) throw new Error("Product not found");
         productData = product;
         renderProduct(product);
+        console.log(product);
 
     } catch (err) {
         console.error(err);
@@ -35,13 +35,17 @@ async function loadProduct(productId) {
 }
 
 function renderProduct(p) {
-    document.querySelector(".product-name").textContent = p.product_name;
-    document.querySelector(".product-price").textContent =
-        `${Number(p.product_unit_price).toFixed(2)} €`;
+    // document.querySelector(".product-name").textContent = p.product_name;
+    // document.querySelector(".product-price").textContent =
+    //     `${Number(p.product_unit_price).toFixed(2)} €`;
 
-    document.querySelector(".product-image").src = p.product_image;
-    document.querySelector(".product-description").textContent =
-        p.product_description ?? "";
+    // document.querySelector(".product-image").src = p.product_image;
+    // document.querySelector(".product-description").textContent =
+    //     p.product_description ?? "";
+
+
+    document.querySelector(".product-name").textContent = p.product_name;
+    console.log("hello");
 }
 
 // EVENTS

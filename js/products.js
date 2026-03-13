@@ -22,6 +22,6 @@ btnBlog.addEventListener('click', () => {
 
 articles.forEach(article => {
     article.addEventListener("click", () => {
-        window.location.href = `./views/products.html?id=${article.dataset.id}`;
+        window.location.href = `./product.html?id=${article.dataset.id}`;
     });
 });
