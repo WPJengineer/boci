@@ -90,11 +90,18 @@ header {
         text-align: center;
     }
 
+    a {
+        color: var(--dark);
+    }
+
+    .active {
+        color: var(--green);
+        text-decoration: underline;
+    }
+
     li:hover {
         cursor: pointer;
         transform: scale(1.1);
-        color: var(--green);
-        text-decoration: underline;
     }
 
     li:active {
@@ -106,6 +113,9 @@ header {
 
 footer {
     background-color: var(--blue);
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
 }
 
 .links {
@@ -133,6 +143,15 @@ footer {
     p:hover, img:hover {
         cursor: pointer;
     }
+}
+
+.legal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
 }
 
 .legal ul {
@@ -166,4 +185,25 @@ footer {
 
 .buy:hover {
     cursor: pointer;
+}
+
+
+@media (min-width: 768px) {
+
+    .links {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .legal ul {
+        gap: 40px;
+        /* justify-content: space-around; */
+    }
+}
+
+
+@media (min-width: 992px) {
+
+
+
 }

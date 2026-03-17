@@ -1,20 +1,20 @@
-const btnHome = document.querySelector("#btnHome");
-const btnProducts = document.querySelector("#btnProducts");
-const btnAboutUs = document.querySelector("#btnAboutUs");
-const btnBlog = document.querySelector("#btnBlog");
+// const btnHome = document.querySelector("#btnHome");
+// const btnProducts = document.querySelector("#btnProducts");
+// const btnAboutUs = document.querySelector("#btnAboutUs");
+// const btnBlog = document.querySelector("#btnBlog");
 
-btnHome.addEventListener('click', () => {
-    window.location.href = "/index.html";
-});
+// btnHome.addEventListener('click', () => {
+//     window.location.href = "/index.html";
+// });
 
-btnProducts.addEventListener('click', () => {
-    window.location.href = "./views/products.html";
-});
+// btnProducts.addEventListener('click', () => {
+//     window.location.href = "./views/products.html";
+// });
 
-btnAboutUs.addEventListener('click', () => {
-    window.location.href = "./views/about.html";
-});
+// btnAboutUs.addEventListener('click', () => {
+//     window.location.href = "./views/about.html";
+// });
 
-btnBlog.addEventListener('click', () => {
-    window.location.href = "./views/blog.html";
-});
+// btnBlog.addEventListener('click', () => {
+//     window.location.href = "./views/blog.html";
+// });
