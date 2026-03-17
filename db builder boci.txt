@@ -75,17 +75,17 @@ CREATE TABLE IF NOT EXISTS `product_category` (
 );
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_unit_price`, `product_image`) VALUES
-(1, 'vaqueta lita', 12.95, './assets/images/image-plushes/vaqueta-lita.svg'),
-(2, 'gina', 12.95, './assets/images/image-plushes/gina.svg'),
-(3, 'floreti', 12.95, './assets/images/image-plushes/floreti.svg'),
-(4, 'pinçetes', 12.95, './assets/images/image-plushes/pinçetes.svg'),
-(5, 'quesito tendre', 12.95, './assets/images/image-plushes/quesito-tendre.svg'),
-(6, 'deta', 12.95, './assets/images/image-plushes/deta.svg'),
-(7, 'quesito semi', 12.95, './assets/images/image-plushes/quesito-semi.svg'),
-(8, 'neta', 12.95, './assets/images/image-plushes/neta.svg'),
-(9, 'floquet', 12.95, './assets/images/image-plushes/floquet.svg'),
-(10, 'gueta', 12.95, './assets/images/image-plushes/gueta.svg'),
-(11, 'quesito curat', 12.95, './assets/images/image-plushes/quesito-curat.svg');
+(1, 'vaqueta lita', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/vaqueta-lita.svg'),
+(2, 'gina', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/gina.svg'),
+(3, 'floreti', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/floreti.svg'),
+(4, 'pinçetes', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/pinçetes.svg'),
+(5, 'quesito tendre', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/quesito-tendre.svg'),
+(6, 'deta', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/deta.svg'),
+(7, 'quesito semi', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/quesito-semi.svg'),
+(8, 'neta', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/neta.svg'),
+(9, 'floquet', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/floquet.svg'),
+(10, 'gueta', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/gueta.svg'),
+(11, 'quesito curat', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/quesito-curat.svg');
 
 INSERT INTO `categories` (`category_id`, `category_name`) VALUES
 (1, 'peluche'),
