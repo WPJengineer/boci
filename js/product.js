@@ -19,8 +19,9 @@ loadProduct(productId);
 async function loadProduct(productId) {
     try {
         const response = await fetch(
-            // need a webpage to retrieve data from
-            // `127.0.0.1:8000/Boci/backend/endpoints/product_frontend.php`
+            // two locations that webpae is deployed to that accepts php
+            // `https://juguetosboci.infinityfree.me/backend/endpoints/product_frontend.php`
+            `https://remotehost.es/student014/Boci/backend/endpoints/product_frontend.php`
         );
         const products = await response.json();
         const product = products.find(p => String(p.product_id) === String(productId));
