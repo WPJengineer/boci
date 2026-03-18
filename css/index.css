@@ -177,6 +177,11 @@ main {
     div {
         width: 220px;
         overflow: scroll;
+        scrollbar-width: none;
+    }
+
+    div::-webkit-scrollbar {
+        display: none;
     }
 
     ul {
@@ -245,12 +250,8 @@ main {
         font-size: 20px;
     }
 
-    .scrollbar {
-
-        div {
-            width: 440px;
-        }
-
+    .scrollbar div {
+        width: 450px;
     }
 
     .scrollbarItem p {
@@ -284,10 +285,7 @@ main {
         font-size: 22px;
     }
 
-    .scrollbar {
-
-        div {
-            width: 680px;
-        }
+    .scrollbar div {
+        width: 680px;
     }
 }
