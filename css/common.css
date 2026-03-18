@@ -189,6 +189,11 @@ footer {
 
 @media (min-width: 768px) {
 
+    .logo {
+        width: 300px;
+        height: 200px;
+    }
+
     .header-menu ul a {
         font-size: 24px;
     }
@@ -201,6 +206,11 @@ footer {
         padding: 5px;
         border: 1px solid;
         border-radius: 50px;
+    }
+
+    .buy {
+        width: 100px;
+        top: -37px;
     }
 
     .links {
