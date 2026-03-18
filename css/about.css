@@ -25,3 +25,35 @@ main {
   }
 
 }
+
+@media (min-width: 768px) {
+
+  h1 {
+    font-size: 40px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  .images img {
+    width: 200px;
+  }
+
+}
+
+@media (min-width: 992px) {
+
+  h1 {
+    font-size: 48px;
+  }
+
+  p {
+    font-size: 22px;
+  }
+
+  .images img {
+    width: 300px;
+  }
+
+}

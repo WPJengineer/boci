@@ -52,11 +52,11 @@ main {
 
     button:hover {
         cursor: pointer;
-        transform: scale(1.1);
     }
 
     button:active {
         box-shadow: -2px -2px 1px var(--dark);
+        transform: scale(0.95);
     }
 }
 
@@ -70,41 +70,42 @@ main {
     p {
         text-align: center;
         padding: 10px;
-        border: 4px solid;
         font-size: 20px;
         color: var(--dark);
     }
 
-    .peluches p {
-        border-color: var(--violet);
+    .peluches {
+        border: 3px solid var(--violet);
+        border-radius: 25px;
     }
 
-    .peluches-xl p {
-        border-color: var(--yellow);
+    .peluches-xl {
+        border: 3px solid var(--yellow);
+        border-radius: 25px;
     }
 
-    .llaveros p {
-        border-color: var(--blue);
+    .llaveros {
+        border: 3px solid var(--blue);
+        border-radius: 25px;
+    }
+    .peluches:hover, .peluches-xl:hover, .llaveros:hover {
+        border-color: var(--dark);
+        cursor: pointer;
+    }
+
+    .peluches:active, .peluches-xl:active, .llaveros:active {
+        transform: scale(0.95);
     }
 }
 
 .options img {
     width: 200px;
-    border: 3px solid var(--green);
     border-radius: 25px;
-}
-
-.options img:hover, .options p:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-}
-
-.options img:active, .options p:active {
-    transform: scale(1);
 }
 
 .slogan img {
     width: 100%;
+    /* max-height: 100vH; */
 }
 
 .slogan {
@@ -120,7 +121,7 @@ main {
     padding: 20px;
     color: var(--dark);
 
-    h3 {
+    h2 {
         font-size: 28px;
         font-weight: normal;
         text-align: center;
@@ -174,7 +175,7 @@ main {
     }
 
     div {
-        width: 200px;
+        width: 220px;
         overflow: scroll;
     }
 
@@ -189,55 +190,104 @@ main {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    border: 3px solid var(--green);
+    border-radius: 25px;
     
     img {
         width: 200px;
-        border: 3px solid var(--green);
         border-radius: 25px;
     }
 
     p {
         text-align: center;
         padding: 10px;
-        border: 4px solid;
-        font-size: 24px;
-        border-color: var(--violet);
+        font-size: 20px;
     }
 
-    img:hover, p:hover {
+    &:hover {
         cursor: pointer;
-        transform: scale(1.05);
+        border-color: var(--dark);
     }
 
-    img:active, p:active {
-        transform: scale(1);
+    &:active {
+        transform: scale(0.95);
     }
 }
 
 @media (min-width: 768px) {
+
+    .hero {
+        height: 70vH;
+
+        p {
+            font-size: 32px;
+        }
+
+        button {
+            font-size: 18px;
+        }
+    }
+
     .options {
         flex-direction: row;
         justify-content: center;
+
+        p {
+            font-size: 24px;
+        }
+    }
+
+    .descuento h2 {
+        font-size: 32px;
+    }
+
+    .descuento p {
+        font-size: 20px;
     }
 
     .scrollbar {
 
         div {
-            width: 420px;
+            width: 440px;
         }
 
     }
 
+    .scrollbarItem p {
+        font-size: 24px;
+    }
 }
 
 @media (min-width: 992px) {
+
+    .hero {
+        height: 100vH;
+        
+        p {
+            font-size: 40px;
+        }
+        
+        button {
+            font-size: 20px;
+        }
+    }
+
+    .options p, .scrollbarItem p {
+        font-size: 32px;
+    }
+
+    .descuento h2 {
+        font-size: 40px;
+    }
+
+    .descuento p {
+        font-size: 22px;
+    }
 
     .scrollbar {
 
         div {
             width: 660px;
         }
-
     }
-
 }
