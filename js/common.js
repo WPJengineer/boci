@@ -1,4 +1,8 @@
 const links = document.querySelectorAll('.header-menu ul li a');
+const scrollContainer = document.querySelector(".scrollbar div");
+const btnLeft = document.querySelector(".scroll-left");
+const btnRight = document.querySelector(".scroll-right");
+const SCROLL_AMOUNT = 220;
 
 links.forEach(link => {
   const current = window.location.pathname;
@@ -8,3 +12,21 @@ links.forEach(link => {
     link.classList.add('active');
   }
 });
+
+if (btnRight) {
+  btnRight.addEventListener("click", () => {
+    scrollContainer.scrollBy({
+        left: SCROLL_AMOUNT,
+        behavior: "smooth"
+    });
+  });
+}
+
+if (btnLeft) {
+  btnLeft.addEventListener("click", () => {
+      scrollContainer.scrollBy({
+          left: -SCROLL_AMOUNT,
+          behavior: "smooth"
+      });
+  });
+}

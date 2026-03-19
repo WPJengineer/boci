@@ -4,7 +4,7 @@ header("Content-Type: application/json");
 
 // this shows all products like in the products home page
 $sql = "SELECT *
-FROM products
+FROM boci_products
 ;";
 
 // this shows a specific product if we select it from the products home page

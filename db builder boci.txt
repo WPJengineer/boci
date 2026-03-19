@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `boci_products` (
   `product_unit_price` decimal(10,2) DEFAULT NULL,
   `product_image` varchar(300) DEFAULT NULL,
   `product_rating` decimal(3,2) DEFAULT 1.00,
+  `product_description` varchar(300) DEFAULT '',
   PRIMARY KEY (`product_id`)
 );
 
@@ -74,18 +75,18 @@ CREATE TABLE IF NOT EXISTS `boci_product_category` (
   KEY `category_id` (`category_id`)
 );
 
-INSERT INTO `boci_products` (`product_id`, `product_name`, `product_unit_price`, `product_image`) VALUES
-(1, 'vaqueta lita', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/vaqueta-lita.svg'),
-(2, 'gina', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/gina.svg'),
-(3, 'floreti', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/floreti.svg'),
-(4, 'pinçetes', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/pinçetes.svg'),
-(5, 'quesito tendre', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/quesito-tendre.svg'),
-(6, 'deta', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/deta.svg'),
-(7, 'quesito semi', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/quesito-semi.svg'),
-(8, 'neta', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/neta.svg'),
-(9, 'floquet', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/floquet.svg'),
-(10, 'gueta', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/gueta.svg'),
-(11, 'quesito curat', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/quesito-curat.svg');
+INSERT INTO `boci_products` (`product_id`, `product_name`, `product_unit_price`, `product_image`, `product_description`) VALUES
+(1, 'vaqueta lita', 12.95, '/boci/assets/images/image-plushes-with-background/vaqueta-lita.jpg', 'Peluche frisona menorquina. Disponible en marron. Tamaño 12 cm x 9 cm x 10 cm'),
+(2, 'gina', 12.95, '/boci/assets/images/image-plushes-with-background/gina.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(3, 'floreti', 12.95, '/boci/assets/images/image-plushes-with-background/floreti.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(4, 'pinçetes', 12.95, '/boci/assets/images/image-plushes-with-background/pinçetes.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(5, 'quesito tendre', 12.95, '/boci/assets/images/image-plushes-with-background/quesito-tendre.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(6, 'deta', 12.95, '/boci/assets/images/image-plushes-with-background/deta.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(7, 'quesito semi', 12.95, '/boci/assets/images/image-plushes-with-background/quesito-semi.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cmPeluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(8, 'neta', 12.95, '/boci/assets/images/image-plushes-with-background/neta.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(9, 'floquet', 12.95, '/boci/assets/images/image-plushes-with-background/floquet.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(10, 'güeta', 12.95, '/boci/assets/images/image-plushes-with-background/gueta.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(11, 'quesito curat', 12.95, '/boci/assets/images/image-plushes-with-background/quesito-curat.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm');
 
 INSERT INTO `boci_categories` (`category_id`, `category_name`) VALUES
 (1, 'peluche'),
@@ -100,7 +101,7 @@ INSERT INTO `boci_categories` (`category_id`, `category_name`) VALUES
 (10, 'semi'),
 (11, 'neta'),
 (12, 'floquet'),
-(13, 'gueta'),
+(13, 'güeta'),
 (14, 'curat');
 
 INSERT INTO `boci_product_category` (`product_id`, `category_id`) VALUES

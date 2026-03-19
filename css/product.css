@@ -29,6 +29,7 @@ main {
 
     h1 {
         font-size: 32px;
+        text-transform: uppercase;
     }
 
     .price {
@@ -104,6 +105,12 @@ main {
         .buttons {
             display: flex;
             flex-direction: column;
+
+            button {
+                border: none;
+                background: none;
+                height: 20px;
+            }
             
             img {
                 width: 20px;
@@ -127,7 +134,7 @@ main {
 
 /*    SCROLL BAR    */
 
-.scroll-menu {
+/* .scroll-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -195,7 +202,7 @@ main {
     &:active {
         transform: scale(0.95);
     }
-}
+} */
 
 @media (min-width: 768px) {
 
@@ -251,6 +258,10 @@ main {
         .add-to-cart button {
             font-size: 20px;
         }
+    }
+
+    .quantity span {
+        width: 100px;
     }
 
     .others>p {

@@ -2,6 +2,7 @@
 // const btnProducts = document.querySelector("#btnProducts");
 // const btnAboutUs = document.querySelector("#btnAboutUs");
 // const btnBlog = document.querySelector("#btnBlog");
+const btnHero = document.querySelector(".hero button");
 
 // btnHome.addEventListener('click', () => {
 //     window.location.href = "/index.html";
@@ -18,3 +19,7 @@
 // btnBlog.addEventListener('click', () => {
 //     window.location.href = "./views/blog.html";
 // });
+
+btnHero.addEventListener('click', () => {
+  window.location.href = "./views/products.html";
+});

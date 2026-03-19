@@ -11,7 +11,9 @@
 <body>
     <header>
         <div class="logo-header">
-            <img class="logo" src="../assets/images/logo.svg" alt="logo">
+            <a href="../index.html">
+                <img class="logo" src="../assets/images/logo.svg" alt="logo">
+            </a>
             <nav class="header-icons">
                 <img class="icon" src="../assets/icons/profile-icon-black.svg" alt="profile-icon">
                 <div class="search-bar">
@@ -32,7 +34,7 @@
         <img src="../assets/icons/cart-icon.svg" alt="buy-icon" class="buy">
         <div class="product">
             <div class="product-image">
-                <img src="../assets/images/image-plushes-with-background/Image-3.jpg" alt="product-image">
+                <img src="" alt="product-image">
             </div>
             <div class="product-info">
                 <h1 class="product-name"> PELUCHE QUESITO &apos;SEMI&apos;</h1>
@@ -41,15 +43,19 @@
                     <p>Ref.</p>
                     <p>En Stock.</p>
                     <p>CARACTERISTICAS</p>
-                    <p>Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm</p>
+                    <p class="product-description">Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm</p>
                 </div>
                 <div class="quantity">
                     <p>CANTIDAD</p>
                     <div class="quantity-button">
-                        <span>1</span>
+                        <span id="quantity-product">1</span>
                         <div class="buttons">
-                            <img src="../assets/icons/chevron-up.svg" alt="up-arrow">
-                            <img src="../assets/icons/chevron-down.svg" alt="down-arrow">
+                            <button id="btnIncrease">
+                                <img src="../assets/icons/chevron-up.svg" alt="up-arrow">
+                            </button>
+                            <button id="btnDecrease">
+                                <img src="../assets/icons/chevron-down.svg" alt="down-arrow">
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -67,7 +73,9 @@
             <!-- </div> -->
             <div class="scroll-menu">
                 <div class="scrollbar">
-                    <img class="arrow left" src="../assets/icons/left-arrow-green.svg" alt="left-arrow-icon">
+                    <button class="scroll-left">
+                        <img class="arrow left" src="../assets/icons/left-arrow-green.svg" alt="left-arrow-icon">
+                    </button>
                     <div>
                         <ul>
                             <li class="scrollbarItem">
@@ -79,8 +87,8 @@
                                 <p>FLOQUET</p>
                             </li>
                             <li class="scrollbarItem">
-                                <img src="../assets/images/image-plushes/gueta.svg" alt="gueta-push-image">
-                                <p>GUETA</p>
+                                <img src="../assets/images/image-plushes/gueta.svg" alt="güeta-push-image">
+                                <p>GÜETA</p>
                             </li>
                             <li class="scrollbarItem">
                                 <img src="../assets/images/image-plushes/quesito-semi.svg" alt="semi-push-image">
@@ -92,7 +100,9 @@
                             </li>
                         </ul>
                     </div>
-                    <img class="arrow right" src="../assets/icons/right-arrow-green.svg" alt="right-arrow-icon">
+                    <button class="scroll-right">
+                        <img class="arrow right" src="../assets/icons/right-arrow-green.svg" alt="right-arrow-icon">
+                    </button>
                 </div>
             </div>
         </div>
@@ -124,6 +134,6 @@
         <p class="copyright">&copy; 2025 Boci. Todos los derechos reservados.</p>
     </footer>
     <script src="../js/common.js"></script>
-    <script src="../js/products.js"></script>
+    <script src="../js/product.js"></script>
 </body>
 </html>

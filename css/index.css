@@ -149,7 +149,7 @@ main {
     cursor: pointer;
 }
 
-.scroll-menu {
+/* .scroll-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -217,7 +217,7 @@ main {
     &:active {
         transform: scale(0.95);
     }
-}
+} */
 
 @media (min-width: 768px) {
 
