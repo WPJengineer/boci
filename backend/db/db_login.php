@@ -1,6 +1,6 @@
 <?php
 
-session_start()
+session_start();
 
 $email = htmlspecialchars($_POST['email']);
 $password = htmlspecialchars($_POST['password']);
@@ -26,7 +26,7 @@ if ($result) {
     //option for redirection for admin vs customer later.
     header("Location: /boci/index.html");
     exit();
-    
+
   } else  {
       echo "No customer found with that username and/or password";
   }
