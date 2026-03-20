@@ -20,15 +20,19 @@ main {
 
     h2 {
       color: var(--violet);
+      font-size: 26px;
     }
 
     p {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      font-size: 18px;
 
       input {
         border-color: var(--blue);
+        height: 40px;
+        font-size: 18px;
       }
     }
   }
@@ -42,6 +46,29 @@ main {
   color: var(--light);
   border: none;
   padding: 5px;
+  font-size: 18px;
+}
+
+@media (min-width: 768px) {
+
+  .forms-login form {
+    h2 {
+      font-size: 32px;
+    }
+
+    p {
+      font-size: 20px;
+
+      input {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .btn-register, .btn-login {
+    font-size: 20px;
+  }
+
 }
 
 @media (min-width: 992px) {
@@ -51,6 +78,23 @@ main {
 
     form {
       width: 450px;
+
+      h2 {
+        font-size: 40px;
+      }
+
+      p {
+        font-size: 22px;
+
+        input {
+          font-size: 22px;
+          height: 50px;
+        }
+      }
+    }
+
+    .btn-register, .btn-login {
+      font-size: 22px;
     }
 
     .register {
