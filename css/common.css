@@ -266,7 +266,7 @@ footer {
     width: 60px;
     height: 60px;
     background-color: var(--violet);
-    border: 3px solid var(--dark);
+    border: none;
     border-radius: 100%;
 
     img {
