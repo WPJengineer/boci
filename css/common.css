@@ -247,17 +247,17 @@ footer {
 
 /*    BUY LABEL    */
 
-/* .buy {
+.buy {
     width: 80px;
     position: absolute;
     top: -30.5px;
-    right: 0;
+    right: 10px;
     z-index: 10;
 }
 
 .buy:hover {
     cursor: pointer;
-} */
+}
 
 .btnShoppingCart {
     position: fixed;
@@ -304,10 +304,11 @@ footer {
         border-radius: 50px;
     }
 
-    /* .buy {
+    .buy {
         width: 100px;
         top: -37px;
-    } */
+        right: 30px;
+    }
 
     .links {
         flex-direction: row;
@@ -354,6 +355,10 @@ footer {
 
     .links p, .legal ul li p {
         font-size: 18px;
+    }
+
+    .buy {
+        right: 50px;
     }
 
     .btnShoppingCart {

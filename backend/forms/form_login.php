@@ -4,6 +4,7 @@ require($backend.'/header.php');
 ?>
 
 <main>
+  <a href="/boci/backend/forms/form_login.php"><img src="/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
   <div class="forms-login">
     <form class="register" action="/boci/backend/forms/form_register.php">
       <div>

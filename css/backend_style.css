@@ -1,8 +1,21 @@
 main {
+  position: relative;
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.buy {
+  width: 80px;
+  position: absolute;
+  top: -30.5px;
+  right: 10px;
+  z-index: 10;
+}
+
+.buy:hover {
+  cursor: pointer;
 }
 
 .forms-login {
@@ -55,6 +68,12 @@ main {
 
 @media (min-width: 768px) {
 
+  .buy {
+    width: 100px;
+    top: -37px;
+    right: 30px;
+  }
+
   .forms-login form {
     h2 {
       font-size: 32px;
@@ -76,6 +95,11 @@ main {
 }
 
 @media (min-width: 992px) {
+
+  .buy {
+      right: 50px;
+  }
+
   .forms-login {
     flex-direction: row;
     max-width: none;

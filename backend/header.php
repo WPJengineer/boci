@@ -22,7 +22,7 @@ session_start();
                 <img class="logo" src="/boci/assets/images/logo.svg" alt="logo">
             </a>
                 <nav class="header-icons">
-                <img class="icon" src="/boci/assets/icons/profile-icon-black.svg" alt="profile-icon">
+                <!-- <img class="icon" src="/boci/assets/icons/profile-icon-black.svg" alt="profile-icon"> -->
                 <!-- <div class="search-bar">
                     <img class="icon" src="./assets/icons/search-icon-black.svg" alt="search-icon">
                 </div> -->
