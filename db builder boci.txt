@@ -20,8 +20,11 @@ CREATE TABLE IF NOT EXISTS `boci_products` (
   `product_name` varchar(300) DEFAULT NULL,
   `product_unit_price` decimal(10,2) DEFAULT NULL,
   `product_image` varchar(300) DEFAULT NULL,
-  `product_rating` decimal(3,2) DEFAULT 1.00,
+  `product_reference` varchar(300) DEFAULT NULL,
+  `product_rating` decimal(3,2) DEFAULT 5.00,
   `product_description` varchar(300) DEFAULT '',
+  `product_stock` int(11) DEFAULT 0,
+  `isStock` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`product_id`)
 );
 
