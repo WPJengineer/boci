@@ -41,17 +41,10 @@ async function loadProduct(productId) {
 }
 
 function renderProduct(p) {
-    document.querySelector(".product-name").textContent = p.product_name.toUpperCase();
-    document.querySelector(".price").textContent =
-        `${Number(p.product_unit_price).toFixed(2)} €`;
-
+    document.querySelector(".product-name").textContent = `Peluche '${p.product_name.toUpperCase()}'`;
+    document.querySelector(".price").textContent = `${Number(p.product_unit_price).toFixed(2)} €`;
     document.querySelector(".product-image img").src = p.product_image;
-    document.querySelector(".product-description").textContent =
-        p.product_description ?? "";
-
-
-    document.querySelector(".product-name").textContent = p.product_name;
-    console.log("hello");
+    document.querySelector(".product-description").textContent = p.product_description ?? "";
 }
 
 // EVENTS
