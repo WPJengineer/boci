@@ -29,7 +29,6 @@ main {
 
     h1 {
         font-size: 32px;
-        /* text-transform: uppercase; */
     }
 
     .price {
@@ -139,78 +138,6 @@ main {
     font-size: 28px;
     text-align: center;
 }
-
-/*    SCROLL BAR    */
-
-/* .scroll-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--light);
-    color: var(--dark);
-}
-
-.scrollbar {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-
-    .left{
-        width: 50px;
-    }
-
-    .right {
-        width: 50px;
-    }
-
-    .left:hover, .right:hover {
-        cursor: pointer;
-    }
-
-    div {
-        width: 220px;
-        overflow: scroll;
-        scrollbar-width: none;
-    }
-
-    div::-webkit-scrollbar {
-        display: none;
-    }
-
-    ul {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-    }
-}
-
-.scrollbarItem {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    border: 3px solid var(--green);
-    border-radius: 25px;
-    
-    img {
-        width: 200px;
-        border-radius: 25px;
-    }
-
-    p {
-        text-align: center;
-        padding: 10px;
-        font-size: 24px;
-    }
-
-    &:hover {
-        cursor: pointer;
-        border-color: var(--dark);
-    }
-
-    &:active {
-        transform: scale(0.95);
-    }
-} */
 
 @media (min-width: 768px) {
 

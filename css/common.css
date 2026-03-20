@@ -247,7 +247,7 @@ footer {
 
 /*    BUY LABEL    */
 
-.buy {
+/* .buy {
     width: 80px;
     position: absolute;
     top: -30.5px;
@@ -257,6 +257,29 @@ footer {
 
 .buy:hover {
     cursor: pointer;
+} */
+
+.btnShoppingCart {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--violet);
+    border: 1px solid var(--dark);
+    border-radius: 100%;
+
+    img {
+        width: 30px;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
 }
 
 
@@ -281,10 +304,10 @@ footer {
         border-radius: 50px;
     }
 
-    .buy {
+    /* .buy {
         width: 100px;
         top: -37px;
-    }
+    } */
 
     .links {
         flex-direction: row;
@@ -331,6 +354,16 @@ footer {
 
     .links p, .legal ul li p {
         font-size: 18px;
+    }
+
+    .btnShoppingCart {
+        right: 40px;
+        width: 80px;
+        height: 80px;
+
+        img {
+            width: 40px;
+        }
     }
 
     .copyright {
