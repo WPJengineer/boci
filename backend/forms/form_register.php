@@ -12,11 +12,11 @@ require($backend.'/header.php');
       <p>Tratamiento</p>
       <div class="radio-group">
         <label class="radio-option">
-          <input type="radio" name="tratamiento" value="sr" required>
+          <input type="radio" name="gender" value="sr" required>
           Sr.
         </label>
         <label class="radio-option">
-          <input type="radio" name="tratamiento" value="sra">
+          <input type="radio" name="gender" value="sra">
           Sra.
         </label>
       </div>
