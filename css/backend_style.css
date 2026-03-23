@@ -75,7 +75,7 @@ main {
   }
 }
 
-.btn-register, .btn-login {
+.btn-register, .btn-login, .btn-new-register {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,11 +86,11 @@ main {
   font-size: 18px;
 }
 
-.btn-register:hover, .btn-login:hover {
+.btn-register:hover, .btn-login:hover, .btn-new-register:hover {
   cursor: pointer;
 }
 
-.btn-register:active, .btn-login:active {
+.btn-register:active, .btn-login:active, .btn-new-register:active {
   transform: scale(0.95);
 }
 
@@ -100,6 +100,93 @@ main {
 
 .forms-login form div input.invalid {
   border: 2px solid var(--red-invalid);
+}
+
+.new-register {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: 2px solid var(--blue);
+  font-size: 18px;
+
+  h2 {
+    color: var(--violet);
+    font-size: 26px;
+  }
+
+  a {
+    color: var(--blue-highlight);
+    text-decoration: underline;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* font-size: 18px; */
+
+    .radio-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      
+      .radio-option {
+        display: flex;
+        gap: 10px;
+
+        input {
+          width: 20px;
+        }
+      }
+    }
+
+    .checkbox-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .checkbox-option input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    input:not(input[type="radio"], input[type="checkbox"]) {
+      border-color: var(--blue);
+      height: 40px;
+      font-size: 18px;
+      font-family: 'afacad';
+      width: 90%;
+      padding: 5px;
+    }
+
+    .password-field {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+
+      img:hover {
+        cursor: pointer;
+      }
+
+      /* button {
+        background: none;
+        border: none;
+      } */
+    }
+  }
+
+  .btn-new-register {
+    height: 60px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -124,16 +211,24 @@ main {
     }
   }
 
-  .btn-register, .btn-login {
+  .btn-register, .btn-login, .btn-new-register {
     font-size: 20px;
   }
+
+  .new-register {
+    font-size: 20px;
+
+    h2 {
+      font-size: 32px;
+    }
+  } 
 
 }
 
 @media (min-width: 992px) {
 
   .buy {
-      right: 50px;
+    right: 50px;
   }
 
   .forms-login {
@@ -172,5 +267,17 @@ main {
         gap: 10px;
       }
     }
+  }
+
+  .new-register {
+    font-size: 22px;
+    
+    h2 {
+      font-size: 40px;
+    }
+  }
+
+  .btn-new-register {
+    font-size: 22px;
   }
 }

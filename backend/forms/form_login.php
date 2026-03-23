@@ -39,13 +39,12 @@ require($backend.'/header.php');
         <button type="submit" class="btn-login">
           <img class="icon" src="/boci/assets/icons/padlock-white-icon.svg" alt="padlock-icon">
           INICIA SESIÓN
-      </button>
+        </button>
       </div>
     </form>
   </div>
 </main>
 
 <?php
-$backend = $_SERVER['DOCUMENT_ROOT'].'/boci/backend';
 require($backend.'/footer.php');
 ?>
