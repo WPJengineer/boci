@@ -18,23 +18,28 @@ require($backend.'/header.php');
     </form>
     <form class="login" action="/boci/backend/db/db_login.php" method="POST">
       <h2>CLIENTES REGISTRADOS</h2>
-      <p>
+      <div>
         <label for="email">Dirección de correo electrónico:</label>
         <input type="email" id="email" name="email" />
-      </p>
-      <p>
+      </div>
+      <div>
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" />
-      </p>
-      <p>
+        <div class="password-field">
+          <input type="password" id="password" name="password">
+          <!-- <button> -->
+            <img src="/boci/assets/icons/show-password-icon.svg" alt="show-password-icon">
+          <!-- </button> -->
+        </div>
+      </div>
+      <div>
         <a href="">¿Olvidó su contraseña?</a>
-      </p>
-      <p>
+      </div>
+      <div>
         <button type="submit" class="btn-login">
           <img class="icon" src="/boci/assets/icons/padlock-white-icon.svg" alt="padlock-icon">
           INICIA SESIÓN
       </button>
-      </p>
+      </div>
     </form>
   </div>
 </main>
