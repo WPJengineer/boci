@@ -8,6 +8,8 @@
     --blue: #b0bafb;
     --blue-search: #e1e4f9;
     --blue-highlight: #5170ff;
+    --green-valid: #28a745;
+    --red-invalid: #dc3545;
 }
 
 * {

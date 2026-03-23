@@ -86,6 +86,22 @@ main {
   font-size: 18px;
 }
 
+.btn-register:hover, .btn-login:hover {
+  cursor: pointer;
+}
+
+.btn-register:active, .btn-login:active {
+  transform: scale(0.95);
+}
+
+.forms-login form div input.valid {
+  border: 2px solid var(--green-valid);
+}
+
+.forms-login form div input.invalid {
+  border: 2px solid var(--red-invalid);
+}
+
 @media (min-width: 768px) {
 
   .buy {

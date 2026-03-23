@@ -16,22 +16,23 @@ require($backend.'/header.php');
         CREA UNA CUENTA
       </button>
     </form>
-    <form class="login" action="/boci/backend/db/db_login.php" method="POST">
+    <form class="login" action="/boci/backend/db/db_login.php" method="POST" novalidate>
       <h2>CLIENTES REGISTRADOS</h2>
       <div>
         <label for="email">Dirección de correo electrónico:</label>
-        <input type="email" id="email" name="email" />
+        <input type="email" id="email" name="email" required />
       </div>
       <div>
         <label for="password">Contraseña:</label>
         <div class="password-field">
-          <input type="password" id="password" name="password">
+          <input type="password" id="password" name="password" required />
           <!-- <button> -->
             <img src="/boci/assets/icons/show-password-icon.svg" alt="show-password-icon">
           <!-- </button> -->
         </div>
       </div>
       <div>
+        <!-- missing page -->
         <a href="">¿Olvidó su contraseña?</a>
       </div>
       <div>
