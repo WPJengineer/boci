@@ -6,19 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // console.log(password, showPassword);
 
   if (password && showPassword) {
-    showPassword.addEventListener("touchstart", () => {
+    showPassword.addEventListener("pointerdown", () => {
       password.type = "text";
     });
 
-    showPassword.addEventListener("touchend", () => {
-      password.type = "password";
-    });
-
-    showPassword.addEventListener("mousedown", () => {
-      password.type = "text";
-    });
-
-    showPassword.addEventListener("mouseup", () => {
+    showPassword.addEventListener("pointerup", () => {
       password.type = "password";
     });
   }
