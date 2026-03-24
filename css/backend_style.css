@@ -62,10 +62,10 @@ main {
           cursor: pointer;
         }
 
-        /* button {
+        button {
           background: none;
           border: none;
-        } */
+        }
       }
 
       a {
@@ -92,14 +92,6 @@ main {
 
 .btn-register:active, .btn-login:active, .btn-new-register:active {
   transform: scale(0.95);
-}
-
-.forms-login form div input.valid {
-  border: 2px solid var(--green-valid);
-}
-
-.forms-login form div input.invalid {
-  border: 2px solid var(--red-invalid);
 }
 
 .new-register {
@@ -157,7 +149,7 @@ main {
       margin-top: 3px;
     }
 
-    input:not(input[type="radio"], input[type="checkbox"]) {
+    input:not(input[type="radio"]):not(input[type="checkbox"]) {
       border-color: var(--blue);
       height: 40px;
       font-size: 18px;
@@ -177,16 +169,26 @@ main {
         cursor: pointer;
       }
 
-      /* button {
+      button {
         background: none;
         border: none;
-      } */
+      }
     }
   }
 
   .btn-new-register {
     height: 60px;
   }
+}
+
+/*area where we add red or green higlight to verify inputs for forms*/
+
+.forms-login form div input.valid, .new-register input.valid {
+  border: 2px solid var(--green-valid) !important;
+}
+
+.forms-login form div input.invalid, .new-register input.invalid {
+  border: 2px solid var(--red-invalid) !important;
 }
 
 @media (min-width: 768px) {

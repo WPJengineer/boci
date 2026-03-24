@@ -1,37 +1,70 @@
-const password = document.querySelector(".password-field input");
-const showPassword = document.querySelector(".password-field img");
+document.addEventListener('DOMContentLoaded', () => {
 
-// showPassword.addEventListener('mousedown', () => {
-//   const isPassword = password.type === "password";
-//   password.type = isPassword ? "text" : "password";
-// });
+  const password = document.querySelector(".password-field input");
+  const showPassword = document.querySelector(".btn-show-password");
 
-showPassword.addEventListener("mousedown", () => {
-  password.type = "text";
-});
+  // console.log(password, showPassword);
 
-showPassword.addEventListener("mouseup", () => {
-  password.type = "password";
-});
+  if (password && showPassword) {
+    showPassword.addEventListener("touchstart", () => {
+      password.type = "text";
+    });
+
+    showPassword.addEventListener("touchend", () => {
+      password.type = "password";
+    });
+
+    showPassword.addEventListener("mousedown", () => {
+      password.type = "text";
+    });
+
+    showPassword.addEventListener("mouseup", () => {
+      password.type = "password";
+    });
+  }
 
 // missing to check for if valid entry into form
 
 const formLogin = document.querySelector(".login");
-const inputs = formLogin.querySelectorAll("input");
+const formNewRegister = document.querySelector(".new-register");
 
-formLogin.addEventListener("submit", (e) => {
-  inputs.forEach((input) => {
-    if (input.checkValidity()) {
-      input.classList.remove("invalid");
-      input.classList.add("valid");
-    } else {
-      input.classList.remove("valid");
-      input.classList.add("invalid");
+if (formLogin) {
+  const inputsLogin = formLogin.querySelectorAll("input");
+  formLogin.addEventListener("submit", (e) => {
+    inputsLogin.forEach((input) => {
+      if (input.checkValidity()) {
+        input.classList.remove("invalid");
+        input.classList.add("valid");
+      } else {
+        input.classList.remove("valid");
+        input.classList.add("invalid");
+      }
+    });
+
+    // prevent submit if invalid
+    if (!formLogin.checkValidity()) {
+      e.preventDefault();
     }
   });
+}
 
-  // Optional: prevent submit if invalid
-  if (!formLogin.checkValidity()) {
-    e.preventDefault();
-  }
+if (formNewRegister) {
+  const inputsRegister = formNewRegister.querySelectorAll("input");
+  formNewRegister.addEventListener("submit", (e) => {
+    inputsRegister.forEach((input) => {
+      if (input.checkValidity()) {
+        input.classList.remove("invalid");
+        input.classList.add("valid");
+      } else {
+        input.classList.remove("valid");
+        input.classList.add("invalid");
+      }
+    });
+
+    // prevent submit if invalid
+    if (!formNewRegister.checkValidity()) {
+      e.preventDefault();
+    }
+  });
+}
 });

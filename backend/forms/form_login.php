@@ -26,9 +26,9 @@ require($backend.'/header.php');
         <label for="password">Contraseña:</label>
         <div class="password-field">
           <input type="password" id="password" name="password" required />
-          <!-- <button> -->
+          <button type="button" class="btn-show-password">
             <img src="/boci/assets/icons/show-password-icon.svg" alt="show-password-icon">
-          <!-- </button> -->
+          </button>
         </div>
       </div>
       <div>
