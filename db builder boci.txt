@@ -6,12 +6,15 @@ DROP TABLE IF EXISTS `boci_customers`,`boci_products`,`boci_categories`;
 DROP TABLE IF EXISTS `boci_customers`;
 CREATE TABLE IF NOT EXISTS `boci_customers` (
   `customer_id` int(11) NOT NULL AUTO_INCREMENT,
-  `forename` varchar(100) NOT NULL,
-  `lastname` varchar(100) NOT NULL,
+  `customer_forename` varchar(100) NOT NULL,
+  `customer_lastname` varchar(100) NOT NULL,
   `customer_role` enum('guest','customer','admin','') DEFAULT 'guest',
-  `username` varchar(100) UNIQUE NOT NULL,
-  `email` varchar(300) UNIQUE NOT NULL,
-  `password` varchar(100) NOT NULL,
+  `customer_username` varchar(100) UNIQUE NOT NULL,
+  `customer_email` varchar(300) UNIQUE NOT NULL,
+  `customer_password` varchar(100) NOT NULL,
+  `customer_gender` varchar(100) NOT NULL,
+  `customer_privacy` TINYINT(1) NOT NULL DEFAULT 1,
+  `customer_newsletter` TINYINT(1) DEFAULT 1,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`customer_id`)
 );

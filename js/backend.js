@@ -43,18 +43,21 @@ if (formLogin) {
 if (formNewRegister) {
   const inputsRegister = formNewRegister.querySelectorAll("input");
   formNewRegister.addEventListener("submit", (e) => {
+    let formIsValid = true;
     inputsRegister.forEach((input) => {
+      if (input.name === "newsletter") return;
       if (input.checkValidity()) {
         input.classList.remove("invalid");
         input.classList.add("valid");
       } else {
         input.classList.remove("valid");
         input.classList.add("invalid");
+        formIsValid = false;
       }
     });
 
     // prevent submit if invalid
-    if (!formNewRegister.checkValidity()) {
+    if (!formIsValid) {
       e.preventDefault();
     }
   });
