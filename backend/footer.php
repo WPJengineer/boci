@@ -16,10 +16,10 @@
         <div class="legal">
             <h3>INFORMACIÓN LEGAL</h3>
             <ul>
-                <li><p>Como comprar</p></li>
-                <li><p>Envíos y devoluciones</p></li>
-                <li><p>Aviso legal y política de privacidad</p></li>
-                <li><p>Política de cookies</p></li>
+                <li><p><a href="/boci/views/legal.html">Como comprar</a></p></li>
+                <li><p><a href="/boci/views/legal.html">Envíos y devoluciones</a></p></li>
+                <li><p><a href="/boci/views/legal.html">Aviso legal y política de privacidad</a></p></li>
+                <li><p><a href="/boci/views/legal.html">Política de cookies</a></p></li>
             </ul>
         </div>
         <p class="copyright">&copy; 2025 Boci. Todos los derechos reservados.</p>

@@ -1,0 +1,59 @@
+main {
+  position: relative;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: justify;
+}
+
+.como-comprar, .envios, .avisos, .cookies {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.como-comprar h1, .envios h1, .avisos h1, .cookies h1 {
+  border: 3px solid var(--violet);
+  padding: 10px;
+  font-weight: normal;
+  width: fit-content;
+}
+
+.como-comprar ul, .envios ul, .cookies ul {
+  padding-left: 24px;
+}
+
+.como-comprar li, .envios li, .cookies li {
+  display: list-item;
+  list-style: disc;
+}
+
+.envios a {
+  text-decoration: underline;
+  color: var(--dark);
+}
+
+@media (min-width: 768px) {
+
+  h1 {
+    font-size: 40px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+}
+
+@media (min-width: 992px) {
+
+  h1 {
+    font-size: 48px;
+  }
+
+  p {
+    font-size: 22px;
+  }
+
+}

@@ -233,6 +233,10 @@ footer {
 
         p {
             font-size: 14px;
+            
+            a {
+                color: var(--dark);
+            }
         }
     }
 

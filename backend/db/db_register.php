@@ -33,6 +33,13 @@ $sql =
 
 echo $gender, $name, $lastname, $email, $password, $privacy, $newsletter;
 
+if (mysqli_query($conn, $sql)) {
+    echo
+        'Customer details inserted successfully';
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
 mysqli_close($conn);
 
 ?>
