@@ -33,7 +33,7 @@ require($backend.'/header.php');
       </div>
       <div>
         <!-- missing page -->
-        <a href="">¿Olvidó su contraseña?</a>
+        <a href="/boci/backend/forms/form_forgot_password.php">¿Olvidó su contraseña?</a>
       </div>
       <div>
         <button type="submit" class="btn-login">
