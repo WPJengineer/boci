@@ -4,7 +4,10 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  text-align: justify;
+
+  p {
+    text-align: justify;
+  }
 }
 
 .como-comprar, .envios, .avisos, .cookies {

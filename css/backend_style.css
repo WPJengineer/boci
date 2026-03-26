@@ -75,7 +75,7 @@ main {
   }
 }
 
-.btn-register, .btn-login, .btn-new-register {
+.btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,11 +86,11 @@ main {
   font-size: 18px;
 }
 
-.btn-register:hover, .btn-login:hover, .btn-new-register:hover {
+.btn-register:hover, .btn-login:hover, .btn-new-register:hover, .btn-forgot-password:hover, .btn-volver:hover {
   cursor: pointer;
 }
 
-.btn-register:active, .btn-login:active, .btn-new-register:active {
+.btn-register:active, .btn-login:active, .btn-new-register:active, .btn-forgot-password:active, .btn-volver:active {
   transform: scale(0.95);
 }
 
@@ -181,6 +181,54 @@ main {
   }
 }
 
+.remember {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: 2px solid var(--blue);
+  font-size: 18px;
+
+  p {
+    text-align: justify;
+  }
+
+  h2 {
+    color: var(--violet);
+    font-size: 26px;
+  }
+
+  div:not(.btns-forgot) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    input {
+      border-color: var(--blue);
+      height: 40px;
+      font-size: 18px;
+      font-family: 'afacad';
+      /* width: 90%; */
+      padding: 5px;
+    }
+  }
+
+  .btns-forgot {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    button, a {
+      width: 175px;
+      height: 40px;
+    }
+  }
+}
+
 /*area where we add red or green higlight to verify inputs for forms*/
 
 .forms-login form div input.valid, .new-register input.valid {
@@ -213,7 +261,7 @@ main {
     }
   }
 
-  .btn-register, .btn-login, .btn-new-register {
+  .btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver {
     font-size: 20px;
   }
 
@@ -223,7 +271,20 @@ main {
     h2 {
       font-size: 32px;
     }
-  } 
+  }
+
+  .remember {
+    font-size: 20px;
+
+    h2 {
+      font-size: 32px;
+    }
+
+    .btns-forgot {
+      display: flex;
+      flex-direction: row;
+    }
+  }
 
 }
 
@@ -280,6 +341,18 @@ main {
   }
 
   .btn-new-register {
+    font-size: 22px;
+  }
+
+  .remember {
+    font-size: 22px;
+
+    h2 {
+      font-size: 40px;
+    }
+  } 
+
+  .btn-forgot-password, .btn-volver {
     font-size: 22px;
   }
 }
