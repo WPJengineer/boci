@@ -4,10 +4,10 @@ require($backend.'/header.php');
 ?>
 
 <main>
-  <button>Dirección de envíos</button>
-  <button>Opciones de pago</button>
-  <button>Gestionar mi cuenta</button>
-  <button>Mis pedidos</button>
+  <a href="/boci/backend/forms/form_address.php">Dirección de envíos</a>
+  <a href="/boci/backend/forms/form_payment.php">Opciones de pago</a>
+  <a href="/boci/backend/forms/form_account.php">Gestionar mi cuenta</a>
+  <a href="/boci/backend/forms/orders.php">Mis pedidos</a>
   <button>Log out</button>
 </main>
 
