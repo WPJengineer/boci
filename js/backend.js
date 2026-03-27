@@ -19,6 +19,8 @@ const formLogin = document.querySelector(".login");
 const formNewRegister = document.querySelector(".new-register");
 const formNewAddress = document.querySelector(".address");
 const formNewPayment = document.querySelector(".payment");
+const formNewEmail = document.querySelector(".account-email");
+const formNewPhone = document.querySelector(".account-phone");
 const links = document.querySelectorAll('.pages p a');
 
 if (formLogin) {
@@ -99,6 +101,46 @@ if (formNewPayment) {
 
     // prevent submit if invalid
     if (!formNewPayment.checkValidity()) {
+      e.preventDefault();
+    }
+  });
+}
+
+if (formNewEmail) {
+  const inputsEmail = formNewEmail.querySelectorAll("input");
+  formNewEmail.addEventListener("submit", (e) => {
+    inputsEmail.forEach((input) => {
+      if (input.checkValidity()) {
+        input.classList.remove("invalid");
+        input.classList.add("valid");
+      } else {
+        input.classList.remove("valid");
+        input.classList.add("invalid");
+      }
+    });
+
+    // prevent submit if invalid
+    if (!formNewEmail.checkValidity()) {
+      e.preventDefault();
+    }
+  });
+}
+
+if (formNewPhone) {
+  const inputsPhone = formNewPhone.querySelectorAll("input");
+  formNewPhone.addEventListener("submit", (e) => {
+    inputsPhone.forEach((input) => {
+      if (input.checkValidity()) {
+        input.classList.remove("invalid");
+        input.classList.add("valid");
+      } else {
+        input.classList.remove("valid");
+        input.classList.add("invalid");
+      }
+    });
+
+    // prevent submit if invalid
+    if (!formNewPhone.checkValidity()) {
       e.preventDefault();
     }
   });
