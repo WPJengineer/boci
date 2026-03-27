@@ -1,7 +1,7 @@
 -- Relationships
 DROP TABLE IF EXISTS `boci_orders`,`boci_shopping_cart`,`boci_product_category`, `boci_reviews`; 
 -- Entities
-DROP TABLE IF EXISTS `boci_customers`,`boci_products`,`boci_categories`;
+DROP TABLE IF EXISTS `boci_customers`,`boci_products`,`boci_categories`,`boci_address`;
 
 DROP TABLE IF EXISTS `boci_customers`;
 CREATE TABLE IF NOT EXISTS `boci_customers` (
@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `boci_customers` (
   `customer_forename` varchar(100) NOT NULL,
   `customer_lastname` varchar(100) NOT NULL,
   `customer_role` enum('guest','customer','admin','') DEFAULT 'guest',
-  `customer_username` varchar(100) UNIQUE NOT NULL,
+  -- `customer_username` varchar(100) UNIQUE DEFAULT NULL,
   `customer_email` varchar(300) UNIQUE NOT NULL,
   `customer_password` varchar(100) NOT NULL,
   `customer_gender` varchar(100) NOT NULL,
@@ -81,6 +81,20 @@ CREATE TABLE IF NOT EXISTS `boci_product_category` (
   `category_id` int(11) DEFAULT NULL,
   KEY `product_id` (`product_id`),
   KEY `category_id` (`category_id`)
+);
+
+DROP TABLE IF EXISTS `boci_address`;
+CREATE TABLE IF NOT EXISTS `boci_address` (
+  `address_id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) NOT NULL,
+  `street` varchar(300) NOT NULL,
+  `number` varchar(300) DEFAULT NULL,
+  `city` varchar(300) NOT NULL,
+  `state` varchar(300) NOT NULL,
+  `postal_code` varchar(300) NOT NULL,
+  `country` varchar(300) NOT NULL,
+  PRIMARY KEY (`address_id`),
+  KEY `customer_id` (`customer_id`)
 );
 
 INSERT INTO `boci_products` (`product_id`, `product_name`, `product_unit_price`, `product_image`, `product_description`) VALUES

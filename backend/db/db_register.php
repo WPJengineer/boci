@@ -7,8 +7,8 @@ $name = htmlspecialchars($_POST['name']);
 $lastname = htmlspecialchars($_POST['lastname']);
 $email = htmlspecialchars($_POST['email']);
 $password = htmlspecialchars($_POST['password']);
-$privacy = $_POST['privacy'];
-$newsletter = $_POST['newsletter'] ?? 'false';
+$privacy = ($_POST['privacy'] === 'on') ? 1 : 0;
+$newsletter = ($_POST['newsletter'] === 'on') ? 1 : 0;
 $backend = $_SERVER['DOCUMENT_ROOT'].'/boci/backend';
 
 include('../config/db_config.php');
