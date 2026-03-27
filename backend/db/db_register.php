@@ -21,7 +21,8 @@ $sql =
     `customer_email`,
     `customer_password`,
     `customer_privacy`,
-    `customer_newsletter`)
+    `customer_newsletter`,
+    `customer_role`)
   VALUES
     ('$gender',
     '$name',
@@ -29,7 +30,8 @@ $sql =
     '$email',
     '$password',
     '$privacy',
-    '$newsletter');";
+    '$newsletter',
+    customer);";
 
 echo $gender, $name, $lastname, $email, $password, $privacy, $newsletter;
 

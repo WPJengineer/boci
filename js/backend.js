@@ -1,24 +1,24 @@
-document.addEventListener('DOMContentLoaded', () => {
+const password = document.querySelector(".password-field input");
+const showPassword = document.querySelector(".btn-show-password");
 
-  const password = document.querySelector(".password-field input");
-  const showPassword = document.querySelector(".btn-show-password");
+// console.log(password, showPassword);
 
-  // console.log(password, showPassword);
+if (password && showPassword) {
+  showPassword.addEventListener("pointerdown", () => {
+    password.type = "text";
+  });
 
-  if (password && showPassword) {
-    showPassword.addEventListener("pointerdown", () => {
-      password.type = "text";
-    });
-
-    showPassword.addEventListener("pointerup", () => {
-      password.type = "password";
-    });
-  }
+  showPassword.addEventListener("pointerup", () => {
+    password.type = "password";
+  });
+}
 
 // missing to check for if valid entry into form
 
 const formLogin = document.querySelector(".login");
 const formNewRegister = document.querySelector(".new-register");
+const formNewAddress = document.querySelector(".address");
+const links = document.querySelectorAll('.pages p a');
 
 if (formLogin) {
   const inputsLogin = formLogin.querySelectorAll("input");
@@ -62,4 +62,32 @@ if (formNewRegister) {
     }
   });
 }
+
+if (formNewAddress) {
+  const inputsAddress = formNewAddress.querySelectorAll("input");
+  formNewAddress.addEventListener("submit", (e) => {
+    inputsAddress.forEach((input) => {
+      if (input.checkValidity()) {
+        input.classList.remove("invalid");
+        input.classList.add("valid");
+      } else {
+        input.classList.remove("valid");
+        input.classList.add("invalid");
+      }
+    });
+
+    // prevent submit if invalid
+    if (!formNewAddress.checkValidity()) {
+      e.preventDefault();
+    }
+  });
+}
+
+// gives colour to the page we are currently located on.
+links.forEach(link => {
+  const current = window.location.pathname;
+
+  if (current === link.pathname) {
+    link.classList.add('active');
+  }
 });
