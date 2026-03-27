@@ -22,27 +22,27 @@ require($backend.'/header.php');
       </div>
       <div>
         <label for="phone_number">Número de teléfono*</label>
-        <input type="phone_number" id="phone_number" name="phone_number" required />
+        <input type="text" id="phone_number" name="phone_number" required />
       </div>
       <div>
         <label for="street_name">Nombre de la calle*</label>
-        <input type="street_name" id="street_name" name="street_name" required />
+        <input type="text" id="street_name" name="street_name" required />
       </div>
       <div>
         <label for="street_num">Número del local*</label>
-        <input type="street_num" id="street_num" name="street_num" required />
+        <input type="text" id="street_num" name="street_num" required />
       </div>
       <div>
         <label for="city">Ciudad*</label>
-        <input type="city" id="city" name="city" required />
+        <input type="text" id="city" name="city" required />
       </div>
       <div>
         <label for="post_code">Código postal*</label>
-        <input type="post_code" id="post_code" name="post_code" required />
+        <input type="text" id="post_code" name="post_code" required />
       </div>
       <div>
         <label for="state">Estado/Provincia*</label>
-        <input type="state" id="state" name="state" required />
+        <input type="text" id="state" name="state" required />
       </div>
       <div>
         <button class="btn-new-address" type="submit">GUARDAR</button>

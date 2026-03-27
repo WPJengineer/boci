@@ -75,7 +75,7 @@ main {
   }
 }
 
-.btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver, .btn-new-address {
+.btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,11 +86,11 @@ main {
   font-size: 18px;
 }
 
-.btn-register:hover, .btn-login:hover, .btn-new-register:hover, .btn-forgot-password:hover, .btn-volver:hover, .btn-new-address:hover {
+.btn-register:hover, .btn-login:hover, .btn-new-register:hover, .btn-forgot-password:hover, .btn-volver:hover, .btn-new-address:hover, .btn-new-payment:hover {
   cursor: pointer;
 }
 
-.btn-register:active, .btn-login:active, .btn-new-register:active, .btn-forgot-password:active, .btn-volver:active, .btn-new-address:active {
+.btn-register:active, .btn-login:active, .btn-new-register:active, .btn-forgot-password:active, .btn-volver:active, .btn-new-address:active, .btn-new-payment:active {
   transform: scale(0.95);
 }
 
@@ -283,13 +283,42 @@ main {
   }
 }
 
+.payment {
+  min-width: 350px;
+  /* max-width: 600px; */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: 2px solid var(--blue);
+  font-size: 18px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input {
+    border-color: var(--blue);
+    height: 40px;
+    font-size: 18px;
+    font-family: 'afacad';
+    padding: 5px;
+  }
+
+  .btn-new-payment {
+    height: 40px;
+  }
+}
+
 /*area where we add red or green higlight to verify inputs for forms*/
 
-.forms-login form div input.valid, .new-register input.valid, .address input.valid {
+.forms-login form div input.valid, .new-register input.valid, .address input.valid, .payment input.valid {
   border: 2px solid var(--green-valid) !important;
 }
 
-.forms-login form div input.invalid, .new-register input.invalid, .address input.invalid {
+.forms-login form div input.invalid, .new-register input.invalid, .address input.invalid, .payment input.invalid {
   border: 2px solid var(--red-invalid) !important;
 }
 
@@ -319,7 +348,7 @@ p .active {
     }
   }
 
-  .btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver, .btn-new-address {
+  .btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment {
     font-size: 20px;
   }
 
@@ -344,7 +373,7 @@ p .active {
     }
   }
 
-  .profile, .address, .address input {
+  .profile, .address, .address input, .payment, .payment input {
     font-size: 20px;
   }
 
@@ -418,11 +447,11 @@ p .active {
     }
   } 
 
-  .btn-forgot-password, .btn-volver, .btn-new-address {
+  .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment {
     font-size: 22px;
   }
 
-  .profile, .address, .address input {
+  .profile, .address, .address input, .payment, .payment input {
     font-size: 22px;
   }
 }

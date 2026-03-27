@@ -18,6 +18,7 @@ if (password && showPassword) {
 const formLogin = document.querySelector(".login");
 const formNewRegister = document.querySelector(".new-register");
 const formNewAddress = document.querySelector(".address");
+const formNewPayment = document.querySelector(".payment");
 const links = document.querySelectorAll('.pages p a');
 
 if (formLogin) {
@@ -78,6 +79,26 @@ if (formNewAddress) {
 
     // prevent submit if invalid
     if (!formNewAddress.checkValidity()) {
+      e.preventDefault();
+    }
+  });
+}
+
+if (formNewPayment) {
+  const inputsPayment = formNewPayment.querySelectorAll("input");
+  formNewPayment.addEventListener("submit", (e) => {
+    inputsPayment.forEach((input) => {
+      if (input.checkValidity()) {
+        input.classList.remove("invalid");
+        input.classList.add("valid");
+      } else {
+        input.classList.remove("valid");
+        input.classList.add("invalid");
+      }
+    });
+
+    // prevent submit if invalid
+    if (!formNewPayment.checkValidity()) {
       e.preventDefault();
     }
   });
