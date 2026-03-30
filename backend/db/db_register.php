@@ -8,7 +8,7 @@ $lastname = htmlspecialchars($_POST['lastname']);
 $email = htmlspecialchars($_POST['email']);
 $password = htmlspecialchars($_POST['password']);
 $privacy = ($_POST['privacy'] === 'on') ? 1 : 0;
-$newsletter = ($_POST['newsletter'] === 'on') ? 1 : 0;
+$newsletter = (($_POST['newsletter'] ?? '') === 'on') ? 1 : 0;
 $backend = $_SERVER['DOCUMENT_ROOT'].'/boci/backend';
 
 include('../config/db_config.php');
@@ -31,13 +31,14 @@ $sql =
     '$password',
     '$privacy',
     '$newsletter',
-    customer);";
+    'customer');";
 
-echo $gender, $name, $lastname, $email, $password, $privacy, $newsletter;
+// echo $gender, $name, $lastname, $email, $password, $privacy, $newsletter;
 
 if (mysqli_query($conn, $sql)) {
-    echo
-        'Customer details inserted successfully';
+  // redirection after correctly registering - need to figure out if redirect to page we where located on last or go to a specific page.
+  header("Location: /boci/index.html");
+  exit();
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }

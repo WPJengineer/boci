@@ -1,6 +1,11 @@
 <?php
 $backend = $_SERVER['DOCUMENT_ROOT'].'/boci/backend';
 require($backend.'/header.php');
+
+if (isset($_SESSION['customer_id'])) {
+  header("Location: /boci/backend/forms/form_profile.php");
+  exit();
+}
 ?>
 
 <main>

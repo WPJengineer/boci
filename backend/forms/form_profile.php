@@ -8,7 +8,7 @@ require($backend.'/header.php');
   <a href="/boci/backend/forms/form_payment.php">Opciones de pago</a>
   <a href="/boci/backend/forms/form_account.php">Gestionar mi cuenta</a>
   <a href="/boci/backend/forms/orders.php">Mis pedidos</a>
-  <button>Log out</button>
+  <a href="/boci/backend/db/db_logout.php">Log out</a>
 </main>
 
 <?php

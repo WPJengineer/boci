@@ -13,7 +13,12 @@ $conn = mysqli_connect('localhost', 'root', '', 'boci', 3307);
 
 // check connection
 if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+    header("Content-Type: application/json");
+    echo json_encode([
+        "error" => "Connection failed",
+        "details" => mysqli_connect_error()
+    ]);
+    exit;
 }
 
 ?>
