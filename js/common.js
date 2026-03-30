@@ -3,6 +3,7 @@ const scrollContainer = document.querySelector(".scrollbar div");
 const btnLeft = document.querySelector(".scroll-left");
 const btnRight = document.querySelector(".scroll-right");
 const SCROLL_AMOUNT = 220;
+const btnShoppingCart = document.querySelector(".btnShoppingCart");
 
 links.forEach(link => {
   const current = window.location.pathname;
@@ -30,3 +31,7 @@ if (btnLeft) {
       });
   });
 }
+
+btnShoppingCart.addEventListener('click', () => {
+  window.location.href = "/boci/views/cart.html";
+});
