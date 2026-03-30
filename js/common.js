@@ -32,6 +32,8 @@ if (btnLeft) {
   });
 }
 
-btnShoppingCart.addEventListener('click', () => {
+if (btnShoppingCart) {
+  btnShoppingCart.addEventListener('click', () => {
   window.location.href = "/boci/views/cart.html";
-});
+  })
+};
