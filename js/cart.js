@@ -2,10 +2,6 @@ const btnContinueShoppping = document.querySelector(".continue-shopping button")
 
 // FUNCTIONS
 
-// has to be inside an async function and a try-catch
-// global declaration of user for frontend.
-// const user = await getSessionUser();
-
 function getGuestCart() {
   try {
     const raw = localStorage.getItem("cart");
