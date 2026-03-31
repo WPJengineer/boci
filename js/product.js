@@ -48,6 +48,8 @@ function renderProduct(p) {
     document.querySelector(".product-description").textContent = p.product_description ?? "";
 }
 
+// this is only for the guest cart, need to add for when logged in.
+// need to add function to combine localStorage with db after log in if we start to shop before logging in.
 function addToCart(productId, quantity = 1) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 

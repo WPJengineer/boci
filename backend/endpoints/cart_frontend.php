@@ -2,15 +2,13 @@
 
 header("Content-Type: application/json");
 
-// this shows all products like in the products home page
-$sql = "SELECT *
-FROM `boci_shopping_cart`";
+session_start();
+$customer_id = $_SESSION["customer_id"];
 
-// this shows a specific product if we select it from the products home page
-if (isset($_GET['id']) && $_GET['id'] !== '') {
-  $product_id = intval($_GET['id']);
-  $sql .= " WHERE product_id = $product_id";
-}
+$sql = "SELECT sc.product_id, p.product_name, p.product_unit_price, p.product_image, sc.quantity
+FROM `boci_shopping_cart` AS sc
+INNER JOIN `boci_products` AS p ON sc.product_id = p.product_id
+WHERE `customer_id` = '$customer_id'";
 
 include('../config/db_config.php');
 
@@ -24,14 +22,14 @@ if (!$result) {
     exit;
 }
 
-$products = [];
+$cart = [];
 
 if (mysqli_num_rows($result) > 0) {
   while ($row = mysqli_fetch_assoc($result)) {
-    $products[] = $row;
+    $cart[] = $row;
   }
 }
-echo json_encode($products);
+echo json_encode($cart);
 mysqli_close($conn);
 exit;
 
