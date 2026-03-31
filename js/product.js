@@ -103,4 +103,5 @@ btnDecrease.addEventListener('click', () => {
 btnAddToCart.addEventListener('click', () => {
     const quantity = parseInt(quantitySpan.textContent);
     addToCart(productId, quantity);
+    window.location.href = "./products.html";
 });
