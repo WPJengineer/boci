@@ -86,13 +86,81 @@ main {
   }
 }
 
+.payment {
+  margin: 20px;
+  border: 1px solid var(--blue);
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+}
+
+.articles, .transport, .total {
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    display: flex;
+    gap: 5px;
+  }
+}
+
+.subtotal, .total, .payment-method {
+  /* justify-content: space-between; */
+  border: 1px solid var(--blue);
+  padding: 20px;
+}
+
+.article-price, .transport-price, .total-price {
+  color: var(--green);
+  font-size: 26px;
+}
+
+.payment-method {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  input  {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.btnCheckout {
+  display: block;
+  margin: 0 auto;
+  padding: 5px 20px;
+  background-color: var(--violet);
+  color: var(--light);
+  border: none;
+  font-size: 18px;
+}
+
 .continue-shopping {
   margin-top: 20px;
   display: flex;
   justify-content: center;
 
   button {
-    width: fit-content;
+    /* width: fit-content; */
     padding: 0 24px;
     border-radius: 30px;
     border: none;

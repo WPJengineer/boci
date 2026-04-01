@@ -1,4 +1,5 @@
 <?php
+$redirect = $_GET['redirect'] ?? '/boci/backend/forms/form_profile.php';
 $backend = $_SERVER['DOCUMENT_ROOT'].'/boci/backend';
 require($backend.'/header.php');
 
@@ -22,6 +23,7 @@ if (isset($_SESSION['customer_id'])) {
       </button>
     </form>
     <form class="login" action="/boci/backend/db/db_login.php" method="POST" novalidate>
+      <input type="hidden" name="redirect" value="<?= htmlspecialchars($redirect) ?>">
       <h2>CLIENTES REGISTRADOS</h2>
       <div>
         <label for="email">Dirección de correo electrónico:</label>

@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+// $redirect = $_POST['redirect'] ?? '/boci/backend/forms/form_profile.php';
 $email = htmlspecialchars($_POST['email']);
 $password = htmlspecialchars($_POST['password']);
 $backend = $_SERVER['DOCUMENT_ROOT'].'/boci/backend';
@@ -23,8 +23,10 @@ if ($result) {
     $_SESSION['userLastname'] = $row['customer_lastname'];
     $_SESSION['customer_role'] = $row['customer_role'];
 
+    $redirect = $_POST['redirect'] ?? '/boci/backend/forms/form_profile.php';
+
     //option for redirection for admin vs customer later.
-    header("Location: /boci/backend/forms/form_profile.php");
+    header("Location: $redirect");
     exit();
 
   } else  {

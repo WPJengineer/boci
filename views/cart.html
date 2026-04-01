@@ -34,67 +34,41 @@
         <a href="../backend/forms/form_login.php"><img src="../assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
         <div class="shopping-cart">
           <!-- <p>CARRITO</p> -->
-
-          <!--<article class="cart-item" data-id="1">
-            <img class="plush" src="../assets/images/image-plushes/vaquita-lita.svg" alt="peluche-image">
-            <div class="quantity">
-              <p>LITA</p>
-              <div class="quantity-button">
-                <span id="quantity-product">1</span>
-                <div class="buttons">
-                  <button id="btnIncrease">
-                    <img src="../assets/icons/chevron-up.svg" alt="up-arrow">
-                  </button>
-                  <button id="btnDecrease">
-                    <img src="../assets/icons/chevron-down.svg" alt="down-arrow">
-                  </button>
-                </div>
-              </div>
+        </div>
+        <div class="payment">
+          <div class="subtotal">
+            <div class="articles">
+              <p><span>0</span>articulo(s)</p>
+              <p class="article-price"><span>0.00</span>€</p>
             </div>
-            <span class="price">12.95€</span>
-            <img class="icon remove" src="../assets/icons/close-icon-yellow.svg" alt="remove-icon">
-          </article>
-
-          <article class="cart-item" data-id="3">
-            <img class="plush" src="../assets/images/image-plushes/floreti.svg" alt="peluche-image">
-            <div class="quantity">
-              <p>FLORETI</p>
-              <div class="quantity-button">
-                <span id="quantity-product">1</span>
-                <div class="buttons">
-                  <button id="btnIncrease">
-                    <img src="../assets/icons/chevron-up.svg" alt="up-arrow">
-                  </button>
-                  <button id="btnDecrease">
-                    <img src="../assets/icons/chevron-down.svg" alt="down-arrow">
-                  </button>
-                </div>
-              </div>
+            <div class="transport">
+              <p>Transporte</p>
+              <p class="transport-price"><span>0.00</span>€</p>
             </div>
-            <span class="price">12.95€</span>
-            <img class="icon remove" src="../assets/icons/close-icon-yellow.svg" alt="remove-icon">
-          </article>
-
-          <article class="cart-item" data-id="2">
-            <img class="plush" src="../assets/images/image-plushes/gina.svg" alt="peluche-image">
-            <div class="quantity">
-              <p>GINA</p>
-              <div class="quantity-button">
-                <span id="quantity-product">1</span>
-                <div class="buttons">
-                  <button id="btnIncrease">
-                    <img src="../assets/icons/chevron-up.svg" alt="up-arrow">
-                  </button>
-                  <button id="btnDecrease">
-                    <img src="../assets/icons/chevron-down.svg" alt="down-arrow">
-                  </button>
-                </div>
+          </div>
+          <div class="total">
+            <p>Total</p>
+            <p class="total-price"><span>0.00</span>€</p>
+          </div>
+          <div class="payment-method">
+            <p>Forma de pago</p>
+            <!-- button has preventDefault and checks if user is logged in -->
+             <!-- if logged in go to checkout.php if guest got to form_login.php -->
+            <form id="checkout-form">
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="payment-method" value="credit" required />
+                  <img class="icon" src="../assets/icons/visa-icon.svg" alt="visa-icon">
+                  <img class="icon" src="../assets/icons/mastercard-icon.svg" alt="mastercard-icon">
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="payment-method" value="google-pay" />
+                  <img class="icon" src="../assets/icons/google-pay-icon.svg" alt="google-pay-icon">
+                </label>
               </div>
-            </div>
-            <span class="price">12.95€</span>
-            <img class="icon remove" src="../assets/icons/close-icon-yellow.svg" alt="remove-icon">
-          </article>-->
-
+              <button class="btnCheckout" type="submit">FINALIZAR COMPRA</button>
+            </form>
+          </div>
         </div>
         <div class="continue-shopping">
           <button>
