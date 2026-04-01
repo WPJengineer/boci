@@ -50,6 +50,10 @@ require($backend.'/header.php');
       </div>
     </form>
   </div>
+  <button class="btnShoppingCart">
+    <img src="/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
+    <span id="counter">0</span>
+  </button>
 </main>
 
 <?php

@@ -1,7 +1,29 @@
 const password = document.querySelector(".password-field input");
 const showPassword = document.querySelector(".btn-show-password");
+const btnShoppingCart = document.querySelector(".btnShoppingCart");
+const counterCart = document.getElementById("counter");
 
-// console.log(password, showPassword);
+function getCart() {
+  try {
+    const raw = localStorage.getItem("cart");
+    const cart = raw ? JSON.parse(raw) : [];
+    return Array.isArray(cart) ? cart : [];
+  } catch {
+    return [];
+  }
+}
+
+function getCartCount() {
+  const cart = getCart();
+  return cart.reduce((total, item) => total + Number(item.quantity || 0), 0);
+}
+
+function updateCartBadge() {
+  if (!counterCart) return;
+  counterCart.textContent = getCartCount();
+}
+
+updateCartBadge();
 
 if (password && showPassword) {
   showPassword.addEventListener("pointerdown", () => {

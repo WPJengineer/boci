@@ -14,6 +14,10 @@ require($backend.'/header.php');
     </div>
     <h2>ORDERS</h2>
   </div>
+  <button class="btnShoppingCart">
+    <img src="/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
+    <span id="counter">0</span>
+  </button>
 </main>
 
 <?php

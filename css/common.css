@@ -288,6 +288,21 @@ footer {
     }
 }
 
+#counter {
+    background-color: var(--red-invalid);
+    color: var(--light);
+    border-radius: 100%;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 0;
+    font-size: 16px;
+    font-family: 'afacad';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 @media (min-width: 768px) {
 
@@ -314,6 +329,10 @@ footer {
         width: 100px;
         top: -37px;
         right: 30px;
+    }
+
+    #counter {
+        font-size: 18px;
     }
 
     .links {
@@ -375,6 +394,10 @@ footer {
         img {
             width: 40px;
         }
+    }
+
+    #counter {
+        font-size: 20px;
     }
 
     .copyright {

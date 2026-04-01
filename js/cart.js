@@ -29,7 +29,7 @@ async function loadCart() {
 
     const guestCart = getGuestCart();
     if (!guestCart.length) {
-      cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+      cartContainer.innerHTML = '<p>Tu carrito esta vacio.</p>';
       return;
     }
     const response = await fetch(`http://localhost/boci/backend/endpoints/product_frontend.php`);
@@ -44,7 +44,7 @@ async function loadCart() {
 
   } catch (error) {
     console.error(error);
-    cartContainer.innerHTML = '<p>Error loading cart.</p>';
+    cartContainer.innerHTML = '<p>Error en cargar carrito.</p>';
   }
 
 }

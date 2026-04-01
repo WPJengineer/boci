@@ -17,6 +17,10 @@ require($backend.'/header.php');
       <a class="btn-volver" href="/boci/index.html"><p>VOLVER A INICIO</p></a>
     </div>
   </form>
+  <button class="btnShoppingCart">
+    <img src="/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
+    <span id="counter">0</span>
+  </button>
 </main>
 
 <?php

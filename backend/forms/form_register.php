@@ -55,6 +55,10 @@ require($backend.'/header.php');
       <button class="btn-new-register" type="submit">GUARDAR</button>
     </div>
   </form>
+  <button class="btnShoppingCart">
+    <img src="/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
+    <span id="counter">0</span>
+  </button>
 </main>
 
 <?php
