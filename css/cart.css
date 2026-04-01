@@ -96,6 +96,7 @@ main {
 
 .articles, .transport, .total {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 
   p {
