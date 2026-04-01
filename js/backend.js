@@ -25,6 +25,12 @@ function updateCartBadge() {
 
 updateCartBadge();
 
+if (btnShoppingCart) {
+  btnShoppingCart.addEventListener('click', () => {
+    window.location.href = "/boci/views/cart.html";
+  })
+};
+
 if (password && showPassword) {
   showPassword.addEventListener("pointerdown", () => {
     password.type = "text";
