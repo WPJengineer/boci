@@ -86,27 +86,28 @@ function attachListeners() {
     const btnDecrease = product.querySelector(".btnDecrease");
     const btnDelete = product.querySelector(".btnDelete");
 
-    btnIncrease.addEventListener("click", () => {
+    btnIncrease.addEventListener("click", async () => {
       const newTotal = Number(quantity.textContent) + 1;
       quantity.textContent = newTotal;
-      updateQuantity(productId, newTotal);
+      await updateQuantity(productId, newTotal);
       // updateSubtotal(product);
       // updateTotal();
     });
 
-    btnDecrease.addEventListener("click", () => {
+    btnDecrease.addEventListener("click", async () => {
       const qty = Number(quantity.textContent);
       if (qty <= 1) return;
       const newTotal = qty - 1;
       quantity.textContent = newTotal;
-      updateQuantity(productId, newTotal);
+      await updateQuantity(productId, newTotal);
       // updateSubtotal(product);
       // updateTotal();
     });
 
-    btnDelete.addEventListener("click", () => {
+    btnDelete.addEventListener("click", async () => {
+      await removeFromCart(productId);
       product.remove();
-      removeFromGuestCart(productId);
+      // removeFromGuestCart(productId);
       // updateTotal();
       const container = document.querySelector(".shopping-cart");
       if (container.querySelectorAll(".cart-item").length === 0) {
@@ -117,12 +118,69 @@ function attachListeners() {
   // updateTotal();
 }
 
-function updateQuantity(productId, quantity) {
-  const cart = getGuestCart();
-  const index = cart.findIndex(i => String(i.product_id) === String(productId));
-  if (index >= 0) {
-    cart[index].quantity = quantity;
-    localStorage.setItem('cart', JSON.stringify(cart));
+async function updateQuantity(productId, quantity) {
+  try {
+    const user = await getSessionUser();
+    if (user.loggedIn) {
+      const response = await fetch(`http://localhost/boci/backend/endpoints/cart_update.php`, {
+        method: "POST",
+        header: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          product_id: productId,
+          quantity: quantity
+        })
+      });
+      const data = await response.json();
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Could not update cart");
+      }
+      return data;
+    }
+
+    const cart = getGuestCart();
+    const index = cart.findIndex(i => String(i.product_id) === String(productId));
+    if (index >= 0) {
+      cart[index].quantity = quantity;
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function removeFromCart(productId) {
+  try {
+    const user = await getSessionUser();
+
+    if (user.loggedIn) {
+      const response = await fetch("http://localhost/boci/backend/endpoints/cart_delete.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          product_id: Number(productId)
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Could not remove item from cart");
+      }
+
+      return data;
+    }
+
+    removeFromGuestCart(productId);
+
+  } catch (error) {
+    console.error(error);
   }
 }
 
@@ -168,6 +226,8 @@ btnContinueShoppping.addEventListener('click', () => {
 
 checkoutForm.addEventListener('submit', async(e) => {
   e.preventDefault();
+
+  // missing to check if cart is empty it does nothing.
 
   const user = await getSessionUser();
 
