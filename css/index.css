@@ -88,6 +88,7 @@ main {
         border: 3px solid var(--blue);
         border-radius: 25px;
     }
+
     .peluches:hover, .peluches-xl:hover, .llaveros:hover {
         border-color: var(--dark);
         cursor: pointer;

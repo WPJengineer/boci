@@ -98,17 +98,17 @@ CREATE TABLE IF NOT EXISTS `boci_address` (
 );
 
 INSERT INTO `boci_products` (`product_id`, `product_name`, `product_unit_price`, `product_image`, `product_description`) VALUES
-(1, 'vaqueta lita', 12.95, '/boci/assets/images/image-plushes-with-background/vaqueta-lita.jpg', 'Peluche frisona menorquina. Disponible en marron. Tamaño 12 cm x 9 cm x 10 cm'),
-(2, 'gina', 12.95, '/boci/assets/images/image-plushes-with-background/gina.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
-(3, 'floreti', 12.95, '/boci/assets/images/image-plushes-with-background/floreti.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
-(4, 'pinçetes', 12.95, '/boci/assets/images/image-plushes-with-background/pinçetes.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
-(5, 'quesito tendre', 12.95, '/boci/assets/images/image-plushes-with-background/quesito-tendre.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
-(6, 'deta', 12.95, '/boci/assets/images/image-plushes-with-background/deta.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
-(7, 'quesito semi', 12.95, '/boci/assets/images/image-plushes-with-background/quesito-semi.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cmPeluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
-(8, 'neta', 12.95, '/boci/assets/images/image-plushes-with-background/neta.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
-(9, 'floquet', 12.95, '/boci/assets/images/image-plushes-with-background/floquet.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
-(10, 'güeta', 12.95, '/boci/assets/images/image-plushes-with-background/gueta.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
-(11, 'quesito curat', 12.95, '/boci/assets/images/image-plushes-with-background/quesito-curat.jpg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm');
+(1, 'vaquita lita', 12.95, '/boci/assets/images/image-plushes/vaquita-lita.svg', 'Peluche frisona menorquina. Disponible en marron. Tamaño 12 cm x 9 cm x 10 cm'),
+(2, 'gina', 12.95, '/boci/assets/images/image-plushes/gina.svg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(3, 'floreti', 12.95, '/boci/assets/images/image-plushes/floreti.svg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(4, 'pinçetes', 12.95, '/boci/assets/images/image-plushes/pinçetes.svg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(5, 'quesito tendre', 12.95, '/boci/assets/images/image-plushes/quesito-tendre.svg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(6, 'deta', 12.95, '/boci/assets/images/image-plushes/deta.svg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(7, 'quesito semi', 12.95, '/boci/assets/images/image-plushes/quesito-semi.svg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cmPeluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(8, 'neta', 12.95, '/boci/assets/images/image-plushes/neta.svg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(9, 'floquet', 12.95, '/boci/assets/images/image-plushes/floquet.svg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(10, 'güeta', 12.95, '/boci/assets/images/image-plushes/gueta.svg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm'),
+(11, 'quesito curat', 12.95, '/boci/assets/images/image-plushes/quesito-curat.svg', 'Peluche cuña de queso semi. Disponible en naraja y amarillo. Tamaño 12 cm x 9 cm x 10 cm');
 
 INSERT INTO `boci_categories` (`category_id`, `category_name`) VALUES
 (1, 'peluche'),

@@ -18,11 +18,15 @@ main {
   position: relative;
 }
 
+.cart-item:last-of-type {
+  border-bottom: none;
+}
+
 .cart-item .plush {
   width: 100px;
   margin: 10px;
-  border: 2px solid var(--blue);
-  border-radius: 20px;
+  /* border: 2px solid var(--blue);
+  border-radius: 20px; */
 }
 
 .cart-item .remove {

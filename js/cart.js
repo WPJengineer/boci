@@ -73,8 +73,8 @@ function renderCart(products, cartContainer) {
       <button class="btnDelete">
         <img class="icon remove" src="../assets/icons/close-icon-yellow.svg" alt="remove-icon">
       </button>
-      </article>
-    `).join('');
+    </article>
+  `).join('');
 }
 
 function attachListeners() {
