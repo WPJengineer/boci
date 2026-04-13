@@ -19,7 +19,7 @@ async function loadCart() {
 
   try {
     const user = await getSessionUser();
-    if (user.loggedIn) {
+    if (user?.loggedIn) {
       const response = await fetch(`http://localhost/boci/backend/endpoints/cart_frontend.php`, {credentials: "include"});
       const products = await response.json();
       cartContainer.innerHTML = "";
@@ -88,8 +88,8 @@ function attachListeners() {
 
     btnIncrease.addEventListener("click", async () => {
       const newTotal = Number(quantity.textContent) + 1;
-      quantity.textContent = newTotal;
       await updateQuantity(productId, newTotal);
+      quantity.textContent = newTotal;
       // updateSubtotal(product);
       // updateTotal();
     });
@@ -98,8 +98,8 @@ function attachListeners() {
       const qty = Number(quantity.textContent);
       if (qty <= 1) return;
       const newTotal = qty - 1;
-      quantity.textContent = newTotal;
       await updateQuantity(productId, newTotal);
+      quantity.textContent = newTotal;
       // updateSubtotal(product);
       // updateTotal();
     });
@@ -121,10 +121,10 @@ function attachListeners() {
 async function updateQuantity(productId, quantity) {
   try {
     const user = await getSessionUser();
-    if (user.loggedIn) {
+    if (user?.loggedIn) {
       const response = await fetch(`http://localhost/boci/backend/endpoints/cart_update.php`, {
         method: "POST",
-        header: {
+        headers: {
           "Content-Type": "application/json"
         },
         credentials: "include",
@@ -149,6 +149,7 @@ async function updateQuantity(productId, quantity) {
 
   } catch (error) {
     console.error(error);
+    throw error;
   }
 }
 
@@ -156,7 +157,7 @@ async function removeFromCart(productId) {
   try {
     const user = await getSessionUser();
 
-    if (user.loggedIn) {
+    if (user?.loggedIn) {
       const response = await fetch("http://localhost/boci/backend/endpoints/cart_delete.php", {
         method: "POST",
         headers: {
@@ -181,6 +182,7 @@ async function removeFromCart(productId) {
 
   } catch (error) {
     console.error(error);
+    throw error;
   }
 }
 
@@ -231,7 +233,7 @@ checkoutForm.addEventListener('submit', async(e) => {
 
   const user = await getSessionUser();
 
-  if (!user.loggedIn) {
+  if (!user?.loggedIn) {
     window.location.href = "/boci/backend/forms/form_login.php?redirect=/boci/backend/forms/form_checkout.php";
     return;
   }

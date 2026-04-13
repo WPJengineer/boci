@@ -53,7 +53,7 @@ function renderProduct(p) {
 async function addToCart(productId, quantity = 1) {
   const user = await getSessionUser();
 
-  if (user.loggedIn) {
+  if (user?.loggedIn) {
     //call the backend if user is logged in.
     try {
       const response = await fetch("http://localhost/boci/backend/endpoints/add_to_cart.php", {
