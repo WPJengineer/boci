@@ -50,7 +50,38 @@ function renderProduct(p) {
 
 // this is only for the guest cart, need to add for when logged in.
 // need to add function to combine localStorage with db after log in if we start to shop before logging in.
-function addToCart(productId, quantity = 1) {
+async function addToCart(productId, quantity = 1) {
+  const user = await getSessionUser();
+
+  if (user.loggedIn) {
+    //call the backend if user is logged in.
+    try {
+      const response = await fetch("http://localhost/boci/backend/endpoints/add_to_cart.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          product_id: productId,
+          quantity: quantity
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Could not add product to cart");
+      }
+
+      return data;
+    } catch (error) {
+      console.error("Error adding to DB cart:", error);
+      throw error;
+    }
+    // delete localStorage cart.
+  }
+
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   productId = Number(productId);
@@ -100,8 +131,12 @@ btnDecrease.addEventListener('click', () => {
     }
 });
 
-btnAddToCart.addEventListener('click', () => {
-    const quantity = parseInt(quantitySpan.textContent);
-    addToCart(productId, quantity);
-    window.location.href = "./products.html";
+btnAddToCart.addEventListener('click', async () => {
+    try {
+        const quantity = parseInt(quantitySpan.textContent);
+        await addToCart(productId, quantity);
+        window.location.href = "./products.html";
+    } catch (error) {
+        console.log(error);
+    }
 });

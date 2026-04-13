@@ -5,9 +5,25 @@ const btnRight = document.querySelector(".scroll-right");
 const SCROLL_AMOUNT = 220;
 const btnShoppingCart = document.querySelector(".btnShoppingCart");
 const counterCart = document.getElementById("counter");
+const cartParams = new URLSearchParams(window.location.search);
 
-function getCart() {
+if (cartParams.get("clearCart") === "1") {
+  localStorage.removeItem("cart");
+}
+
+async function getCart() {
   try {
+    const user = await getSessionUser();
+    if (user?.loggedIn) {
+      const response = await fetch(`http://localhost/boci/backend/endpoints/cart_frontend.php`, {credentials: "include"});
+      
+      if (!response.ok) {
+        throw new Error("Could not fetch cart from backend");
+      }
+
+      const products = await response.json();
+      return Array.isArray(products) ? products : [];
+    }
     const raw = localStorage.getItem("cart");
     const cart = raw ? JSON.parse(raw) : [];
     return Array.isArray(cart) ? cart : [];
@@ -16,14 +32,14 @@ function getCart() {
   }
 }
 
-function getCartCount() {
-  const cart = getCart();
+async function getCartCount() {
+  const cart = await getCart();
   return cart.reduce((total, item) => total + Number(item.quantity || 0), 0);
 }
 
-function updateCartBadge() {
+async function updateCartBadge() {
   if (!counterCart) return;
-  counterCart.textContent = getCartCount();
+  counterCart.textContent = await getCartCount();
 }
 
 updateCartBadge();

@@ -24,6 +24,7 @@
         </div>
         <p class="copyright">&copy; 2025 Boci. Todos los derechos reservados.</p>
     </footer>
+    <script src="/boci/js/sessionScript.js"></script>
     <script src="/boci/js/backend.js"></script>
 </body>
 </html>

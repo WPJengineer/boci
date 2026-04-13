@@ -4,6 +4,8 @@ session_start();
 // $redirect = $_POST['redirect'] ?? '/boci/backend/forms/form_profile.php';
 $email = htmlspecialchars($_POST['email']);
 $password = htmlspecialchars($_POST['password']);
+$cartData = $_POST['cart_data'] ?? '[]';
+
 $backend = $_SERVER['DOCUMENT_ROOT'].'/boci/backend';
 
 include('../config/db_config.php');
@@ -23,10 +25,37 @@ if ($result) {
     $_SESSION['userLastname'] = $row['customer_lastname'];
     $_SESSION['customer_role'] = $row['customer_role'];
 
+    //update shopping cart in DB if there is one in localStorage and then delete from localStorage.
+    $cart = json_decode($cartData, true);
+    if (is_array($cart) && count($cart) > 0) {
+        $sqlCart = "
+            INSERT INTO boci_shopping_cart (customer_id, product_id, quantity)
+            VALUES (?, ?, ?)
+            ON DUPLICATE KEY UPDATE quantity = quantity + VALUES(quantity)
+        ";
+
+        $stmtCart = mysqli_prepare($conn, $sqlCart);
+
+        if ($stmtCart) {
+            foreach ($cart as $item) {
+                $productId = isset($item['product_id']) ? (int)$item['product_id'] : 0;
+                $quantity = isset($item['quantity']) ? (int)$item['quantity'] : 0;
+                $customerId = (int)$row['customer_id'];
+
+                if ($productId > 0 && $quantity > 0) {
+                    mysqli_stmt_bind_param($stmtCart, "iii", $customerId, $productId, $quantity);
+                    mysqli_stmt_execute($stmtCart);
+                }
+            }
+
+            mysqli_stmt_close($stmtCart);
+        }
+    }
+
     $redirect = $_POST['redirect'] ?? '/boci/backend/forms/form_profile.php';
 
     //option for redirection for admin vs customer later.
-    header("Location: $redirect");
+    header("Location: $redirect?clearCart=1");
     exit();
 
   } else  {
