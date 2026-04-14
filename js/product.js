@@ -44,8 +44,25 @@ async function loadProduct(productId) {
 function renderProduct(p) {
     document.querySelector(".product-name").textContent = `Peluche '${p.product_name.toUpperCase()}'`;
     document.querySelector(".price").textContent = `${Number(p.product_unit_price).toFixed(2)} €`;
-    document.querySelector(".product-image img").src = p.product_image;
+    document.querySelector(".show-image img").src = p.product_image;
+    document.querySelector(".perspectives img:nth-child(1)").src = p.product_image;
+    document.querySelector(".perspectives img:nth-child(2)").src = p.product_perspective_1 ?? "";
+    document.querySelector(".perspectives img:nth-child(3)").src = p.product_perspective_2 ?? "";
     document.querySelector(".product-description").textContent = p.product_description ?? "";
+
+    setupImageGallery();
+}
+
+function setupImageGallery() {
+    const mainImage = document.querySelector(".show-image img");
+    const perspectiveImages = document.querySelectorAll(".perspectives img");
+
+    perspectiveImages.forEach(img => {
+        img.addEventListener("click", () => {
+            if (!img.src) return;
+            mainImage.src = img.src;
+        });
+    });
 }
 
 // this is only for the guest cart, need to add for when logged in.
