@@ -9,7 +9,7 @@ main {
 .buy {
   width: 80px;
   position: absolute;
-  top: -30.5px;
+  top: -30px;
   right: 10px;
   z-index: 10;
 }
