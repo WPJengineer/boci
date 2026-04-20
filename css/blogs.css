@@ -7,15 +7,17 @@ main {
   padding: 30px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
 }
 
-h1 {
-  font-size: 32px;
+article {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 h2 {
-  font-size: 18px;
+  font-size: 26px;
 }
 
 p {
@@ -23,55 +25,39 @@ p {
   text-align: justify;
 }
 
-small {
-  font-size: 13px;
+button {
+  width: 140px;
+  height: 50px;
+  border: 1px solid var(--green);
+  padding: 0 10px;
+  background: none;
+  color: var(--green);
 }
 
-main ul {
-  padding-left: 24px;
-}
-
-main ul li {
-  display: list-item;
-  list-style: disc;
+img {
+  width: 100%;
 }
 
 @media (min-width: 768px) {
 
-  h1 {
-    font-size: 40px;
-  }
-
   h2 {
-    font-size: 20px;
+    font-size: 32px;
   }
 
   p {
     font-size: 20px;
-  }
-
-  small {
-    font-size: 14px;
   }
 
 }
 
 @media (min-width: 992px) {
 
-  h1 {
-    font-size: 48px;
-  }
-
   h2 {
-    font-size: 22px;
+    font-size: 40px;
   }
 
   p {
     font-size: 22px;
-  }
-
-  small {
-    font-size: 16px;
   }
 
   img {
