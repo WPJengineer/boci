@@ -230,13 +230,8 @@ checkoutForm.addEventListener('submit', async(e) => {
   e.preventDefault();
 
   // missing to check if cart is empty it does nothing.
-
   const user = await getSessionUser();
-
-  if (!user?.loggedIn) {
-    window.location.href = "/boci/backend/forms/form_login.php?redirect=/boci/backend/forms/form_checkout.php";
-    return;
-  }
-
-  window.location.href = "/boci/backend/forms/form_checkout.php";
+  window.location.href = "/boci/backend/forms/form_login.php?redirect=/boci/backend/forms/form_checkout.php";
+  return;
+  
 });
