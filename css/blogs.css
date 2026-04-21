@@ -25,13 +25,14 @@ p {
   text-align: justify;
 }
 
-button {
+a {
   width: 140px;
   height: 50px;
   border: 1px solid var(--green);
   padding: 0 10px;
   background: none;
   color: var(--green);
+  font-size: 18px;
 }
 
 img {
