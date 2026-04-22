@@ -25,7 +25,10 @@ p {
   text-align: justify;
 }
 
-a {
+article a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 140px;
   height: 50px;
   border: 1px solid var(--green);
@@ -33,6 +36,15 @@ a {
   background: none;
   color: var(--green);
   font-size: 18px;
+}
+
+article a:hover {
+  border-color: var(--dark);
+  color: var(--dark);
+}
+
+article a:active {
+  transform: scale(0.95);
 }
 
 img {
@@ -63,6 +75,16 @@ img {
 
   img {
     max-width: 1000px;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  main article:first-of-type {
+    grid-column: 1 / -1;
   }
 
 }

@@ -32,7 +32,7 @@ session_start();
                 <li id="btnHome"><a href="/student014/boci/index.html">INICIO</a></li>
                 <li id="btnProducts"><a href="/student014/boci/views/products.html">JUGUETES</a></li>
                 <li id="btnAboutUs"><a href="/student014/boci/views/about.html">SOBRE NOSOTROS</a></li>
-                <li id="btnBlog"><a href="/student014/boci/views/blog.html">BLOG</a></li>
+                <li id="btnBlog"><a href="/student014/boci/views/blogs.html">BLOG</a></li>
             </ul>
         </nav>
     </header>

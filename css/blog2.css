@@ -3,8 +3,14 @@ body {
 }
 
 main {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
   padding: 30px;
+  position: relative;
+}
+
+main section {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -34,6 +40,63 @@ main ul {
 main ul li {
   display: list-item;
   list-style: disc;
+}
+
+
+#volver {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 50px;
+  border: 1px solid var(--green);
+  padding: 0 10px;
+  background: none;
+  color: var(--green);
+  font-size: 18px;
+}
+
+.more {
+  color: var(--green);
+}
+
+#volver:hover, .more:hover {
+  border-color: var(--dark);
+  color: var(--dark);
+}
+
+#volver:active, .more:active {
+  transform: scale(0.97);
+}
+
+section img {
+  width: stretch;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  article {
+    display: flex;
+    gap: 20px;
+
+    img {
+      width: 100px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .date {
+        color: grey;
+      }
+    }
+  }
+
 }
 
 @media (min-width: 768px) {
@@ -76,6 +139,20 @@ main ul li {
 
   img {
     max-width: 1000px;
+  }
+
+  main {
+    flex-direction: row;
+  }
+
+  section {
+    width: 70%;
+  }
+
+  aside {
+    width: 30%;
+    position: sticky;
+    top: 0;
   }
 
 }
