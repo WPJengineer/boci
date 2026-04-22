@@ -20,7 +20,10 @@ async function loadCart() {
   try {
     const user = await getSessionUser();
     if (user?.loggedIn) {
-      const response = await fetch(`http://localhost/boci/backend/endpoints/cart_frontend.php`, {credentials: "include"});
+      const response = await fetch(
+        // `http://localhost/boci/backend/endpoints/cart_frontend.php`,
+        `https://remotehost.es/student014/boci/backend/endpoints/cart_frontend.php`,
+        {credentials: "include"});
       const products = await response.json();
       cartContainer.innerHTML = "";
       renderCart(products, cartContainer);
@@ -33,7 +36,11 @@ async function loadCart() {
       cartContainer.innerHTML = '<p>Tu carrito esta vacio.</p>';
       return;
     }
-    const response = await fetch(`http://localhost/boci/backend/endpoints/product_frontend.php`);
+    const response = await fetch(
+      // `http://localhost/boci/backend/endpoints/product_frontend.php`
+      `https://remotehost.es/student014/boci/backend/endpoints/product_frontend.php`
+    );
+
     const products = await response.json();
     const items = guestCart.map(cartItem => {
       const product = products.find(p => Number(p.product_id) === Number(cartItem.product_id));
@@ -61,17 +68,17 @@ function renderCart(products, cartContainer) {
           <span class="quantity-product">${product.quantity}</span>
           <div class="buttons">
             <button class="btnIncrease">
-              <img src="../assets/icons/chevron-up.svg" alt="up-arrow">
+              <img src="/student014/boci/assets/icons/chevron-up.svg" alt="up-arrow">
             </button>
             <button class="btnDecrease">
-              <img src="../assets/icons/chevron-down.svg" alt="down-arrow">
+              <img src="/student014/boci/assets/icons/chevron-down.svg" alt="down-arrow">
             </button>
           </div>
         </div>
       </div>
       <span class="price">${product.product_unit_price}€</span>
       <button class="btnDelete">
-        <img class="icon remove" src="../assets/icons/close-icon-yellow.svg" alt="remove-icon">
+        <img class="icon remove" src="/student014/boci/assets/icons/close-icon-yellow.svg" alt="remove-icon">
       </button>
     </article>
   `).join('');
@@ -122,7 +129,10 @@ async function updateQuantity(productId, quantity) {
   try {
     const user = await getSessionUser();
     if (user?.loggedIn) {
-      const response = await fetch(`http://localhost/boci/backend/endpoints/cart_update.php`, {
+      const response = await fetch(
+        // `http://localhost/boci/backend/endpoints/cart_update.php`,
+        `https://remotehost.es/student014/boci/backend/endpoints/cart_update.php`,
+        {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -158,7 +168,10 @@ async function removeFromCart(productId) {
     const user = await getSessionUser();
 
     if (user?.loggedIn) {
-      const response = await fetch("http://localhost/boci/backend/endpoints/cart_delete.php", {
+      const response = await fetch(
+        // "http://localhost/boci/backend/endpoints/cart_delete.php",
+        "https://remotehost.es/student014/boci/backend/endpoints/cart_delete.php",
+        {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -223,7 +236,7 @@ loadCart();
 // EVENTS
 
 btnContinueShoppping.addEventListener('click', () => {
-  window.location.href = "/boci/views/products.html";
+  window.location.href = "/student014/boci/views/products.html";
 });
 
 checkoutForm.addEventListener('submit', async(e) => {
@@ -231,7 +244,7 @@ checkoutForm.addEventListener('submit', async(e) => {
 
   // missing to check if cart is empty it does nothing.
   const user = await getSessionUser();
-  window.location.href = "/boci/backend/forms/form_login.php?redirect=/boci/backend/forms/form_checkout.php";
+  window.location.href = "/student014/boci/backend/forms/form_login.php?redirect=/student014/boci/backend/forms/form_checkout.php";
   return;
   
 });

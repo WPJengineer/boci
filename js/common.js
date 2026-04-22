@@ -15,7 +15,10 @@ async function getCart() {
   try {
     const user = await getSessionUser();
     if (user?.loggedIn) {
-      const response = await fetch(`http://localhost/boci/backend/endpoints/cart_frontend.php`, {credentials: "include"});
+      const response = await fetch(
+        // `http://localhost/boci/backend/endpoints/cart_frontend.php`,
+        `https://remotehost.es/student014/boci/backend/endpoints/cart_frontend.php`,
+        {credentials: "include"});
       
       if (!response.ok) {
         throw new Error("Could not fetch cart from backend");
@@ -73,6 +76,6 @@ if (btnLeft) {
 
 if (btnShoppingCart) {
   btnShoppingCart.addEventListener('click', () => {
-    window.location.href = "/boci/views/cart.html";
+    window.location.href = "/student014/boci/views/cart.html";
   })
 };

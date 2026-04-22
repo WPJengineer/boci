@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-// $backend = $_SERVER['DOCUMENT_ROOT'].'/boci/backend';
 
 ?>
 
@@ -11,15 +10,15 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boci</title>
-    <link rel="icon" href="boci/assets/images/logo.svg" type="svg">
-    <link rel="stylesheet" href="/boci/css/common.css">
-    <link rel="stylesheet" href="/boci/css/backend_style.css">
+    <link rel="icon" href="/student014/boci/assets/images/logo.svg" type="svg">
+    <link rel="stylesheet" href="/student014/boci/css/common.css">
+    <link rel="stylesheet" href="/student014/boci/css/backend_style.css">
   </head>
 <body>
     <header>
         <div class="logo-header">
-            <a href="/boci/index.html">
-                <img class="logo" src="/boci/assets/images/logo.svg" alt="logo">
+            <a href="/student014/boci/index.html">
+                <img class="logo" src="/student014/boci/assets/images/logo.svg" alt="logo">
             </a>
                 <nav class="header-icons">
                 <!-- <img class="icon" src="/boci/assets/icons/profile-icon-black.svg" alt="profile-icon"> -->
@@ -30,10 +29,10 @@ session_start();
         </div>
         <nav class="header-menu">
             <ul>
-                <li id="btnHome"><a href="/boci/index.html">INICIO</a></li>
-                <li id="btnProducts"><a href="/boci/views/products.html">JUGUETES</a></li>
-                <li id="btnAboutUs"><a href="/boci/views/about.html">SOBRE NOSOTROS</a></li>
-                <li id="btnBlog"><a href="/boci/views/blog.html">BLOG</a></li>
+                <li id="btnHome"><a href="/student014/boci/index.html">INICIO</a></li>
+                <li id="btnProducts"><a href="/student014/boci/views/products.html">JUGUETES</a></li>
+                <li id="btnAboutUs"><a href="/student014/boci/views/about.html">SOBRE NOSOTROS</a></li>
+                <li id="btnBlog"><a href="/student014/boci/views/blog.html">BLOG</a></li>
             </ul>
         </nav>
     </header>

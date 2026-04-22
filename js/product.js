@@ -26,8 +26,8 @@ async function loadProduct(productId) {
         const response = await fetch(
             // two locations that webpae is deployed to that accepts php
             // `https://juguetosboci.infinityfree.me/backend/endpoints/product_frontend.php`
-            // `https://remotehost.es/student014/boci/backend/endpoints/product_frontend.php?id=${productId}`
-            `http://localhost/boci/backend/endpoints/product_frontend.php`
+            `https://remotehost.es/student014/boci/backend/endpoints/product_frontend.php?id=${productId}`
+            // `http://localhost/boci/backend/endpoints/product_frontend.php`
         );
         const products = await response.json();
         const product = products.find(p => String(p.product_id) === String(productId));
@@ -73,7 +73,10 @@ async function addToCart(productId, quantity = 1) {
   if (user?.loggedIn) {
     //call the backend if user is logged in.
     try {
-      const response = await fetch("http://localhost/boci/backend/endpoints/add_to_cart.php", {
+      const response = await fetch(
+        "http://localhost/boci/backend/endpoints/add_to_cart.php",
+        `https://remotehost.es/student014/boci/backend/endpoints/add_to_cart.php`,
+        {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

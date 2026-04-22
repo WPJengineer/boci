@@ -3,8 +3,8 @@ window.getSessionUser = async function () {
 
   try {
     const response = await fetch(
-      `http://localhost/boci/backend/endpoints/loggedIn_frontend.php`,
-      // "https://remotehost.es/student014/shop/backend/endpoints/loggedIn_frontend.php",
+      // `http://localhost/boci/backend/endpoints/loggedIn_frontend.php`,
+      `https://remotehost.es/student014/boci/backend/endpoints/loggedIn_frontend.php`,
       { credentials: "include" }
     );
 

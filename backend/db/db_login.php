@@ -1,12 +1,9 @@
 <?php
 
 session_start();
-// $redirect = $_POST['redirect'] ?? '/boci/backend/forms/form_profile.php';
 $email = htmlspecialchars($_POST['email']);
 $password = htmlspecialchars($_POST['password']);
 $cartData = $_POST['cart_data'] ?? '[]';
-
-$backend = $_SERVER['DOCUMENT_ROOT'].'/boci/backend';
 
 include('../config/db_config.php');
 
@@ -52,7 +49,7 @@ if ($result) {
         }
     }
 
-    $redirect = $_POST['redirect'] ?? '/boci/backend/forms/form_profile.php';
+    $redirect = $_POST['redirect'] ?? '/student014/boci/backend/forms/form_profile.php';
 
     //option for redirection for admin vs customer later.
     header("Location: $redirect?clearCart=1");

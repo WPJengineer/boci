@@ -6,10 +6,10 @@ $user_name = 'dwess1234';
 // $password = 'Usertest1234.';
 $db_name = 'dwesdatabase';
 
-// $conn = mysqli_connect($server_name, $user_name, 'Usertest1234.', $db_name);
+$conn = mysqli_connect($server_name, $user_name, 'Usertest1234.', $db_name);
 
 // connect to database (local)
-$conn = mysqli_connect('localhost', 'root', '', 'boci', 3307);
+// $conn = mysqli_connect('localhost', 'root', '', 'boci', 3307);
 // for tirals later with remote
 // var_dump($conn);exit;
 // check connection
@@ -21,5 +21,6 @@ if (!$conn) {
     ]);
     exit;
 }
+mysqli_set_charset($conn, "utf8mb4");
 
 ?>

@@ -9,7 +9,6 @@ $email = htmlspecialchars($_POST['email']);
 $password = htmlspecialchars($_POST['password']);
 $privacy = ($_POST['privacy'] === 'on') ? 1 : 0;
 $newsletter = (($_POST['newsletter'] ?? '') === 'on') ? 1 : 0;
-$backend = $_SERVER['DOCUMENT_ROOT'].'/boci/backend';
 
 include('../config/db_config.php');
 
@@ -37,7 +36,7 @@ $sql =
 
 if (mysqli_query($conn, $sql)) {
   // redirection after correctly registering - need to figure out if redirect to page we where located on last or go to a specific page.
-  header("Location: /boci/index.html");
+  header("Location: /student014/boci/index.html");
   exit();
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);

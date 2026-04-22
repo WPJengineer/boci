@@ -10,7 +10,7 @@ $_SESSION = [];
 session_destroy();
 
 // redirection to homepage after logging out.
-header("Location: /boci/index.html");
+header("Location: /student014/boci/index.html");
 exit();
 
 ?>

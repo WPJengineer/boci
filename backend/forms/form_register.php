@@ -1,13 +1,12 @@
 <?php
-$backend = $_SERVER['DOCUMENT_ROOT'].'/boci/backend';
-require($backend.'/header.php');
+require(__DIR__.'/../header.php');
 ?>
 
 <main>
-  <a href="/boci/backend/forms/form_login.php"><img src="/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
-  <form class="new-register" action="/boci/backend/db/db_register.php" method="POST" novalidate>
+  <a href="/student014/boci/backend/forms/form_login.php"><img src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
+  <form class="new-register" action="/student014/boci/backend/db/db_register.php" method="POST" novalidate>
     <h2>CREA UNA CUENTA</h2>
-    <p>¿Ya tiene una cuenta? <a href="/boci/backend/forms/form_login.php">INICIE SESIÓN</a></p>
+    <p>¿Ya tiene una cuenta? <a href="/student014/boci/backend/forms/form_login.php">INICIE SESIÓN</a></p>
     <div>
       <p>Tratamiento</p>
       <div class="radio-group">
@@ -38,7 +37,7 @@ require($backend.'/header.php');
       <div class="password-field">
         <input type="password" id="password" name="password" required />
         <button type="button" class="btn-show-password">
-          <img src="/boci/assets/icons/show-password-icon.svg" alt="show-password-icon">
+          <img src="/student014/boci/assets/icons/show-password-icon.svg" alt="show-password-icon">
         </button>
       </div>
     </div>
@@ -56,11 +55,11 @@ require($backend.'/header.php');
     </div>
   </form>
   <button class="btnShoppingCart">
-    <img src="/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
+    <img src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
     <span id="counter">0</span>
   </button>
 </main>
 
 <?php
-require($backend.'/footer.php');
+require(__DIR__.'/../footer.php');
 ?>
