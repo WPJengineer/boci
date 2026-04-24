@@ -144,6 +144,7 @@ aside {
 
   main {
     flex-direction: row;
+    align-items: flex-start;
   }
 
   section {
@@ -153,7 +154,8 @@ aside {
   aside {
     width: 30%;
     position: sticky;
-    top: 0;
+    top: 30px;
+    align-items: flex-start;
   }
 
 }

@@ -334,6 +334,8 @@ footer {
 
     #counter {
         font-size: 18px;
+        width: 23px;
+        height: 23px;
     }
 
     .links {
@@ -399,6 +401,8 @@ footer {
 
     #counter {
         font-size: 20px;
+        width: 25px;
+        height: 25px;
     }
 
     .copyright {

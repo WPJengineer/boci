@@ -431,6 +431,12 @@ p .active {
     right: 30px;
   }
 
+  #counter {
+    font-size: 18px;
+    width: 23px;
+    height: 23px;
+  }
+
   .forms-login form {
     h2 {
       font-size: 32px;
@@ -568,5 +574,7 @@ p .active {
 
   #counter {
     font-size: 20px;
+    width: 25px;
+    height: 25px;
   }
 }

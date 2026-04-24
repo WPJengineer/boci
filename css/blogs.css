@@ -85,6 +85,8 @@ img {
 
   main article:first-of-type {
     grid-column: 1 / -1;
+    align-items: flex-start;
+    justify-self: center;
   }
 
 }
