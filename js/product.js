@@ -74,7 +74,7 @@ async function addToCart(productId, quantity = 1) {
     //call the backend if user is logged in.
     try {
       const response = await fetch(
-        "http://localhost/boci/backend/endpoints/add_to_cart.php",
+        // "http://localhost/boci/backend/endpoints/add_to_cart.php",
         `https://remotehost.es/student014/boci/backend/endpoints/add_to_cart.php`,
         {
         method: "POST",

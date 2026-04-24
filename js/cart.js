@@ -1,5 +1,7 @@
 const btnContinueShoppping = document.querySelector(".continue-shopping button");
 const checkoutForm = document.getElementById("checkout-form");
+const numArticles = document.querySelector(".num-articles span");
+const articlePrice = document.querySelector(".article-price span");
 
 // FUNCTIONS
 
@@ -13,8 +15,15 @@ function getGuestCart() {
   }
 }
 
-async function loadCart() {
+function updateCart(products) {
+  const totalArticles = products.reduce((sum, product) => {
+    return sum + Number(product.quantity || 0);
+  }, 0);
+  numArticles.textContent = totalArticles;
+  articlePrice.textContent = totalArticles * /*Number(product.price)*/ 12.95;
+}
 
+async function loadCart() {
   const cartContainer = document.querySelector(".shopping-cart");
 
   try {
@@ -27,7 +36,6 @@ async function loadCart() {
       const products = await response.json();
       cartContainer.innerHTML = "";
       renderCart(products, cartContainer);
-      attachListeners();
       return;
     }
 
@@ -48,7 +56,6 @@ async function loadCart() {
     }).filter(Boolean);
     cartContainer.innerHTML = "";
     renderCart(items, cartContainer);
-    attachListeners();
 
   } catch (error) {
     console.error(error);
@@ -58,6 +65,12 @@ async function loadCart() {
 }
 
 function renderCart(products, cartContainer) {
+
+  if (!products.length) {
+    cartContainer.innerHTML = "<p>Tu carrito está vacío.</p>";
+    updateCart([]);
+    return;
+  }
 
   cartContainer.innerHTML = products.map(product => `
     <article class="cart-item" data-id="${product.product_id}">
@@ -82,38 +95,44 @@ function renderCart(products, cartContainer) {
       </button>
     </article>
   `).join('');
+
+  updateCart(products);
+  attachListeners(products, cartContainer);
 }
 
-function attachListeners() {
-  document.querySelectorAll(".cart-item").forEach(product => {
-    const productId = product.dataset.id;
-
-    const quantity = product.querySelector(".quantity-product");
-    const btnIncrease = product.querySelector(".btnIncrease");
-    const btnDecrease = product.querySelector(".btnDecrease");
-    const btnDelete = product.querySelector(".btnDelete");
+function attachListeners(products, cartContainer) {
+  document.querySelectorAll(".cart-item").forEach(cartItem => {
+    const productId = cartItem.dataset.id;
+    const btnIncrease = cartItem.querySelector(".btnIncrease");
+    const btnDecrease = cartItem.querySelector(".btnDecrease");
+    const btnDelete = cartItem.querySelector(".btnDelete");
 
     btnIncrease.addEventListener("click", async () => {
-      const newTotal = Number(quantity.textContent) + 1;
-      await updateQuantity(productId, newTotal);
-      quantity.textContent = newTotal;
+      const product = products.find(p => String(p.product_id) === String(productId));
+      if (!product) return;
+      product.quantity = Number(product.quantity) + 1;
+      await updateQuantity(productId, product.quantity);
+      renderCart(products, cartContainer);
       // updateSubtotal(product);
       // updateTotal();
     });
 
     btnDecrease.addEventListener("click", async () => {
-      const qty = Number(quantity.textContent);
-      if (qty <= 1) return;
-      const newTotal = qty - 1;
-      await updateQuantity(productId, newTotal);
-      quantity.textContent = newTotal;
+      const product = products.find(p => String(p.product_id) === String(productId));
+      if (!product || Number(product.quantity) <= 1) return;
+      product.quantity = Number(product.quantity) - 1;
+      await updateQuantity(productId, product.quantity);
+      renderCart(products, cartContainer);
       // updateSubtotal(product);
       // updateTotal();
     });
 
     btnDelete.addEventListener("click", async () => {
       await removeFromCart(productId);
-      product.remove();
+      const updatedProducts = products.filter(
+        p => String(p.product_id) !== String(productId)
+      );
+      renderCart(updatedProducts, cartContainer);
       // removeFromGuestCart(productId);
       // updateTotal();
       const container = document.querySelector(".shopping-cart");
@@ -205,7 +224,7 @@ function removeFromGuestCart(productId) {
     item => String(item.product_id) !== String(productId)
   );
 
-  if (updatedCart.length === 0) {
+  if (!updatedCart.length) {
     localStorage.removeItem('cart');
   } else {
     localStorage.setItem('cart', JSON.stringify(updatedCart));
