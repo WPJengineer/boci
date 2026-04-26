@@ -3,6 +3,7 @@ const showPassword = document.querySelector(".btn-show-password");
 const btnShoppingCart = document.querySelector(".btnShoppingCart");
 const counterCart = document.getElementById("counter");
 const cartParams = new URLSearchParams(window.location.search);
+const btnLogOut = document.querySelector(".btnLogOut");
 
 if (cartParams.get("clearCart") === "1") {
   localStorage.removeItem("cart");
@@ -202,4 +203,8 @@ links.forEach(link => {
   if (current === link.pathname) {
     link.classList.add('active');
   }
+});
+
+btnLogOut.addEventListener('click', () => {
+  window.location = '/student014/boci/backend/db/db_logout.php';
 });

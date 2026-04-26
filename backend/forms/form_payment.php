@@ -33,6 +33,9 @@ require(__DIR__.'/../header.php');
     <img src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
     <span id="counter">0</span>
   </button>
+  <button class="btnLogOut">
+    <img class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
+  </button>
 </main>
 
 <?php

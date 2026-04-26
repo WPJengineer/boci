@@ -13,9 +13,32 @@ window.getSessionUser = async function () {
       return window.__sessionUser;
     }
 
-    window.__sessionUser = await response.json();
+    const data = await response.json();
+    window.__sessionUser = data;
+
+    const btnLogOut = document.querySelector(".btnLogOut");
+    const btnShoppingCart = document.querySelector(".btnShoppingCart");
+
+    if (btnLogOut && btnShoppingCart) {
+      if (data.loggedIn) {
+        // show logout button
+        btnLogOut.style.display = "block";
+
+        // move cart up
+        btnShoppingCart.classList.add("with-logout");
+      } else {
+        // hide logout button
+        btnLogOut.style.display = "none";
+
+        // move cart down
+        btnShoppingCart.classList.remove("with-logout");
+      }
+    }
+
     return window.__sessionUser;
-  } catch {
+
+  } catch (error) {
+    console.error("Session error:", error);
     window.__sessionUser = { loggedIn: false };
     return window.__sessionUser;
   }

@@ -49,7 +49,7 @@ if ($result) {
         }
     }
 
-    $redirect = $_POST['redirect'] ?? '/student014/boci/backend/forms/form_profile.php';
+    $redirect = $_POST['redirect'] ?? '/student014/boci/backend/forms/orders.php';
 
     //option for redirection for admin vs customer later.
     header("Location: $redirect?clearCart=1");

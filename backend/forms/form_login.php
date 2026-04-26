@@ -1,9 +1,9 @@
 <?php
 require(__DIR__ . '/../header.php');
-$redirect = $_GET['redirect'] ?? '/student014/boci/backend/forms/form_profile.php';
+$redirect = $_GET['redirect'] ?? '/student014/boci/backend/forms/orders.php';
 
 if (isset($_SESSION['customer_id'])) {
-    header("Location: /student014/boci/backend/forms/form_profile.php");
+    header("Location: /student014/boci/backend/forms/orders.php");
     exit();
 }
 ?>
@@ -53,6 +53,9 @@ if (isset($_SESSION['customer_id'])) {
   <button class="btnShoppingCart">
     <img src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
     <span id="counter">0</span>
+  </button>
+  <button class="btnLogOut">
+    <img class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
   </button>
 </main>
 

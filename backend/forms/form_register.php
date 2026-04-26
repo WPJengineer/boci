@@ -39,6 +39,9 @@ require(__DIR__.'/../header.php');
         <button type="button" class="btn-show-password">
           <img src="/student014/boci/assets/icons/show-password-icon.svg" alt="show-password-icon">
         </button>
+        <button class="btnLogOut">
+          <img class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
+        </button>
       </div>
     </div>
     <div class="privacy-selection">

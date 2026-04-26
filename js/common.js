@@ -6,6 +6,7 @@ const SCROLL_AMOUNT = 220;
 const btnShoppingCart = document.querySelector(".btnShoppingCart");
 const counterCart = document.getElementById("counter");
 const cartParams = new URLSearchParams(window.location.search);
+const btnLogOut = document.querySelector(".btnLogOut");
 
 if (cartParams.get("clearCart") === "1") {
   localStorage.removeItem("cart");
@@ -79,3 +80,7 @@ if (btnShoppingCart) {
     window.location.href = "/student014/boci/views/cart.html";
   })
 };
+
+btnLogOut.addEventListener('click', () => {
+  window.location = '/student014/boci/backend/db/db_logout.php';
+});

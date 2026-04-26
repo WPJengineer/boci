@@ -393,6 +393,35 @@ main {
   }
 }
 
+.btnShoppingCart.with-logout {
+  bottom: 110px;
+}
+
+.btnLogOut {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--violet);
+  border: none;
+  border-radius: 100%;
+
+  img {
+    width: 30px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+}
+
 #counter {
   background-color: var(--red-invalid);
   color: var(--light);
@@ -563,6 +592,17 @@ p .active {
   }
 
   .btnShoppingCart {
+    bottom: 130px;
+    right: 40px;
+    width: 80px;
+    height: 80px;
+
+    img {
+      width: 40px;
+    }
+  }
+
+  .btnLogOut {
     right: 40px;
     width: 80px;
     height: 80px;
