@@ -2,6 +2,7 @@ const btnContinueShoppping = document.querySelector(".continue-shopping button")
 const checkoutForm = document.getElementById("checkout-form");
 const numArticles = document.querySelector(".num-articles span");
 const articlePrice = document.querySelector(".article-price span");
+const transportPrice = document.querySelector(".transport-price span");
 
 // FUNCTIONS
 
@@ -15,12 +16,17 @@ function getGuestCart() {
   }
 }
 
+/*this function fetches the total number of articles from database,
+calculates the total cost by retrieving values of each product and multiplying by its price,
+retrieves cost of transport by retrieving location they post to (local, national or international)*/
 function updateCart(products) {
   const totalArticles = products.reduce((sum, product) => {
     return sum + Number(product.quantity || 0);
   }, 0);
   numArticles.textContent = totalArticles;
-  articlePrice.textContent = totalArticles * /*Number(product.price)*/ 12.95;
+  articlePrice.textContent = (totalArticles * 12.95).toFixed(2);
+  /* this needs to go fetch price from database for each item in future, for showing purposes because all prices are currently the same it works */
+  // transportPrice.textContent = ;
 }
 
 async function loadCart() {

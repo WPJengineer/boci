@@ -1,7 +1,7 @@
 -- Relationships
 DROP TABLE IF EXISTS `boci_orders`,`boci_shopping_cart`,`boci_product_category`, `boci_reviews`; 
 -- Entities
-DROP TABLE IF EXISTS `boci_customers`,`boci_products`,`boci_categories`,`boci_address`;
+DROP TABLE IF EXISTS `boci_customers`,`boci_products`,`boci_categories`,`boci_address`,`boci_transport_fee`;
 
 DROP TABLE IF EXISTS `boci_customers`;
 CREATE TABLE IF NOT EXISTS `boci_customers` (
@@ -89,6 +89,7 @@ DROP TABLE IF EXISTS `boci_address`;
 CREATE TABLE IF NOT EXISTS `boci_address` (
   `address_id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
+  `transport_fee_id` int(11) NOT NULL,
   `street` varchar(300) NOT NULL,
   `number` varchar(300) DEFAULT NULL,
   `city` varchar(300) NOT NULL,
@@ -96,7 +97,16 @@ CREATE TABLE IF NOT EXISTS `boci_address` (
   `postal_code` varchar(300) NOT NULL,
   `country` varchar(300) NOT NULL,
   PRIMARY KEY (`address_id`),
-  KEY `customer_id` (`customer_id`)
+  KEY `customer_id` (`customer_id`),
+  KEY `transport_fee_id` (`transport_fee_id`),
+);
+
+DROP TABLE IF EXISTS `boci_transport_fee`;
+CREATE TABLE IF NOT EXISTS `boci_transport_fee` (
+  `transport_fee_id` int(11) NOT NULL AUTO_INCREMENT,
+  `transport_zone` enum('local', 'national', 'international') NOT NULL UNIQUE,
+  `transport_fee_value` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`transport_fee_id`)
 );
 
 INSERT INTO `boci_products` (`product_id`, `product_name`, `product_unit_price`, `product_image`, `product_perspective_1`, `product_perspective_2`, `product_description`) VALUES
@@ -111,6 +121,11 @@ INSERT INTO `boci_products` (`product_id`, `product_name`, `product_unit_price`,
 (9, 'floquet', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/floquet.svg', 'https://remotehost.es/student014/boci/assets/images/image-plushes/floquet-top.svg', 'https://remotehost.es/student014/boci/assets/images/image-plushes/floquet-back.svg', 'Peluche caballo FLOQUET con diseño de caballo menorquín, elegante y único. Hecho de algodón y poliéster. Perfecto como recuerdo cultural de Menorca. Suave, resistente y coleccionable.'),
 (10, 'güeta', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/gueta.svg', 'https://remotehost.es/student014/boci/assets/images/image-plushes/gueta-side.svg', 'https://remotehost.es/student014/boci/assets/images/image-plushes/gueta-top.svg', 'Peluche tortuga GÜETA inspirado en tortuga menorquina, adorable y natural. Fabricado en algodón y poliéster. Ideal como souvenir de fauna de Menorca. Compacto y suave.'),
 (11, 'quesito curat', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/quesito-curat.svg', 'https://remotehost.es/student014/boci/assets/images/image-plushes/quesito-curat-side.svg', 'https://remotehost.es/student014/boci/assets/images/image-plushes/quesito-curat-back.svg', 'Peluche queso QUESITO CURAT con diseño de queso curado menorquín, icónico y atractivo. Material de algodón y poliéster. Perfecto como recuerdo gastronómico de Menorca. Suave y fácil de transportar.');
+
+INSERT INTO `boci_transport_fee` (`transport_zone`, `transport_fee_value`) VALUES
+('local', 0.00),
+('national', 4.95),
+('international', 14.95);
 
 INSERT INTO `boci_categories` (`category_id`, `category_name`) VALUES
 (1, 'peluche'),

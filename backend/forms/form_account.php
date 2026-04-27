@@ -9,6 +9,7 @@ require(__DIR__.'/../header.php');
       <p><a href="/student014/boci/backend/forms/form_address.php">DIRECCIÓN DE ENVÍO</a></p>
       <p><a href="/student014/boci/backend/forms/form_payment.php">OPCIONES DE PAGO</a></p>
       <p><a href="/student014/boci/backend/forms/form_account.php">GESTIONAR MI CUENTA</a></p>
+      <p><a href="/student014/boci/views/cart.html">MI CARRITO</a></p>
       <p><a href="/student014/boci/backend/forms/orders.php">MIS PEDIDOS</a></p>
     </div>
     <form class="account-email" action="/boci/backend/db/db_account.php" method="POST" novalidate>
