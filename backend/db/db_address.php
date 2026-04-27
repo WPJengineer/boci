@@ -1,0 +1,100 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION['customer_id'])) {
+  header("Location: /student014/boci/backend/forms/form_login.php");
+  exit();
+}
+
+$customerId = $_SESSION['customer_id'];
+$country = trim($_POST['country'] ?? '');
+$state = trim($_POST['state'] ?? '');
+$city = trim($_POST['city'] ?? '');
+$postCode = trim($_POST['postal_code'] ?? '');
+$streetName = trim($_POST['street_name'] ?? '');
+$streetNum = trim($_POST['street_num'] ?? '');
+
+echo $customerId, $country, $state, $city, $postCode, $streetName, $streetNum;
+
+if (!$country || !$state || !$city || !$postCode || !$streetName) {
+  die("Missing required address fields.");
+}
+
+include('../config/db_config.php');
+
+function getTransportZone($country, $postCode) {
+  $country = strtoupper(trim($country));
+  $postCode = trim($postCode);
+
+  if ($country !== 'ES') {
+    return 'international';
+  }
+
+  if (str_starts_with($postCode, '077')) {
+    return 'local';
+  }
+
+  return 'national';
+}
+
+$transportZone = getTransportZone($country, $postCode);
+
+$stmtFee = $conn->prepare("
+  SELECT transport_fee_id
+  FROM boci_transport_fee
+  WHERE transport_zone = ?
+  LIMIT 1
+");
+
+$stmtFee->bind_param("s", $transportZone);
+$stmtFee->execute();
+
+$resultFee = $stmtFee->get_result();
+$fee = $resultFee->fetch_assoc();
+
+if (!$fee) {
+  die("Transport fee not found.");
+}
+
+$transportFeeId = $fee['transport_fee_id'];
+
+$stmt = $conn->prepare("
+  INSERT INTO boci_address
+  (
+    customer_id,
+    transport_fee_id,
+    street,
+    number,
+    city,
+    state,
+    postal_code,
+    country
+  )
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+");
+
+$stmt->bind_param(
+  "iissssss",
+  $customerId,
+  $transportFeeId,
+  $streetName,
+  $streetNum,
+  $city,
+  $state,
+  $postCode,
+  $country
+);
+
+if ($stmt->execute()) {
+  header("Location: /student014/boci/backend/forms/orders.php");
+  exit();
+} else {
+  echo "Error: " . $stmt->error;
+}
+
+$stmt->close();
+$stmtFee->close();
+$conn->close();
+
+?>

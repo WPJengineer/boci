@@ -13,38 +13,27 @@ require(__DIR__.'/../header.php');
       <p><a href="/student014/boci/backend/forms/orders.php">MIS PEDIDOS</a></p>
     </div>
     <form class="address" action="/student014/boci/backend/db/db_address.php" method="POST" novalidate>
-      <div>
-        <label for="name">Nombre*</label>
-        <input type="text" id="name" name="name" required />
-      </div>
-      <div>
-        <label for="lastname">Apellidos*</label>
-        <input type="text" id="lastname" name="lastname" required />
-      </div>
-      <div>
-        <label for="phone_number">Número de teléfono*</label>
-        <input type="text" id="phone_number" name="phone_number" required />
-      </div>
-      <div>
-        <label for="street_name">Nombre de la calle*</label>
-        <input type="text" id="street_name" name="street_name" required />
-      </div>
-      <div>
-        <label for="street_num">Número del local*</label>
-        <input type="text" id="street_num" name="street_num" required />
-      </div>
-      <div>
-        <label for="city">Ciudad*</label>
-        <input type="text" id="city" name="city" required />
-      </div>
-      <div>
-        <label for="post_code">Código postal*</label>
-        <input type="text" id="post_code" name="post_code" required />
-      </div>
-      <div>
-        <label for="state">Estado/Provincia*</label>
-        <input type="text" id="state" name="state" required />
-      </div>
+      <label for="country">País</label>
+      <select name="country" id="country" required>
+        <option value="">Selecciona un país</option>
+        <option value="ES">España</option>
+        <option value="FR">Francia</option>
+        <option value="DE">Alemania</option>
+        <option value="IT">Italia</option>
+        <option value="PT">Portugal</option>
+        <option value="UK">Reino Unido</option>
+        <option value="US">Estados Unidos</option>
+      </select>
+      <label for="state">Provincia / Estado</label>
+      <input type="text" name="state" id="state" required>
+      <label for="city">Ciudad</label>
+      <input type="text" name="city" id="city" required>
+      <label for="postal_code">Código postal</label>
+      <input type="text" name="postal_code" id="postal_code" required>
+      <label for="street_name">Calle</label>
+      <input type="text" name="street_name" id="street_name" required>
+      <label for="street_num">Número</label>
+      <input type="text" name="street_num" id="street_num">
       <div>
         <button class="btn-new-address" type="submit">GUARDAR</button>
       </div>

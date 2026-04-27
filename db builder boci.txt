@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `boci_address` (
   `country` varchar(300) NOT NULL,
   PRIMARY KEY (`address_id`),
   KEY `customer_id` (`customer_id`),
-  KEY `transport_fee_id` (`transport_fee_id`),
+  KEY `transport_fee_id` (`transport_fee_id`)
 );
 
 DROP TABLE IF EXISTS `boci_transport_fee`;

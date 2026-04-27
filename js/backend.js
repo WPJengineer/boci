@@ -118,19 +118,39 @@ if (formNewRegister) {
 
 if (formNewAddress) {
   const inputsAddress = formNewAddress.querySelectorAll("input");
+  const countryInput = formNewAddress.querySelector("select[name='country']");
   formNewAddress.addEventListener("submit", (e) => {
+    let formIsValid = true;
+
     inputsAddress.forEach((input) => {
       if (input.checkValidity()) {
         input.classList.remove("invalid");
-        input.classList.add("valid");
+
+        if (input.value.trim() !== "") {
+          input.classList.add("valid");
+        } else {
+          input.classList.remove("valid");
+        }
+
       } else {
         input.classList.remove("valid");
         input.classList.add("invalid");
+        formIsValid = false;
       }
     });
 
-    // prevent submit if invalid
-    if (!formNewAddress.checkValidity()) {
+    if (countryInput) {
+      if (countryInput.value !== "") {
+        countryInput.classList.remove("invalid");
+        countryInput.classList.add("valid");
+      } else {
+        countryInput.classList.remove("valid");
+        countryInput.classList.add("invalid");
+        formIsValid = false;
+      }
+    }
+
+    if (!formIsValid) {
       e.preventDefault();
     }
   });
