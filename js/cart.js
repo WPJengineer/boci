@@ -27,6 +27,7 @@ function updateCart(products) {
   articlePrice.textContent = (totalArticles * 12.95).toFixed(2);
   /* this needs to go fetch price from database for each item in future, for showing purposes because all prices are currently the same it works */
   // transportPrice.textContent = ;
+  // fetch from new endpoint to retrieve price for transportation depending on postage location.
 }
 
 async function loadCart() {
