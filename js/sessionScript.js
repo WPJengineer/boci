@@ -19,19 +19,19 @@ window.getSessionUser = async function () {
     const btnLogOut = document.querySelector(".btnLogOut");
     const btnShoppingCart = document.querySelector(".btnShoppingCart");
 
-    if (btnLogOut && btnShoppingCart) {
+    if (btnLogOut) {
       if (data.loggedIn) {
-        // show logout button
-        btnLogOut.style.display = "block";
+        btnLogOut.style.display = "flex";
 
-        // move cart up
-        btnShoppingCart.classList.add("with-logout");
+        if (btnShoppingCart) {
+          btnShoppingCart.classList.add("with-logout");
+        }
       } else {
-        // hide logout button
         btnLogOut.style.display = "none";
 
-        // move cart down
-        btnShoppingCart.classList.remove("with-logout");
+        if (btnShoppingCart) {
+          btnShoppingCart.classList.remove("with-logout");
+        }
       }
     }
 

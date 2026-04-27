@@ -303,10 +303,8 @@ footer {
   background-color: var(--violet);
   border: none;
   border-radius: 100%;
-
-  img {
-    width: 30px;
-  }
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     cursor: pointer;
@@ -317,6 +315,11 @@ footer {
   }
 
 }
+
+.btnLogOut img {
+    width: 30px;
+    padding: 0;
+  }
 
 #counter {
     background-color: var(--red-invalid);
@@ -357,7 +360,7 @@ footer {
 
     .buy {
         width: 100px;
-        top: -37px;
+        top: -37.5px;
         right: 30px;
     }
 
@@ -419,7 +422,7 @@ footer {
     }
 
     .btnShoppingCart {
-        bottom: 130px;
+        /* bottom: 110px; */
         right: 40px;
         width: 80px;
         height: 80px;
@@ -429,15 +432,19 @@ footer {
         }
     }
 
+    .btnShoppingCart.with-logout {
+        bottom: 130px;
+    }
+
     .btnLogOut {
         right: 40px;
         width: 80px;
         height: 80px;
 
         img {
-        width: 40px;
+            width: 40px;
         }
-  }
+    }
 
     #counter {
         font-size: 20px;
