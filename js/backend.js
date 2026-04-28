@@ -225,6 +225,53 @@ links.forEach(link => {
   }
 });
 
+const addressRadios = document.querySelectorAll('input[name="selected_address_id"]');
+
+if (addressRadios.length > 0) {
+  addressRadios.forEach((radio) => {
+    radio.addEventListener("change", async () => {
+      const previousChecked = document.querySelector(
+        'input[name="selected_address_id"][data-was-checked="true"]'
+      );
+
+      const formData = new FormData();
+      formData.append("address_id", radio.value);
+
+      try {
+        const response = await fetch(
+          "/student014/boci/backend/endpoints/select_address.php",
+          {
+            method: "POST",
+            body: formData,
+            credentials: "include"
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.message || "Could not update address");
+        }
+
+        addressRadios.forEach((input) => {
+          input.dataset.wasChecked = input.checked ? "true" : "false";
+        });
+
+      } catch (error) {
+        console.error(error);
+
+        if (previousChecked) {
+          previousChecked.checked = true;
+        }
+
+        alert("No se pudo actualizar la dirección seleccionada.");
+      }
+    });
+
+    radio.dataset.wasChecked = radio.checked ? "true" : "false";
+  });
+}
+
 btnLogOut.addEventListener('click', () => {
   window.location = '/student014/boci/backend/db/db_logout.php';
 });

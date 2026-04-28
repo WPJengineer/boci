@@ -96,6 +96,7 @@ CREATE TABLE IF NOT EXISTS `boci_address` (
   `state` varchar(300) NOT NULL,
   `postal_code` varchar(300) NOT NULL,
   `country` varchar(300) NOT NULL,
+  `selected` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`address_id`),
   KEY `customer_id` (`customer_id`),
   KEY `transport_fee_id` (`transport_fee_id`)

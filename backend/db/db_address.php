@@ -15,7 +15,7 @@ $postCode = trim($_POST['postal_code'] ?? '');
 $streetName = trim($_POST['street_name'] ?? '');
 $streetNum = trim($_POST['street_num'] ?? '');
 
-echo $customerId, $country, $state, $city, $postCode, $streetName, $streetNum;
+// echo $customerId, $country, $state, $city, $postCode, $streetName, $streetNum;
 
 if (!$country || !$state || !$city || !$postCode || !$streetName) {
   die("Missing required address fields.");
@@ -58,43 +58,62 @@ if (!$fee) {
 }
 
 $transportFeeId = $fee['transport_fee_id'];
+$stmtFee->close();
 
-$stmt = $conn->prepare("
-  INSERT INTO boci_address
-  (
-    customer_id,
-    transport_fee_id,
-    street,
-    number,
-    city,
-    state,
-    postal_code,
-    country
-  )
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-");
+$conn->begin_transaction();
 
-$stmt->bind_param(
-  "iissssss",
-  $customerId,
-  $transportFeeId,
-  $streetName,
-  $streetNum,
-  $city,
-  $state,
-  $postCode,
-  $country
-);
+try {
+  $stmtReset = $conn->prepare("
+    UPDATE boci_address
+    SET selected = 0
+    WHERE customer_id = ?
+  ");
 
-if ($stmt->execute()) {
+  $stmtReset->bind_param("i", $customerId);
+  $stmtReset->execute();
+  $stmtReset->close();
+
+  $stmt = $conn->prepare("
+    INSERT INTO boci_address
+    (
+      customer_id,
+      transport_fee_id,
+      street,
+      number,
+      city,
+      state,
+      postal_code,
+      country,
+      selected
+    )
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)
+  ");
+
+  $stmt->bind_param(
+    "iissssss",
+    $customerId,
+    $transportFeeId,
+    $streetName,
+    $streetNum,
+    $city,
+    $state,
+    $postCode,
+    $country
+  );
+
+  $stmt->execute();
+  $stmt->close();
+
+  $conn->commit();
+
   header("Location: /student014/boci/backend/forms/orders.php");
   exit();
-} else {
-  echo "Error: " . $stmt->error;
+
+} catch (Exception $e) {
+  $conn->rollback();
+  die("Error saving address.");
 }
 
-$stmt->close();
-$stmtFee->close();
 $conn->close();
 
 ?>

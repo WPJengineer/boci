@@ -1,5 +1,13 @@
 <?php
 require(__DIR__.'/../header.php');
+
+if (!isset($_SESSION['customer_id'])) {
+  header("Location: /student014/boci/backend/forms/form_login.php");
+  exit();
+}
+
+include('../db/db_get_addresses.php');
+
 ?>
 
 <main>
@@ -12,6 +20,36 @@ require(__DIR__.'/../header.php');
       <p><a href="/student014/boci/views/cart.html">MI CARRITO</a></p>
       <p><a href="/student014/boci/backend/forms/orders.php">MIS PEDIDOS</a></p>
     </div>
+    <h2>Mis direcciones</h2>
+    <div class="saved-addresses">
+      <?php if (!empty($addresses)): ?>
+        <?php foreach ($addresses as $address): ?>
+          <label class="saved-address-option">
+            <input
+              type="radio"
+              name="selected_address_id"
+              value="<?= htmlspecialchars($address['address_id']) ?>"
+              <?= $address['selected'] ? 'checked' : '' ?>
+            >
+            <span>
+              <strong>
+                <?= htmlspecialchars($address['street']) ?>
+                <?= htmlspecialchars($address['number']) ?>
+              </strong>
+              <br>
+              <?= htmlspecialchars($address['postal_code']) ?>
+              <?= htmlspecialchars($address['city']) ?>,
+              <?= htmlspecialchars($address['state']) ?>
+              <br>
+              <?= htmlspecialchars($address['country']) ?>
+            </span>
+          </label>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <p>No tienes direcciones guardadas todavía.</p>
+      <?php endif; ?>
+    </div>
+    <h2>Añadir nueva dirección</h2>
     <form class="address" action="/student014/boci/backend/db/db_address.php" method="POST" novalidate>
       <label for="country">País</label>
       <select name="country" id="country" required>

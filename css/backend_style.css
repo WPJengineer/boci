@@ -285,6 +285,34 @@ main {
   .btn-new-address {
     height: 40px;
   }
+
+  h2 {
+    color: var(--violet);
+    font-size: 26px;
+  }
+
+  .saved-addresses {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .saved-address-option {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    border: 1px solid var(--blue);
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .saved-address-option input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
 }
 
 .payment {
