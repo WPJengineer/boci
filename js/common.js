@@ -52,7 +52,18 @@ links.forEach(link => {
   const current = window.location.pathname;
   const linkPath = link.pathname;
 
-  if (current === linkPath || (current.includes('product.html') && linkPath.includes('products'))) {
+  if (
+    current === linkPath ||
+    (current.includes('product.html') && linkPath.includes('products')) ||
+    (
+      (
+        current.includes('blog3.html') ||
+        current.includes('blog2.html') ||
+        current.includes('blog.html')
+      ) &&
+      linkPath.includes('blogs')
+    )
+  ) {
     link.classList.add('active');
   }
 });
@@ -80,7 +91,8 @@ if (btnShoppingCart) {
     window.location.href = "/student014/boci/views/cart.html";
   })
 };
-
-btnLogOut.addEventListener('click', () => {
-  window.location = '/student014/boci/backend/db/db_logout.php';
-});
+if (btnLogOut) {
+  btnLogOut.addEventListener('click', () => {
+    window.location = '/student014/boci/backend/db/db_logout.php';
+  });
+}

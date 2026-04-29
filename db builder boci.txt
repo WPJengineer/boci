@@ -1,5 +1,5 @@
 -- Relationships
-DROP TABLE IF EXISTS `boci_orders`,`boci_shopping_cart`,`boci_product_category`, `boci_reviews`; 
+DROP TABLE IF EXISTS `boci_payment_events`,`boci_payments`,`boci_payment_methods`,`boci_orders`,`boci_shopping_cart`,`boci_product_category`, `boci_reviews`; 
 -- Entities
 DROP TABLE IF EXISTS `boci_customers`,`boci_products`,`boci_categories`,`boci_address`,`boci_transport_fee`;
 
@@ -108,6 +108,73 @@ CREATE TABLE IF NOT EXISTS `boci_transport_fee` (
   `transport_zone` enum('local', 'national', 'international') NOT NULL UNIQUE,
   `transport_fee_value` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`transport_fee_id`)
+);
+
+DROP TABLE IF EXISTS `boci_payment_methods`;
+CREATE TABLE `boci_payment_methods` (
+    `payment_method_id` INT(11) NOT NULL AUTO_INCREMENT,
+    `customer_id` INT(11) NOT NULL,
+    `provider` VARCHAR(50) NOT NULL DEFAULT 'mock',
+    -- change to redsys, Google pay later
+
+    `provider_customer_id` VARCHAR(255) DEFAULT NULL,
+    `provider_payment_method_id` VARCHAR(255) NOT NULL,
+    `method_type` ENUM('card', 'google_pay') NOT NULL,
+    `card_brand` VARCHAR(50) DEFAULT NULL,
+    `card_last4` CHAR(4) DEFAULT NULL,
+    `exp_month` TINYINT UNSIGNED DEFAULT NULL,
+    `exp_year` SMALLINT UNSIGNED DEFAULT NULL,
+    `is_default` BOOLEAN NOT NULL DEFAULT FALSE,
+    `is_active` BOOLEAN NOT NULL DEFAULT TRUE,
+    `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`payment_method_id`),
+    KEY `customer_id` (`customer_id`),
+    UNIQUE KEY `uq_provider_payment_method` (`provider`, `provider_payment_method_id`)  
+);
+
+DROP TABLE IF EXISTS `boci_payments`;
+CREATE TABLE `boci_payments` (
+    `payment_id` INT(11) NOT NULL AUTO_INCREMENT,
+    `order_number` VARCHAR(100) NOT NULL,
+    `customer_id` INT(11) NOT NULL,
+    `payment_method_id` INT(11) DEFAULT NULL,
+    `provider` VARCHAR(50) NOT NULL DEFAULT 'mock',
+    `provider_payment_id` VARCHAR(255) DEFAULT NULL,
+    `method_type` ENUM('card', 'google_pay') NOT NULL,
+    `amount_cents` INT UNSIGNED NOT NULL,
+    `currency` CHAR(3) NOT NULL DEFAULT 'EUR',
+    `payment_status` ENUM(
+        'pending',
+        'authorized',
+        'paid',
+        'failed',
+        'cancelled',
+        'refunded',
+        'partially_refunded'
+    ) NOT NULL DEFAULT 'pending',
+    `failure_code` VARCHAR(100) DEFAULT NULL,
+    `failure_message` TEXT DEFAULT NULL,
+    `paid_at` DATETIME DEFAULT NULL,
+    `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`payment_id`),
+    KEY `customer_id` (`customer_id`),
+    KEY `order_number` (`order_number`),
+    KEY `payment_method_id` (`payment_method_id`)
+);
+
+DROP TABLE IF EXISTS `boci_payment_events`;
+CREATE TABLE `boci_payment_events` (
+    `payment_event_id` INT(11) NOT NULL AUTO_INCREMENT,
+    `payment_id` INT(11) DEFAULT NULL,
+    `provider` VARCHAR(50) NOT NULL DEFAULT 'mock',
+    `provider_event_id` VARCHAR(255) DEFAULT NULL,
+    `event_type` VARCHAR(100) NOT NULL,
+    `payload` JSON DEFAULT NULL,
+    `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`payment_event_id`),
+    KEY `payment_id` (`payment_id`)
 );
 
 INSERT INTO `boci_products` (`product_id`, `product_name`, `product_unit_price`, `product_image`, `product_perspective_1`, `product_perspective_2`, `product_description`) VALUES

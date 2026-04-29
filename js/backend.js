@@ -73,9 +73,11 @@ const links = document.querySelectorAll('.pages p a');
 
 if (formLogin) {
   const inputsLogin = formLogin.querySelectorAll("input");
-  const cartInput = document.getElementById("cart_data") || "[]";
+  const cartInput = document.getElementById("cart_data");
   formLogin.addEventListener("submit", (e) => {
-    cartInput.value = localStorage.getItem("cart") || "[]";
+    if (cartInput) {
+      cartInput.value = localStorage.getItem("cart") || "[]";
+    }
     inputsLogin.forEach((input) => {
       if (input.checkValidity()) {
         input.classList.remove("invalid");
@@ -272,6 +274,62 @@ if (addressRadios.length > 0) {
   });
 }
 
-btnLogOut.addEventListener('click', () => {
-  window.location = '/student014/boci/backend/db/db_logout.php';
-});
+const paymentMethodRadios = document.querySelectorAll(
+  'input[name="selected_payment_method_id"]'
+);
+
+if (paymentMethodRadios.length > 0) {
+  paymentMethodRadios.forEach((radio) => {
+    radio.addEventListener("change", async () => {
+      const previousChecked = document.querySelector(
+        'input[name="selected_payment_method_id"][data-was-checked="true"]'
+      );
+
+      const formData = new FormData();
+      formData.append("payment_method_id", radio.value);
+
+      try {
+        const response = await fetch(
+          "/student014/boci/backend/endpoints/select_payment_method.php",
+          {
+            method: "POST",
+            body: formData,
+            credentials: "include"
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.message || "Could not update payment method");
+        }
+
+        paymentMethodRadios.forEach((input) => {
+          input.dataset.wasChecked = input.checked ? "true" : "false";
+
+          const option = input.closest(".saved-payment-option");
+          if (option) {
+            option.classList.toggle("default", input.checked);
+          }
+        });
+
+      } catch (error) {
+        console.error(error);
+
+        if (previousChecked) {
+          previousChecked.checked = true;
+        }
+
+        alert("No se pudo actualizar el método de pago seleccionado.");
+      }
+    });
+
+    radio.dataset.wasChecked = radio.checked ? "true" : "false";
+  });
+}
+
+if (btnLogOut) {
+  btnLogOut.addEventListener('click', () => {
+    window.location = '/student014/boci/backend/db/db_logout.php';
+  });
+}

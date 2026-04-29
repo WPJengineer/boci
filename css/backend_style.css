@@ -343,6 +343,59 @@ main {
   .btn-new-payment {
     height: 40px;
   }
+
+    /* SELECT (for method_type dropdown) */
+  select {
+    border: 1px solid var(--blue);
+    height: 40px;
+    font-size: 18px;
+    font-family: 'afacad';
+    padding: 5px;
+    background-color: var(--light);
+  }
+
+  /* CHECKBOX ALIGNMENT */
+  .checkbox-option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .checkbox-option input {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* SAVED PAYMENT METHODS LIST */
+  .saved-payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .saved-payment-option {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    border: 1px solid var(--blue);
+    padding: 10px;
+  }
+
+  .saved-payment-option div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  /* DEFAULT PAYMENT HIGHLIGHT */
+  .saved-payment-option.default {
+    border: 2px solid var(--violet);
+    background-color: rgba(128, 0, 128, 0.05);
+  }
+
 }
 
 .account-email {
