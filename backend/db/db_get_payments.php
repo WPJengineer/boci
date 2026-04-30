@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION['customer_id'])) {
-  header("Location: /student014/boci/backend/forms/form_login.php")
+  header("Location: /student014/boci/backend/forms/form_login.php");
   exit();
 }
 
@@ -20,7 +20,7 @@ $stmt->bind_param("i", $customerId);
 $stmt->execute();
 
 $result = $stmt->get_result();
-$payments_methods = $result->fetch_all(MYSQLI_ASSOC);
+$payment_methods = $result->fetch_all(MYSQLI_ASSOC);
 
 $stmt->close();
 

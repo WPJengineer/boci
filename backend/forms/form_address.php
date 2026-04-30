@@ -31,18 +31,21 @@ include('../db/db_get_addresses.php');
               value="<?= htmlspecialchars($address['address_id']) ?>"
               <?= $address['selected'] ? 'checked' : '' ?>
             >
-            <span>
-              <strong>
+            <div class="saved-address-content">
+              <strong class="saved-address-street">
                 <?= htmlspecialchars($address['street']) ?>
                 <?= htmlspecialchars($address['number']) ?>
               </strong>
-              <br>
-              <?= htmlspecialchars($address['postal_code']) ?>
-              <?= htmlspecialchars($address['city']) ?>,
-              <?= htmlspecialchars($address['state']) ?>
-              <br>
-              <?= htmlspecialchars($address['country']) ?>
-            </span>
+              <div class="saved-address-location">
+                <?= htmlspecialchars($address['postal_code']) ?>
+                <?= htmlspecialchars($address['city']) ?>,
+                <?= htmlspecialchars($address['state']) ?>
+              </div>
+              
+              <div class="saved-address-country">
+                <?= htmlspecialchars($address['country']) ?>
+              </div>
+            </div>
           </label>
         <?php endforeach; ?>
       <?php else: ?>

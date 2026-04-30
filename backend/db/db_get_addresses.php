@@ -13,7 +13,7 @@ $stmt = $conn->prepare("
   SELECT address_id, country, state, city, postal_code, street, number, selected
   FROM boci_address
   WHERE customer_id = ?
-  ORDER BY selected DESC, address_id DESC
+  ORDER BY address_id DESC
 ");
 
 $stmt->bind_param("i", $customerId);

@@ -22,9 +22,8 @@ if (!$addressId || !ctype_digit($addressId)) {
 
 $addressId = (int)$addressId;
 
-$conn->begin_transaction();
-
 try {
+  $conn->begin_transaction();
   $stmt = $conn->prepare("
     SELECT address_id
     FROM boci_address
