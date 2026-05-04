@@ -3,7 +3,7 @@
 session_start();
 header('Content-Type: application/json');
 
-include('../config/db_config.php');
+require(__DIR__ . '/../config/db_config.php');
 
 if (!isset($_SESSION['customer_id'])) {
     http_response_code(401);

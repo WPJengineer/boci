@@ -10,7 +10,7 @@ $password = htmlspecialchars($_POST['password']);
 $privacy = ($_POST['privacy'] === 'on') ? 1 : 0;
 $newsletter = (($_POST['newsletter'] ?? '') === 'on') ? 1 : 0;
 
-include('../config/db_config.php');
+require(__DIR__ . '/../config/db_config.php');
 
 $sql = 
   "INSERT INTO `boci_customers` 

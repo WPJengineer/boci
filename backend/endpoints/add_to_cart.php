@@ -2,7 +2,7 @@
 
 session_start();
 header('Content-Type: application/json');
-include('../config/db_config.php');
+require(__DIR__ . '/../config/db_config.php');
 
 // check if user is logged in.
 if (!isset($_SESSION['customer_id'])) {

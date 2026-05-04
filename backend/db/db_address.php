@@ -21,7 +21,7 @@ if (!$country || !$state || !$city || !$postCode || !$streetName) {
   die("Missing required address fields.");
 }
 
-include('../config/db_config.php');
+require(__DIR__ . '/../config/db_config.php');
 
 function getTransportZone($country, $postCode) {
   $country = strtoupper(trim($country));

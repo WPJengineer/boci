@@ -6,7 +6,7 @@ if (!isset($_SESSION['customer_id'])) {
   exit();
 }
 
-include('../db/db_get_addresses.php');
+require(__DIR__ . '/../db/db_get_addresses.php');
 
 ?>
 

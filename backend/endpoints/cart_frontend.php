@@ -20,7 +20,7 @@ FROM `boci_shopping_cart` AS sc
 INNER JOIN `boci_products` AS p ON sc.product_id = p.product_id
 WHERE `customer_id` = '$customer_id'";
 
-include('../config/db_config.php');
+require(__DIR__ . '/../config/db_config.php');
 
 $result = mysqli_query($conn, $sql);
 

@@ -7,7 +7,7 @@ if (!isset($_SESSION['customer_id'])) {
   exit();
 }
 
-include('../config/db_config.php');
+require(__DIR__ . '/../config/db_config.php');
 
 $customerId = $_SESSION['customer_id'];
 $method_type = $_POST['method_type'] ?? '';

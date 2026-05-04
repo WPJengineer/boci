@@ -5,7 +5,7 @@ session_start();
 // if the same gets the contents of the localStorage and then contents of shopping cart in database.
 // if exists update quantity to be the sum of them both if doesnt exist adds new product.
 header('Content-Type: application/json');
-include('../config/db_config.php');
+require(__DIR__ . '/../config/db_config.php');
 
 //checks for customer id.
 if (!isset($_SESSION['customer_id'])) {

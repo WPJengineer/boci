@@ -5,7 +5,7 @@ $email = htmlspecialchars($_POST['email']);
 $password = htmlspecialchars($_POST['password']);
 $cartData = $_POST['cart_data'] ?? '[]';
 
-include('../config/db_config.php');
+require(__DIR__ . '/../config/db_config.php');
 
 $sql = "SELECT *
 FROM `boci_customers`

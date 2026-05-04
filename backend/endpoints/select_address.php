@@ -9,7 +9,7 @@ if (!isset($_SESSION['customer_id'])) {
   exit();
 }
 
-include('../config/db_config.php');
+require(__DIR__ . '/../config/db_config.php');
 
 $customerId = $_SESSION['customer_id'];
 $addressId = $_POST['address_id'] ?? null;

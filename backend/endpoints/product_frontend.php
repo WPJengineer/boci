@@ -2,7 +2,7 @@
 
 header("Content-Type: application/json");
 
-include('../config/db_config.php');
+require(__DIR__ . '/../config/db_config.php');
 
 // this shows all products like in the products home page
 $sql = "SELECT * FROM `boci_products`";

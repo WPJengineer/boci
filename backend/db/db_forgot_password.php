@@ -4,7 +4,7 @@ session_start();
 
 $email = htmlspecialchars($_POST['email']);
 
-include('../config/db_config.php');
+require(__DIR__ . '/../config/db_config.php');
 
 $sql = "SELECT `customer_email`
 FROM `boci_customers`
