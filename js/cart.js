@@ -3,6 +3,8 @@ const checkoutForm = document.getElementById("checkout-form");
 const numArticles = document.querySelector(".num-articles span");
 const articlePrice = document.querySelector(".article-price span");
 const transportPrice = document.querySelector(".transport-price span");
+const totalPrice = document.querySelector(".total-price span");
+const btnCheckOut = document.querySelector(".btnCheckout");
 
 // FUNCTIONS
 
@@ -16,18 +18,60 @@ function getGuestCart() {
   }
 }
 
+function setCheckOutEnabled(products) {
+  const hasItems = products.some(product => Number(product.quantity || 0) > 0);
+
+  if (btnCheckOut) {
+    btnCheckOut.disabled = !hasItems;
+    btnCheckOut.classList.toggle("disabled", !hasItems);
+  }
+}
+
 /*this function fetches the total number of articles from database,
 calculates the total cost by retrieving values of each product and multiplying by its price,
 retrieves cost of transport by retrieving location they post to (local, national or international)*/
-function updateCart(products) {
+async function updateCart(products) {
+  setCheckOutEnabled(products);
   const totalArticles = products.reduce((sum, product) => {
     return sum + Number(product.quantity || 0);
   }, 0);
+
+  const articlesTotal = products.reduce((sum, product) => {
+    return sum + (Number(product.quantity || 0) * Number(product.product_unit_price || 0));
+  }, 0);
+
   numArticles.textContent = totalArticles;
-  articlePrice.textContent = (totalArticles * 12.95).toFixed(2);
-  /* this needs to go fetch price from database for each item in future, for showing purposes because all prices are currently the same it works */
-  // transportPrice.textContent = ;
-  // fetch from new endpoint to retrieve price for transportation depending on postage location.
+  articlePrice.textContent = articlesTotal.toFixed(2);
+
+  let transportTotal = 0;
+
+  try {
+    const user = await getSessionUser();
+
+    if (user?.loggedIn) {
+      const response = await fetch(
+        "/student014/boci/backend/endpoints/transport_fee_cart.php",
+        { credentials: "include" }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Could not fetch transport fee");
+      }
+
+      transportTotal = Number(data.transport_fee_value || 0);
+    }
+
+  } catch (error) {
+    console.error(error);
+    transportTotal = 0;
+  }
+
+  transportPrice.textContent = transportTotal.toFixed(2);
+
+  const finalTotal = articlesTotal + transportTotal;
+  totalPrice.textContent = finalTotal.toFixed(2);
 }
 
 async function loadCart() {
@@ -48,7 +92,8 @@ async function loadCart() {
 
     const guestCart = getGuestCart();
     if (!guestCart.length) {
-      cartContainer.innerHTML = '<p>Tu carrito esta vacio.</p>';
+      cartContainer.innerHTML = '<p>Tu carrito está vacío.</p>';
+      void updateCart([]);
       return;
     }
     const response = await fetch(
@@ -67,6 +112,7 @@ async function loadCart() {
   } catch (error) {
     console.error(error);
     cartContainer.innerHTML = '<p>Error en cargar carrito.</p>';
+    void updateCart([]);
   }
 
 }
@@ -75,7 +121,7 @@ function renderCart(products, cartContainer) {
 
   if (!products.length) {
     cartContainer.innerHTML = "<p>Tu carrito está vacío.</p>";
-    updateCart([]);
+    void updateCart([]);
     return;
   }
 
@@ -103,7 +149,7 @@ function renderCart(products, cartContainer) {
     </article>
   `).join('');
 
-  updateCart(products);
+  void updateCart(products);
   attachListeners(products, cartContainer);
 }
 
@@ -144,7 +190,7 @@ function attachListeners(products, cartContainer) {
       // updateTotal();
       const container = document.querySelector(".shopping-cart");
       if (container.querySelectorAll(".cart-item").length === 0) {
-        container.innerHTML = "<p>Your cart is empty.</p>";
+        container.innerHTML = "<p>Tu carrito está vacío.</p>";
       }
     });
   });
@@ -268,9 +314,17 @@ btnContinueShoppping.addEventListener('click', () => {
 checkoutForm.addEventListener('submit', async(e) => {
   e.preventDefault();
 
-  // missing to check if cart is empty it does nothing.
+  const totalArticles = Number(numArticles.textContent || 0);
+  if (totalArticles <= 0) {
+    alert("Tu carrito está vacío. Añade algún producto antes de continuar.");
+    return;
+  }
+
   const user = await getSessionUser();
-  window.location.href = "/student014/boci/backend/forms/form_login.php?redirect=/student014/boci/backend/forms/form_checkout.php";
-  return;
-  
+  if (user?.loggedIn) {
+    window.location.href = "/student014/boci/backend/forms/form_checkout.php";
+  } else {
+    window.location.href = "/student014/boci/backend/forms/form_login.php?redirect=/student014/boci/backend/forms/form_checkout.php";
+  }
+    
 });
