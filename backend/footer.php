@@ -16,10 +16,10 @@
         <div class="legal">
             <h3>INFORMACIÓN LEGAL</h3>
             <ul>
-                <li><p><a href="/student014/boci/views/legal.html">Como comprar</a></p></li>
-                <li><p><a href="/student014/boci/views/legal.html">Envíos y devoluciones</a></p></li>
-                <li><p><a href="/student014/boci/views/legal.html">Aviso legal y política de privacidad</a></p></li>
-                <li><p><a href="/student014/boci/views/legal.html">Política de cookies</a></p></li>
+                <li><p><a href="/student014/boci/views/legal.html#como-comprar">Como comprar</a></p></li>
+                <li><p><a href="/student014/boci/views/legal.html#envios">Envíos y devoluciones</a></p></li>
+                <li><p><a href="/student014/boci/views/legal.html#avisos">Aviso legal y política de privacidad</a></p></li>
+                <li><p><a href="/student014/boci/views/legal.html#cookies">Política de cookies</a></p></li>
             </ul>
         </div>
         <p class="copyright">&copy; 2025 Boci. Todos los derechos reservados.</p>

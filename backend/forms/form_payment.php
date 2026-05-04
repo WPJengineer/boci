@@ -20,9 +20,7 @@ include('../db/db_get_payments.php');
       <p><a href="/student014/boci/views/cart.html">MI CARRITO</a></p>
       <p><a href="/student014/boci/backend/forms/orders.php">MIS PEDIDOS</a></p>
     </div>
-
     <h2>Métodos de pago guardados</h2>
-
     <?php if (empty($payment_methods)): ?>
       <p>Todavía no tienes ningún método de pago guardado.</p>
     <?php else: ?>
