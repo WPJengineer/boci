@@ -10,6 +10,20 @@ require(__DIR__ . '/../db/db_get_addresses.php');
 
 ?>
 
+<?php if (!empty($_SESSION['success'])): ?>
+  <div class="message success">
+    <?= htmlspecialchars($_SESSION['success']) ?>
+  </div>
+  <?php unset($_SESSION['success']); ?>
+<?php endif; ?>
+
+<?php if (!empty($_SESSION['error'])): ?>
+  <div class="message error">
+    <?= htmlspecialchars($_SESSION['error']) ?>
+  </div>
+  <?php unset($_SESSION['error']); ?>
+<?php endif; ?>
+
 <main>
   <a href="/student014/boci/backend/forms/form_login.php"><img src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
   <div class="profile">

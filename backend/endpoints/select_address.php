@@ -60,7 +60,10 @@ try {
 
   $conn->commit();
 
-  echo json_encode(['success' => true]);
+  echo json_encode([
+    'success' => true,
+    'message' => 'Dirección actualizada correctamente.'
+  ]);
 
 } catch (Exception $e) {
   $conn->rollback();
@@ -68,7 +71,7 @@ try {
   http_response_code(500);
   echo json_encode([
     'success' => false,
-    'message' => 'Could not update selected address'
+    'message' => 'No se ha podido actualizar la dirección.'
   ]);
 }
 

@@ -18,7 +18,9 @@ $streetNum = trim($_POST['street_num'] ?? '');
 // echo $customerId, $country, $state, $city, $postCode, $streetName, $streetNum;
 
 if (!$country || !$state || !$city || !$postCode || !$streetName) {
-  die("Missing required address fields.");
+  $_SESSION['error'] = "Faltan campos obligatorios.";
+  header("Location: /student014/boci/backend/forms/form_address.php");
+  exit();
 }
 
 require(__DIR__ . '/../config/db_config.php');
@@ -54,7 +56,9 @@ $resultFee = $stmtFee->get_result();
 $fee = $resultFee->fetch_assoc();
 
 if (!$fee) {
-  die("Transport fee not found.");
+  $_SESSION['error'] = "No se ha encontrado una tarifa de envío válida.";
+  header("Location: /student014/boci/backend/forms/form_address.php");
+  exit();
 }
 
 $transportFeeId = $fee['transport_fee_id'];
@@ -106,12 +110,15 @@ try {
 
   $conn->commit();
 
-  header("Location: /student014/boci/backend/forms/orders.php");
+  $_SESSION['success'] = "Dirección guardada correctamente.";
+  header("Location: /student014/boci/backend/forms/form_address.php");
   exit();
 
 } catch (Exception $e) {
   $conn->rollback();
-  die("Error saving address.");
+  $_SESSION['error'] = "No se ha podido guardar la dirección.";
+  header("Location: /student014/boci/backend/forms/form_address.php");
+  exit();
 }
 
 $conn->close();

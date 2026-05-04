@@ -4,10 +4,38 @@ const btnShoppingCart = document.querySelector(".btnShoppingCart");
 const counterCart = document.getElementById("counter");
 const cartParams = new URLSearchParams(window.location.search);
 const btnLogOut = document.querySelector(".btnLogOut");
+const message = document.querySelector(".message");
 
 if (cartParams.get("clearCart") === "1") {
   localStorage.removeItem("cart");
 }
+
+function animateMessage(messageElement) {
+  if (!messageElement) return;
+
+  setTimeout(() => {
+    messageElement.classList.add("show");
+  }, 50);
+
+  setTimeout(() => {
+    messageElement.classList.remove("show");
+    setTimeout(() => messageElement.remove(), 300);
+  }, 3000);
+}
+
+function showMessage(text, type = "success") {
+  const oldMessage = document.querySelector(".message");
+  if (oldMessage) oldMessage.remove();
+
+  const newMessage = document.createElement("div");
+  newMessage.className = `message ${type}`;
+  newMessage.textContent = text;
+
+  document.body.appendChild(newMessage);
+  animateMessage(newMessage);
+}
+
+animateMessage(message);
 
 async function getCart() {
   try {
@@ -252,12 +280,14 @@ if (addressRadios.length > 0) {
         const data = await response.json();
 
         if (!response.ok || !data.success) {
-          throw new Error(data.message || "Could not update address");
+          throw new Error(data.message || "No se pudo actualizar la dirección.");
         }
 
         addressRadios.forEach((input) => {
           input.dataset.wasChecked = input.checked ? "true" : "false";
         });
+
+        showMessage(data.message || "Dirección actualizada correctamente.", "success");
 
       } catch (error) {
         console.error(error);
@@ -266,7 +296,7 @@ if (addressRadios.length > 0) {
           previousChecked.checked = true;
         }
 
-        alert("No se pudo actualizar la dirección seleccionada.");
+        showMessage(error.message || "No se pudo actualizar la dirección seleccionada.", "error");
       }
     });
 
@@ -301,7 +331,7 @@ if (paymentMethodRadios.length > 0) {
         const data = await response.json();
 
         if (!response.ok || !data.success) {
-          throw new Error(data.message || "Could not update payment method");
+          throw new Error(data.message || "NO se pudo actualizar el método de pago");
         }
 
         paymentMethodRadios.forEach((input) => {
@@ -313,6 +343,11 @@ if (paymentMethodRadios.length > 0) {
           }
         });
 
+        showMessage(
+          data.message || "Método de pago actualizado correctamente.",
+          "success"
+        );
+
       } catch (error) {
         console.error(error);
 
@@ -320,7 +355,10 @@ if (paymentMethodRadios.length > 0) {
           previousChecked.checked = true;
         }
 
-        alert("No se pudo actualizar el método de pago seleccionado.");
+        showMessage(
+          error.message || "No se pudo actualizar el método de pago seleccionado.",
+          "error"
+        );
       }
     });
 
