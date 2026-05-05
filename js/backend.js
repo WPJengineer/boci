@@ -5,6 +5,7 @@ const counterCart = document.getElementById("counter");
 const cartParams = new URLSearchParams(window.location.search);
 const btnLogOut = document.querySelector(".btnLogOut");
 const message = document.querySelector(".message");
+const btnDeleteAddress = document.querySelectorAll(".btnDeleteAddress");
 
 if (cartParams.get("clearCart") === "1") {
   localStorage.removeItem("cart");
@@ -369,5 +370,50 @@ if (paymentMethodRadios.length > 0) {
 if (btnLogOut) {
   btnLogOut.addEventListener('click', () => {
     window.location = '/student014/boci/backend/db/db_logout.php';
+  });
+}
+
+if (btnDeleteAddress.length > 0) {
+  btnDeleteAddress.forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const addressOption = btn.closest(".saved-address-option");
+      const addressInput = addressOption.querySelector(
+        'input[name="selected_address_id"]'
+      );
+
+      if (addressInput.checked) {
+        showMessage("No puedes eliminar la dirección seleccionada.", "error");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("address_id", addressInput.value);
+
+      try {
+        const response = await fetch(
+          "/student014/boci/backend/endpoints/delete_address.php",
+          {
+            method: "POST",
+            body: formData,
+            credentials: "include"
+          }
+        );
+
+        const data = await response.json();
+        if (!response.ok || !data.success) {
+          throw new Error(data.message || "No se pudo eliminar la dirección.");
+        }
+
+        addressOption.remove();
+        showMessage(data.message || "Dirección eliminada correctamente.", "success");
+
+        // needs to reload or update listing.
+
+      } catch (error) {
+        console.error(error);
+        showMessage(error.message || "No se pudo eliminar la dirección.", "error");
+      }
+    });
   });
 }
