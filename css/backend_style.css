@@ -394,37 +394,70 @@ main {
     width: 20px;
     height: 20px;
   }
-
-  /* SAVED PAYMENT METHODS LIST */
-  .saved-payment-methods {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-
-  .saved-payment-option {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 10px;
-    border: 1px solid var(--blue);
-    padding: 10px;
-  }
-
-  .saved-payment-option div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  /* DEFAULT PAYMENT HIGHLIGHT */
-  .saved-payment-option.default {
-    border: 2px solid var(--violet);
-    background-color: rgba(128, 0, 128, 0.05);
-  }
-
 }
+
+.saved-payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.saved-payment-option {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid var(--blue);
+  padding: 15px;
+  cursor: pointer;
+  position: relative;
+}
+
+.saved-payment-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px;
+}
+
+.saved-payment-option input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.saved-payment-title {
+  color: var(--violet);
+}
+
+.saved-payment-option .remove {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  width: 40px;
+}
+
+.btnDeletePayment {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.btnDeletePayment:hover {
+  cursor: pointer;
+}
+
+.saved-payment-option div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* .saved-payment-option.default {
+  border: 2px solid var(--blue);
+  background-color: rgba(128, 0, 128, 0.05);
+} */
 
 .account-email {
   min-width: 350px;

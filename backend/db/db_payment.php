@@ -32,11 +32,25 @@ if ($exp_month < 1 || $exp_month > 12 || $exp_year < 2026) {
   exit();
 }
 
+$checkCount = $conn->prepare("
+  SELECT COUNT(*) AS total
+  FROM boci_payment_methods
+  WHERE customer_id = ? AND is_active = 1
+");
+$checkCount->bind_param("i", $customerId);
+$checkCount->execute();
+$countResult = $checkCount->get_result()->fetch_assoc();
+$checkCount->close();
+
+if ((int)$countResult['total'] === 0) {
+  $is_default = 1;
+}
+
 $provider = 'mock';
 
-$provider_customer_id = 'mock_customer_' . $customer_id;
+$provider_customer_id = 'mock_customer_' . $customerId;
 
-$provider_payment_method_id = 'mock_' . $method_type . '_' . $customer_id . '_' . bin2hex(random_bytes(8));
+$provider_payment_method_id = 'mock_' . $method_type . '_' . $customerId . '_' . bin2hex(random_bytes(8));
 
 if ($is_default === 1) {
   $stmt_default = $conn->prepare("
@@ -67,7 +81,7 @@ $stmt = $conn->prepare("
 
 $stmt->bind_param(
   "issssssiii",
-  $customer_id,
+  $customerId,
   $provider,
   $provider_customer_id,
   $provider_payment_method_id,
@@ -82,11 +96,9 @@ $stmt->bind_param(
 $stmt->execute();
 $stmt->close();
 
-$conn->commit();
+$conn->close();
 
 header("Location: /student014/boci/backend/forms/form_payment.php?success=payment_added");
 exit();
-
-$conn->close();
 
 ?>

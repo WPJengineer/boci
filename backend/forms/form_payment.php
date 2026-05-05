@@ -34,8 +34,8 @@ require(__DIR__ . '/../db/db_get_payments.php');
               <?php echo ((int)$method['is_default'] === 1) ? 'checked' : ''; ?>
             >
 
-            <div>
-              <strong>
+            <div class="saved-payment-content">
+              <strong class="saved-payment-title">
                 <?php echo htmlspecialchars(strtoupper($method['method_type'])); ?>
               </strong>
 
@@ -53,29 +53,59 @@ require(__DIR__ . '/../db/db_get_payments.php');
               <?php else: ?>
                 <p>Google Pay</p>
               <?php endif; ?>
-
-              <?php if ((int)$method['is_default'] === 1): ?>
-                <p><strong>Predeterminado</strong></p>
-              <?php endif; ?>
             </div>
+            <button type="button" class="btnDeletePayment">
+              <img class="icon remove" src="/student014/boci/assets/icons/close-icon-yellow.svg" alt="remove-icon">
+            </button>
           </label>
         <?php endforeach; ?>
       </div>
     <?php endif; ?>
 
     <form class="payment" action="/student014/boci/backend/db/db_payment.php" method="POST" novalidate>
+      <input type="hidden" name="method_type" value="card">
+      <input type="hidden" name="card_brand" value="Visa">
+
       <div>
-        <label for="card">Número de tarjeta*</label>
-        <input type="number" id="card" name="card" required />
+        <label for="card_last4">Últimos 4 dígitos de la tarjeta*</label>
+        <input 
+          type="text" 
+          id="card_last4" 
+          name="card_last4" 
+          maxlength="4" 
+          pattern="[0-9]{4}" 
+          required 
+        />
       </div>
+
       <div>
-        <label for="due_date">Fecha vencimiento*</label>
-        <input type="date" id="due_date" name="due_date" required />
+        <label for="exp_month">Mes de vencimiento*</label>
+        <input 
+          type="number" 
+          id="exp_month" 
+          name="exp_month" 
+          min="1" 
+          max="12" 
+          required 
+        />
       </div>
+
       <div>
-        <label for="cvv">CVV*</label>
-        <input type="number" id="cvv" name="cvv" required />
+        <label for="exp_year">Año de vencimiento*</label>
+        <input 
+          type="number" 
+          id="exp_year" 
+          name="exp_year" 
+          min="2026" 
+          required 
+        />
       </div>
+
+      <div class="checkbox-option">
+        <input type="checkbox" id="is_default" name="is_default" value="1">
+        <label for="is_default">Usar como método de pago predeterminado</label>
+      </div>
+
       <div>
         <button class="btn-new-payment" type="submit">CONFIRMAR</button>
       </div>

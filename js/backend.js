@@ -6,6 +6,7 @@ const cartParams = new URLSearchParams(window.location.search);
 const btnLogOut = document.querySelector(".btnLogOut");
 const message = document.querySelector(".message");
 const btnDeleteAddress = document.querySelectorAll(".btnDeleteAddress");
+const btnDeletePayment = document.querySelectorAll(".btnDeletePayment");
 
 if (cartParams.get("clearCart") === "1") {
   localStorage.removeItem("cart");
@@ -413,6 +414,58 @@ if (btnDeleteAddress.length > 0) {
       } catch (error) {
         console.error(error);
         showMessage(error.message || "No se pudo eliminar la dirección.", "error");
+      }
+    });
+  });
+}
+
+if (btnDeletePayment.length > 0) {
+  btnDeletePayment.forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      const paymentOption = btn.closest(".saved-payment-option");
+      const paymentInput = paymentOption.querySelector(
+        'input[name="selected_payment_method_id"]'
+      );
+
+      if (paymentInput.checked) {
+        showMessage("No puedes eliminar el método de pago seleccionado.", "error");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("payment_method_id", paymentInput.value);
+
+      try {
+        const response = await fetch(
+          "/student014/boci/backend/endpoints/delete_payment_method.php",
+          {
+            method: "POST",
+            body: formData,
+            credentials: "include"
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.message || "No se pudo eliminar el método de pago.");
+        }
+
+        paymentOption.remove();
+
+        showMessage(
+          data.message || "Método de pago eliminado correctamente.",
+          "success"
+        );
+
+      } catch (error) {
+        console.error(error);
+        showMessage(
+          error.message || "No se pudo eliminar el método de pago.",
+          "error"
+        );
       }
     });
   });

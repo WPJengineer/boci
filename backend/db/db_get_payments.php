@@ -13,7 +13,7 @@ $stmt = $conn->prepare("
   SELECT payment_method_id, provider, method_type, card_brand, card_last4, exp_month, exp_year, is_default
   FROM boci_payment_methods
   WHERE customer_id = ? AND is_active = 1
-  ORDER BY is_default DESC, created_at DESC
+  ORDER BY created_at DESC
 ");
 
 $stmt->bind_param("i", $customerId);

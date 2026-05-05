@@ -60,7 +60,7 @@ require(__DIR__ . '/../db/db_get_addresses.php');
                 <?= htmlspecialchars($address['country']) ?>
               </div>
             </div>
-            <button class="btnDeleteAddress">
+            <button type="button" class="btnDeleteAddress">
               <img class="icon remove" src="/student014/boci/assets/icons/close-icon-yellow.svg" alt="remove-icon">
             </button>
           </label>
