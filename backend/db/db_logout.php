@@ -14,6 +14,8 @@ $_SESSION = [];
 // end session to log out before we redirect.
 session_destroy();
 
+// $_SESSION['success'] = "Has cerrado sesión correctamente. ¡Hasta pronto!"
+
 // redirection to homepage after logging out.
 header("Location: /student014/boci/index.html");
 exit();

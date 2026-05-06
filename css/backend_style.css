@@ -628,6 +628,11 @@ p .active {
   color: var(--light);
 }
 
+.message.warning {
+  background-color: var(--orange);
+  color: var(--light);
+}
+
 .message.error {
   background-color: var(--red-invalid);
   color: var(--light);

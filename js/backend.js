@@ -100,6 +100,9 @@ const formNewPayment = document.querySelector(".payment");
 const formNewEmail = document.querySelector(".account-email");
 const formNewPhone = document.querySelector(".account-phone");
 const links = document.querySelectorAll('.pages p a');
+const methodSelect = document.getElementById("method_type");
+const cardFields = document.getElementById("card-fields");
+const googlePayFields = document.getElementById("googlepay-fields");
 
 if (formLogin) {
   const inputsLogin = formLogin.querySelectorAll("input");
@@ -108,6 +111,7 @@ if (formLogin) {
     if (cartInput) {
       cartInput.value = localStorage.getItem("cart") || "[]";
     }
+    let formIsValid = true;
     inputsLogin.forEach((input) => {
       if (input.checkValidity()) {
         input.classList.remove("invalid");
@@ -115,12 +119,14 @@ if (formLogin) {
       } else {
         input.classList.remove("valid");
         input.classList.add("invalid");
+        formIsValid = false;
       }
     });
 
     // prevent submit if invalid
-    if (!formLogin.checkValidity()) {
+    if (!formIsValid) {
       e.preventDefault();
+      showMessage("Revisa los campos obligatorios.", "warning");
     }
   });
 }
@@ -144,6 +150,7 @@ if (formNewRegister) {
     // prevent submit if invalid
     if (!formIsValid) {
       e.preventDefault();
+      showMessage("Revisa los campos obligatorios.", "warning");
     }
   });
 }
@@ -153,7 +160,6 @@ if (formNewAddress) {
   const countryInput = formNewAddress.querySelector("select[name='country']");
   formNewAddress.addEventListener("submit", (e) => {
     let formIsValid = true;
-
     inputsAddress.forEach((input) => {
       if (input.checkValidity()) {
         input.classList.remove("invalid");
@@ -184,13 +190,49 @@ if (formNewAddress) {
 
     if (!formIsValid) {
       e.preventDefault();
+      showMessage("Revisa los campos obligatorios.", "warning");
     }
   });
 }
 
+if (methodSelect && cardFields && googlePayFields) {
+  const cardInputs = cardFields.querySelectorAll("input, select");
+  const googlePayInputs = googlePayFields.querySelectorAll("input, select");
+
+  function setPaymentFields() {
+    const selectedMethod = methodSelect.value;
+
+    if (selectedMethod === "card") {
+      cardFields.style.display = "flex";
+      googlePayFields.style.display = "none";
+
+      cardInputs.forEach((input) => input.required = true);
+      googlePayInputs.forEach((input) => input.required = false);
+
+    } else if (selectedMethod === "google_pay") {
+      cardFields.style.display = "none";
+      googlePayFields.style.display = "flex";
+
+      cardInputs.forEach((input) => input.required = false);
+      googlePayInputs.forEach((input) => input.required = true);
+
+    } else {
+      cardFields.style.display = "none";
+      googlePayFields.style.display = "none";
+
+      cardInputs.forEach((input) => input.required = false);
+      googlePayInputs.forEach((input) => input.required = false);
+    }
+  }
+
+  methodSelect.addEventListener("change", setPaymentFields);
+  setPaymentFields();
+}
+
 if (formNewPayment) {
-  const inputsPayment = formNewPayment.querySelectorAll("input");
+  const inputsPayment = formNewPayment.querySelectorAll("input, select");
   formNewPayment.addEventListener("submit", (e) => {
+    let formIsValid = true;
     inputsPayment.forEach((input) => {
       if (input.checkValidity()) {
         input.classList.remove("invalid");
@@ -198,12 +240,14 @@ if (formNewPayment) {
       } else {
         input.classList.remove("valid");
         input.classList.add("invalid");
+        formIsValid = false;
       }
     });
 
     // prevent submit if invalid
-    if (!formNewPayment.checkValidity()) {
+    if (!formIsValid) {
       e.preventDefault();
+      showMessage("Revisa los campos obligatorios.", "warning");
     }
   });
 }
@@ -211,6 +255,7 @@ if (formNewPayment) {
 if (formNewEmail) {
   const inputsEmail = formNewEmail.querySelectorAll("input");
   formNewEmail.addEventListener("submit", (e) => {
+    let formIsValid = true;
     inputsEmail.forEach((input) => {
       if (input.checkValidity()) {
         input.classList.remove("invalid");
@@ -218,12 +263,14 @@ if (formNewEmail) {
       } else {
         input.classList.remove("valid");
         input.classList.add("invalid");
+        formIsValid = false;
       }
     });
 
     // prevent submit if invalid
-    if (!formNewEmail.checkValidity()) {
+    if (!formIsValid) {
       e.preventDefault();
+      showMessage("Revisa los campos obligatorios.", "warning");
     }
   });
 }
@@ -231,6 +278,7 @@ if (formNewEmail) {
 if (formNewPhone) {
   const inputsPhone = formNewPhone.querySelectorAll("input");
   formNewPhone.addEventListener("submit", (e) => {
+    let formIsValid = true;
     inputsPhone.forEach((input) => {
       if (input.checkValidity()) {
         input.classList.remove("invalid");
@@ -238,12 +286,14 @@ if (formNewPhone) {
       } else {
         input.classList.remove("valid");
         input.classList.add("invalid");
+        formIsValid = false;
       }
     });
 
     // prevent submit if invalid
-    if (!formNewPhone.checkValidity()) {
+    if (!formIsValid) {
       e.preventDefault();
+      showMessage("Revisa los campos obligatorios.", "warning");
     }
   });
 }
@@ -384,7 +434,7 @@ if (btnDeleteAddress.length > 0) {
       );
 
       if (addressInput.checked) {
-        showMessage("No puedes eliminar la dirección seleccionada.", "error");
+        showMessage("No puedes eliminar la dirección seleccionada.", "warning");
         return;
       }
 
@@ -430,7 +480,7 @@ if (btnDeletePayment.length > 0) {
       );
 
       if (paymentInput.checked) {
-        showMessage("No puedes eliminar el método de pago seleccionado.", "error");
+        showMessage("No puedes eliminar el método de pago seleccionado.", "warning");
         return;
       }
 

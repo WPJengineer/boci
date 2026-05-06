@@ -2,6 +2,8 @@
 
 session_start();
 
+require(__DIR__ . '/components/messages.php');
+
 ?>
 
 <!DOCTYPE html>

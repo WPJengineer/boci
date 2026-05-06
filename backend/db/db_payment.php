@@ -18,18 +18,30 @@ $exp_year = $_POST['exp_year'] ?? null;
 $is_default = isset($_POST['is_default']) ? 1 : 0;
 
 if (!in_array($method_type, ['card', 'google_pay'])) {
-  header("Location: /student014/boci/backend/forms/form_payment.php?error=invalid_method");
+  $_SESSION['error'] = "Método de pago no válido.";
+  header("Location: /student014/boci/backend/forms/form_payment.php");
   exit();
 }
 
-if (!preg_match('/^[0-9]{4}$/', $card_last4)) {
-  header("Location: /student014/boci/backend/forms/form_payment.php?error=invalid_card");
-  exit();
+if ($method_type === 'card') {
+  if (!$card_brand || !preg_match('/^[0-9]{4}$/', $card_last4)) {
+    $_SESSION['error'] = "Revisa los datos de la tarjeta.";
+    header("Location: /student014/boci/backend/forms/form_payment.php");
+    exit();
+  }
+
+  if ((int)$exp_month < 1 || (int)$exp_month > 12 || (int)$exp_year < 2026) {
+    $_SESSION['error'] = "La fecha de vencimiento no es válida.";
+    header("Location: /student014/boci/backend/forms/form_payment.php");
+    exit();
+  }
 }
 
-if ($exp_month < 1 || $exp_month > 12 || $exp_year < 2026) {
-  header("Location: /student014/boci/backend/forms/form_payment.php?error=invalid_expiry");
-  exit();
+if ($method_type === 'google_pay') {
+  $card_brand = null;
+  $card_last4 = null;
+  $exp_month = null;
+  $exp_year = null;
 }
 
 $checkCount = $conn->prepare("
@@ -98,7 +110,8 @@ $stmt->close();
 
 $conn->close();
 
-header("Location: /student014/boci/backend/forms/form_payment.php?success=payment_added");
+$_SESSION['success'] = "Método de pago guardado correctamente.";
+header("Location: /student014/boci/backend/forms/form_payment.php");
 exit();
 
 ?>
