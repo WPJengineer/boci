@@ -1,12 +1,13 @@
 <?php
 require(__DIR__.'/../header.php');
 
-session_start();
-
 if (!isset($_SESSION['customer_id'])) {
   header("Location: /student014/boci/backend/forms/form_login.php");
   exit();
 }
+
+require(__DIR__ . '/../endpoints/get_account_details.php');
+
 ?>
 
 <main>
@@ -19,10 +20,10 @@ if (!isset($_SESSION['customer_id'])) {
       <p><a href="/student014/boci/views/cart.html">MI CARRITO</a></p>
       <p><a href="/student014/boci/backend/forms/orders.php">MIS PEDIDOS</a></p>
     </div>
-    <form class="account-email" action="/boci/backend/db/db_account.php" method="POST" novalidate>
+    <form class="account-email" action="/student014/boci/backend/db/db_account.php" method="POST" novalidate>
       <div>
         <label for="email">Correo electrónico*</label>
-        <input type="email" id="email" name="email" required />
+        <input type="email" id="email" name="email" value="<?= htmlspecialchars($details['customer_email'] ?? '') ?>" required />
       </div>
       <div>
         <button class="btn-new-email" type="submit">CAMBIAR</button>
@@ -31,7 +32,7 @@ if (!isset($_SESSION['customer_id'])) {
     <form class="account-phone" action="/student014/boci/backend/db/db_account.php" method="POST" novalidate>
       <div>
         <label for="phone_number">Número de teléfono*</label>
-        <input type="number" id="phone_number" name="phone_number" required />
+        <input type="number" id="phone_number" name="phone_number" value="<?= htmlspecialchars($details['customer_phone'] ?? '') ?>" required />
       </div>
       <div>
         <button class="btn-new-phone" type="submit">CAMBIAR</button>
