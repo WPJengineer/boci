@@ -308,6 +308,7 @@ main {
   padding: 15px;
   cursor: pointer;
   position: relative;
+  min-width: 350px;
 }
 
 .saved-address-option .remove {
@@ -412,6 +413,7 @@ main {
   padding: 15px;
   cursor: pointer;
   position: relative;
+  min-width: 350px;
 }
 
 .saved-payment-content {
@@ -589,11 +591,48 @@ main {
 
 /*area where we add red or green higlight to verify inputs for forms*/
 
-.forms-login form div input.valid, .new-register input.valid, .address input.valid, .address select.valid, .payment input.valid, .account-email input.valid, .account-phone input.valid {
+/* VALID FIELDS */
+
+.forms-login form div input.valid,
+.forms-login form div select.valid,
+
+.new-register input.valid,
+.new-register select.valid,
+
+.address input.valid,
+.address select.valid,
+
+.payment input.valid,
+.payment select.valid,
+
+.account-email input.valid,
+.account-email select.valid,
+
+.account-phone input.valid,
+.account-phone select.valid {
   border: 2px solid var(--green-valid) !important;
 }
 
-.forms-login form div input.invalid, .new-register input.invalid, .address input.invalid, .address select.invalid, .payment input.invalid, .account-email input.invalid, .account-phone input.invalid {
+
+/* INVALID FIELDS */
+
+.forms-login form div input.invalid,
+.forms-login form div select.invalid,
+
+.new-register input.invalid,
+.new-register select.invalid,
+
+.address input.invalid,
+.address select.invalid,
+
+.payment input.invalid,
+.payment select.invalid,
+
+.account-email input.invalid,
+.account-email select.invalid,
+
+.account-phone input.invalid,
+.account-phone select.invalid {
   border: 2px solid var(--red-invalid) !important;
 }
 

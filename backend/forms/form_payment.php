@@ -73,9 +73,9 @@ require(__DIR__ . '/../db/db_get_payments.php');
 
               <?php endif; ?>
 
-              <?php if ((int)$payment['is_default'] === 1): ?>
+              <!-- <?php if ((int)$payment['is_default'] === 1): ?>
                 <p>Seleccionado</p>
-              <?php endif; ?>
+              <?php endif; ?> -->
 
             </div>
 
@@ -111,12 +111,12 @@ require(__DIR__ . '/../db/db_get_payments.php');
 
         <div>
           <label for="card_holder">Nombre del titular*</label>
-          <input type="text" id="card_holder" name="card_holder">
+          <input type="text" id="card_holder" name="card_holder" required>
         </div>
 
         <div>
           <label for="card_brand">Tipo de tarjeta*</label>
-          <select id="card_brand" name="card_brand">
+          <select id="card_brand" name="card_brand" required>
             <option value="">Selecciona una tarjeta</option>
             <option value="Visa">Visa</option>
             <option value="Mastercard">Mastercard</option>
@@ -132,12 +132,13 @@ require(__DIR__ . '/../db/db_get_payments.php');
             name="card_last4" 
             maxlength="4" 
             pattern="[0-9]{4}"
+            required
           >
         </div>
 
         <div>
           <label for="exp_month">Mes de vencimiento*</label>
-          <select id="exp_month" name="exp_month">
+          <select id="exp_month" name="exp_month" required>
             <option value="">Mes</option>
             <option value="01">01</option>
             <option value="02">02</option>
@@ -156,7 +157,7 @@ require(__DIR__ . '/../db/db_get_payments.php');
 
         <div>
           <label for="exp_year">Año de vencimiento*</label>
-          <select id="exp_year" name="exp_year">
+          <select id="exp_year" name="exp_year" required>
             <option value="">Año</option>
             <option value="2026">2026</option>
             <option value="2027">2027</option>

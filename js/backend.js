@@ -12,6 +12,33 @@ if (cartParams.get("clearCart") === "1") {
   localStorage.removeItem("cart");
 }
 
+function clearValidation(input) {
+  input.classList.remove("valid", "invalid");
+}
+
+function animateValidation(input, type, duration = 3000) {
+  if (!input) return;
+  const opposite = type === "valid" ? "invalid" : "valid";
+  input.classList.remove(opposite);
+  input.classList.add(type);
+  setTimeout(() => {
+    input.classList.remove(type);
+  }, duration);
+}
+
+function validateInput(input, allowEmptyValid = false) {
+  if (input.checkValidity()) {
+    clearValidation(input);
+    if (allowEmptyValid || input.value.trim() !== "") {
+      animateValidation(input, "valid");
+    }
+    return true;
+  }
+  clearValidation(input);
+  animateValidation(input, "invalid");
+  return false;
+}
+
 function animateMessage(messageElement) {
   if (!messageElement) return;
 
@@ -113,12 +140,7 @@ if (formLogin) {
     }
     let formIsValid = true;
     inputsLogin.forEach((input) => {
-      if (input.checkValidity()) {
-        input.classList.remove("invalid");
-        input.classList.add("valid");
-      } else {
-        input.classList.remove("valid");
-        input.classList.add("invalid");
+      if (!validateInput(input, true)) {
         formIsValid = false;
       }
     });
@@ -126,7 +148,7 @@ if (formLogin) {
     // prevent submit if invalid
     if (!formIsValid) {
       e.preventDefault();
-      showMessage("Revisa los campos obligatorios.", "warning");
+      showMessage("Revisa los campos obligatorios.", "error");
     }
   });
 }
@@ -137,12 +159,8 @@ if (formNewRegister) {
     let formIsValid = true;
     inputsRegister.forEach((input) => {
       if (input.name === "newsletter") return;
-      if (input.checkValidity()) {
-        input.classList.remove("invalid");
-        input.classList.add("valid");
-      } else {
-        input.classList.remove("valid");
-        input.classList.add("invalid");
+
+      if (!validateInput(input, true)) {
         formIsValid = false;
       }
     });
@@ -150,47 +168,26 @@ if (formNewRegister) {
     // prevent submit if invalid
     if (!formIsValid) {
       e.preventDefault();
-      showMessage("Revisa los campos obligatorios.", "warning");
+      showMessage("Revisa los campos obligatorios.", "error");
     }
   });
 }
 
 if (formNewAddress) {
-  const inputsAddress = formNewAddress.querySelectorAll("input");
-  const countryInput = formNewAddress.querySelector("select[name='country']");
+  const inputsAddress = formNewAddress.querySelectorAll("input, select");
+
   formNewAddress.addEventListener("submit", (e) => {
     let formIsValid = true;
+
     inputsAddress.forEach((input) => {
-      if (input.checkValidity()) {
-        input.classList.remove("invalid");
-
-        if (input.value.trim() !== "") {
-          input.classList.add("valid");
-        } else {
-          input.classList.remove("valid");
-        }
-
-      } else {
-        input.classList.remove("valid");
-        input.classList.add("invalid");
+      if (!validateInput(input, false)) {
         formIsValid = false;
       }
     });
 
-    if (countryInput) {
-      if (countryInput.value !== "") {
-        countryInput.classList.remove("invalid");
-        countryInput.classList.add("valid");
-      } else {
-        countryInput.classList.remove("valid");
-        countryInput.classList.add("invalid");
-        formIsValid = false;
-      }
-    }
-
     if (!formIsValid) {
       e.preventDefault();
-      showMessage("Revisa los campos obligatorios.", "warning");
+      showMessage("Revisa los campos obligatorios.", "error");
     }
   });
 }
@@ -234,12 +231,7 @@ if (formNewPayment) {
   formNewPayment.addEventListener("submit", (e) => {
     let formIsValid = true;
     inputsPayment.forEach((input) => {
-      if (input.checkValidity()) {
-        input.classList.remove("invalid");
-        input.classList.add("valid");
-      } else {
-        input.classList.remove("valid");
-        input.classList.add("invalid");
+      if (!validateInput(input, true)) {
         formIsValid = false;
       }
     });
@@ -247,7 +239,7 @@ if (formNewPayment) {
     // prevent submit if invalid
     if (!formIsValid) {
       e.preventDefault();
-      showMessage("Revisa los campos obligatorios.", "warning");
+      showMessage("Revisa los campos obligatorios.", "error");
     }
   });
 }
@@ -257,12 +249,7 @@ if (formNewEmail) {
   formNewEmail.addEventListener("submit", (e) => {
     let formIsValid = true;
     inputsEmail.forEach((input) => {
-      if (input.checkValidity()) {
-        input.classList.remove("invalid");
-        input.classList.add("valid");
-      } else {
-        input.classList.remove("valid");
-        input.classList.add("invalid");
+      if (!validateInput(input, true)) {
         formIsValid = false;
       }
     });
@@ -270,7 +257,7 @@ if (formNewEmail) {
     // prevent submit if invalid
     if (!formIsValid) {
       e.preventDefault();
-      showMessage("Revisa los campos obligatorios.", "warning");
+      showMessage("Revisa los campos obligatorios.", "error");
     }
   });
 }
@@ -280,12 +267,7 @@ if (formNewPhone) {
   formNewPhone.addEventListener("submit", (e) => {
     let formIsValid = true;
     inputsPhone.forEach((input) => {
-      if (input.checkValidity()) {
-        input.classList.remove("invalid");
-        input.classList.add("valid");
-      } else {
-        input.classList.remove("valid");
-        input.classList.add("invalid");
+      if (!validateInput(input, true)) {
         formIsValid = false;
       }
     });
@@ -293,7 +275,7 @@ if (formNewPhone) {
     // prevent submit if invalid
     if (!formIsValid) {
       e.preventDefault();
-      showMessage("Revisa los campos obligatorios.", "warning");
+      showMessage("Revisa los campos obligatorios.", "error");
     }
   });
 }
