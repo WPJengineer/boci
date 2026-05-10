@@ -64,9 +64,10 @@ try {
   }
 
   // PASSWORD CHANGED
-  if ($password && $password !== $currentPassword) {
+  if ($password) {
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     $updates[] = "customer_password = ?";
-    $params[] = $password;
+    $params[] = $hashedPassword;
     $types .= "s";
   }
 
@@ -87,18 +88,14 @@ try {
   ";
 
   $stmtUpdate = $conn->prepare($sql);
-
   $stmtUpdate->bind_param($types, ...$params);
-
   $stmtUpdate->execute();
   $stmtUpdate->close();
 
   $_SESSION['success'] = "Cuenta actualizada correctamente.";
 
 } catch (Exception $e) {
-
   $_SESSION['error'] = "No se ha podido guardar la/s actualización/es.";
-
 }
 
 $conn->close();

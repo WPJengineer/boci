@@ -11,7 +11,8 @@ if (isset($_SESSION['customer_id'])) {
 <main>
   <a href="/student014/boci/backend/forms/form_login.php"><img src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
   <div class="forms-login">
-    <form class="register" action="/student014/boci/backend/forms/form_register.php">
+    <form class="register" action="/student014/boci/backend/forms/form_register.php" method="GET">
+      <input type="hidden" name="redirect" value="<?= htmlspecialchars($redirect) ?>">
       <div>
         <h2>¿NUEVOS CLIENTES?</h2>
         <p>Es rápido y fácil crear una cuenta para comprar más rápido y gurdar su pedido en la cuenta.</p>

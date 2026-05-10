@@ -13,7 +13,54 @@ $privacy = ($_POST['privacy'] === 'on') ? 1 : 0;
 $newsletter = (($_POST['newsletter'] ?? '') === 'on') ? 1 : 0;
 $redirect = $_POST['redirect'] ?? '';
 
+$registerForm = "/student014/boci/backend/forms/form_register.php";
+
+if (!empty($redirect)) {
+  $registerForm .= "?redirect=" . urlencode($redirect);
+}
+
+if ($gender === '' || $name === '' || $lastname === '' || $email === '' || $password === '') {
+  $_SESSION['error'] = "Por favor, rellena todos los campos obligatorios.";
+  header("Location: " . $registerForm);
+  exit();
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  $_SESSION['error'] = "El email no es válido.";
+  header("Location: " . $registerForm);
+  exit();
+}
+
+if ($privacy !== 1) {
+  $_SESSION['error'] = "Debes aceptar la política de privacidad.";
+  header("Location: " . $registerForm);
+  exit();
+}
+
+// Check if email already exists
+$checkEmail = $conn->prepare("
+  SELECT customer_id 
+  FROM boci_customers 
+  WHERE customer_email = ?
+  LIMIT 1
+");
+
+$checkEmail->bind_param("s", $email);
+$checkEmail->execute();
+$emailResult = $checkEmail->get_result();
+
+if ($emailResult->num_rows > 0) {
+  $checkEmail->close();
+
+  $_SESSION['error'] = "Ya existe una cuenta con este email.";
+  header("Location: " . $registerForm);
+  exit();
+}
+
+$checkEmail->close();
+
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+$role = 'customer';
 
 $sql = 
   "INSERT INTO `boci_customers` 
@@ -33,7 +80,7 @@ $role = 'customer';
 
 mysqli_stmt_bind_param(
   $stmt,
-    "sssssiss",
+    "sssssiis",
     $gender,
     $name,
     $lastname,
@@ -44,32 +91,38 @@ mysqli_stmt_bind_param(
     $role
 );
 
-if (mysqli_stmt_execute($stmt)) {
+if ($stmt->execute()) {
 
-    $customer_id = mysqli_insert_id($conn);
+  $customer_id = $conn->insert_id;
 
-    // Auto login after registration
-    $_SESSION['customer_id'] = $customer_id;
-    $_SESSION['username'] = $name;
-    $_SESSION['userLastname'] = $lastname;
-    $_SESSION['customer_role'] = $role;
+  $_SESSION['customer_id'] = $customer_id;
+  $_SESSION['username'] = $name;
+  $_SESSION['userLastname'] = $lastname;
+  $_SESSION['customer_role'] = $role;
 
-    // Redirect logic
-    if (!empty($redirect)) {
-        header("Location: " . $redirect . "?clearCart=1");
-    } else {
-        header("Location: /student014/boci/index.html");
-    }
+  $_SESSION['success'] = "Cuenta creada correctamente.";
 
-    exit();
+  $stmt->close();
+  $conn->close();
+
+  if (!empty($redirect)) {
+    header("Location: " . $redirect . "?clearCart=1");
+  } else {
+    header("Location: /student014/boci/index.html");
+  }
+
+  exit();
 
 } else {
 
-    echo "Database error: " . mysqli_error($conn);
+  $_SESSION['error'] = "No se pudo crear la cuenta. Inténtalo de nuevo.";
+
+  $stmt->close();
+  $conn->close();
+
+  header("Location: " . $registerForm);
+  exit();
 
 }
-
-mysqli_stmt_close($stmt);
-mysqli_close($conn);
 
 ?>

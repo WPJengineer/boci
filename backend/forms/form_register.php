@@ -1,10 +1,12 @@
 <?php
 require(__DIR__.'/../header.php');
+$redirect = $_GET['redirect'] ?? '';
 ?>
 
 <main>
   <a href="/student014/boci/backend/forms/form_login.php"><img src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
   <form class="new-register" action="/student014/boci/backend/db/db_register.php" method="POST" novalidate>
+    <input type="hidden" name="redirect" value="<?= htmlspecialchars($redirect) ?>">
     <h2>CREA UNA CUENTA</h2>
     <p>¿Ya tiene una cuenta? <a href="/student014/boci/backend/forms/form_login.php">INICIE SESIÓN</a></p>
     <div>
@@ -39,7 +41,7 @@ require(__DIR__.'/../header.php');
         <button type="button" class="btn-show-password">
           <img src="/student014/boci/assets/icons/show-password-icon.svg" alt="show-password-icon">
         </button>
-        <button class="btnLogOut">
+        <button type="button" class="btnLogOut">
           <img class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
         </button>
       </div>
