@@ -166,8 +166,6 @@ function attachListeners(products, cartContainer) {
       product.quantity = Number(product.quantity) + 1;
       await updateQuantity(productId, product.quantity);
       renderCart(products, cartContainer);
-      // updateSubtotal(product);
-      // updateTotal();
     });
 
     btnDecrease.addEventListener("click", async () => {
@@ -176,8 +174,6 @@ function attachListeners(products, cartContainer) {
       product.quantity = Number(product.quantity) - 1;
       await updateQuantity(productId, product.quantity);
       renderCart(products, cartContainer);
-      // updateSubtotal(product);
-      // updateTotal();
     });
 
     btnDelete.addEventListener("click", async () => {
@@ -186,15 +182,12 @@ function attachListeners(products, cartContainer) {
         p => String(p.product_id) !== String(productId)
       );
       renderCart(updatedProducts, cartContainer);
-      // removeFromGuestCart(productId);
-      // updateTotal();
       const container = document.querySelector(".shopping-cart");
       if (container.querySelectorAll(".cart-item").length === 0) {
         container.innerHTML = "<p>Tu carrito está vacío.</p>";
       }
     });
   });
-  // updateTotal();
 }
 
 async function updateQuantity(productId, quantity) {
@@ -283,25 +276,6 @@ function removeFromGuestCart(productId) {
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   }
 }
-
-// function updateSubtotal(product) {
-//   const quantity = +product.querySelector('.quantity-product').textContent;
-//   const unitText = product.querySelector('.price')?.textContent || "0€";
-//   const unitPrice = +unitText.replace("€", "").trim() || 0;
-//   const subtotal = product.querySelector('.product-subtotal');
-//   if (subtotal) {
-//     subtotal.textContent = (quantity * unitPrice).toFixed(2) + "€";
-//   }
-// }
-
-// function updateTotal() {
-//   let total = 0;
-//   document.querySelectorAll(".product-subtotal").forEach(product => {
-//     total += +product.textContent.replace("€", "").trim();
-//   });
-//   const shoppingCartTotal = document.querySelector(".subtotal span");
-//   if (shoppingCartTotal) shoppingCartTotal.textContent = total.toFixed(2) + "€";
-// }
 
 loadCart();
 

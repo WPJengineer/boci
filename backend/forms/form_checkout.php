@@ -6,4 +6,7 @@ if (!isset($_SESSION['customer_id'])) {
     exit();
 }
 
+$customerId = $_SESSION['customer_id'];
+
+
 ?>
