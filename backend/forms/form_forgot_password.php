@@ -13,7 +13,7 @@ require(__DIR__.'/../header.php');
     </div>
     <div class="btns-forgot">
       <button class="btn-forgot-password" type="submit">ENVIAR</button>
-      <a class="btn-volver" href="/boci/index.html"><p>VOLVER A INICIO</p></a>
+      <a class="btn-volver" href="/student014/boci/index.html"><p>VOLVER A INICIO</p></a>
     </div>
   </form>
   <button class="btnShoppingCart">

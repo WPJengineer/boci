@@ -76,7 +76,7 @@ main {
   }
 }
 
-.btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment, .btn-new-email, .btn-new-phone {
+.btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment, .btn-new-email, .btn-new-phone, .btn-new-password {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,11 +87,11 @@ main {
   font-size: 18px;
 }
 
-.btn-register:hover, .btn-login:hover, .btn-new-register:hover, .btn-forgot-password:hover, .btn-volver:hover, .btn-new-address:hover, .btn-new-payment:hover, .btn-new-email:hover, .btn-new-phone:hover {
+.btn-register:hover, .btn-login:hover, .btn-new-register:hover, .btn-forgot-password:hover, .btn-volver:hover, .btn-new-address:hover, .btn-new-payment:hover, .btn-new-email:hover, .btn-new-phone:hover, .btn-new-password:hover {
   cursor: pointer;
 }
 
-.btn-register:active, .btn-login:active, .btn-new-register:active, .btn-forgot-password:active, .btn-volver:active, .btn-new-address:active, .btn-new-payment:active, .btn-new-email:active, .btn-new-phone:active {
+.btn-register:active, .btn-login:active, .btn-new-register:active, .btn-forgot-password:active, .btn-volver:active, .btn-new-address:active, .btn-new-payment:active, .btn-new-email:active, .btn-new-phone:active, .btn-new-password:active {
   transform: scale(0.95);
 }
 
@@ -521,6 +521,36 @@ main {
   }
 }
 
+.account-password {
+  min-width: 350px;
+  /* max-width: 600px; */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: 2px solid var(--blue);
+  font-size: 18px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input {
+    border: 1px solid var(--blue);
+    height: 40px;
+    font-size: 18px;
+    font-family: 'afacad';
+    padding: 5px;
+    background-color: var(--light);
+  }
+
+  .btn-new-password {
+    height: 40px;
+  }
+}
+
 .btnShoppingCart {
   position: fixed;
   bottom: 30px;
@@ -609,7 +639,9 @@ main {
 .account-email select.valid,
 
 .account-phone input.valid,
-.account-phone select.valid {
+.account-phone select.valid,
+
+.account-password input.valid {
   border: 2px solid var(--green-valid) !important;
 }
 
@@ -632,7 +664,8 @@ main {
 .account-email select.invalid,
 
 .account-phone input.invalid,
-.account-phone select.invalid {
+.account-phone select.invalid,
+.aacount-password {
   border: 2px solid var(--red-invalid) !important;
 }
 
@@ -730,7 +763,7 @@ p .active {
     }
   }
 
-  .profile, .address, .address input, .address select, .payment, .payment input, .account-email, .account-email input, .account-phone, .account-phone input {
+  .profile, .address, .address input, .address select, .payment, .payment input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input {
     font-size: 20px;
   }
 
@@ -812,7 +845,7 @@ p .active {
     font-size: 22px;
   }
 
-  .profile, .address, .address input, .address select, .payment, .payment input, .account-email, .account-email input, .account-phone, .account-phone input {
+  .profile, .address, .address input, .address select, .payment, .payment input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input {
     font-size: 22px;
   }
 

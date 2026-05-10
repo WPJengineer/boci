@@ -38,6 +38,15 @@ require(__DIR__ . '/../endpoints/get_account_details.php');
         <button class="btn-new-phone" type="submit">CAMBIAR</button>
       </div>
     </form>
+    <form class="account-password" action="/student014/boci/backend/db/db_account.php" method="POST" novalidate>
+      <div>
+        <label for="password">Nueva contraseña*</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <div>
+        <button class="btn-new-password" type="submit">CAMBIAR</button>
+      </div>
+    </form>
   </div>
   <button class="btnShoppingCart">
     <img src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">

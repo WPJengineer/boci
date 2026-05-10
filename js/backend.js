@@ -126,6 +126,7 @@ const formNewAddress = document.querySelector(".address");
 const formNewPayment = document.querySelector(".payment");
 const formNewEmail = document.querySelector(".account-email");
 const formNewPhone = document.querySelector(".account-phone");
+const formNewPassword = document.querySelector(".account-password");
 const links = document.querySelectorAll('.pages p a');
 const methodSelect = document.getElementById("method_type");
 const cardFields = document.getElementById("card-fields");
@@ -265,6 +266,24 @@ if (formNewEmail) {
 if (formNewPhone) {
   const inputsPhone = formNewPhone.querySelectorAll("input");
   formNewPhone.addEventListener("submit", (e) => {
+    let formIsValid = true;
+    inputsPhone.forEach((input) => {
+      if (!validateInput(input, true)) {
+        formIsValid = false;
+      }
+    });
+
+    // prevent submit if invalid
+    if (!formIsValid) {
+      e.preventDefault();
+      showMessage("Revisa los campos obligatorios.", "error");
+    }
+  });
+}
+
+if (formNewPassword) {
+  const inputsPhone = formNewPassword.querySelectorAll("input");
+  formNewPassword.addEventListener("submit", (e) => {
     let formIsValid = true;
     inputsPhone.forEach((input) => {
       if (!validateInput(input, true)) {
