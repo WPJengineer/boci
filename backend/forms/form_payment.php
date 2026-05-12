@@ -11,7 +11,7 @@ require(__DIR__ . '/../db/db_get_payments.php');
 ?>
 
 <main>
-  <a href="/student014/boci/backend/forms/form_login.php"><img src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
+  <a href="/student014/boci/backend/forms/form_login.php"><img draggable="false" src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
   <div class="profile">
     <div class="pages">
       <p><a href="/student014/boci/backend/forms/form_address.php">DIRECCIÓN DE ENVÍO</a></p>
@@ -80,7 +80,7 @@ require(__DIR__ . '/../db/db_get_payments.php');
             </div>
 
             <button class="btnDeletePayment" type="button">
-              <img
+              <img draggable="false"
                 class="icon remove"
                 src="/student014/boci/assets/icons/close-icon-yellow.svg"
                 alt="remove-icon"
@@ -111,7 +111,7 @@ require(__DIR__ . '/../db/db_get_payments.php');
 
         <div>
           <label for="card_holder">Nombre del titular*</label>
-          <input type="text" id="card_holder" name="card_holder" required>
+          <input type="text" id="card_holder" name="card_holder" minlength="2" maxlength="80" pattern="[A-Za-zÀ-ÿ\s'-]+" title="El nombre del titular solo puede contener letras, espacios, apóstrofes o guiones." required>
         </div>
 
         <div>
@@ -129,9 +129,12 @@ require(__DIR__ . '/../db/db_get_payments.php');
           <input 
             type="text" 
             id="card_last4" 
-            name="card_last4" 
+            name="card_last4"
+            minlength="4"
             maxlength="4" 
             pattern="[0-9]{4}"
+            inputmode="numeric"
+            title="Introduce exactamente los últimos 4 dígitos de la tarjeta."
             required
           >
         </div>
@@ -173,7 +176,7 @@ require(__DIR__ . '/../db/db_get_payments.php');
       <div id="googlepay-fields" style="display:none;">
         <div>
           <label for="google_pay_email">Correo asociado a Google Pay*</label>
-          <input type="email" id="google_pay_email" name="google_pay_email">
+          <input type="email" id="google_pay_email" name="google_pay_email" maxlength="100">
         </div>
       </div>
 
@@ -191,11 +194,11 @@ require(__DIR__ . '/../db/db_get_payments.php');
     </form>
   </div>
   <button class="btnShoppingCart">
-    <img src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
+    <img draggable="false" src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
     <span id="counter">0</span>
   </button>
   <button class="btnLogOut">
-    <img class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
+    <img draggable="false" class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
   </button>
 </main>
 

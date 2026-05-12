@@ -9,7 +9,7 @@ if (isset($_SESSION['customer_id'])) {
 ?>
 
 <main>
-  <a href="/student014/boci/backend/forms/form_login.php"><img src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
+  <a href="/student014/boci/backend/forms/form_login.php"><img draggable="false" src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
   <div class="forms-login">
     <form class="register" action="/student014/boci/backend/forms/form_register.php" method="GET">
       <input type="hidden" name="redirect" value="<?= htmlspecialchars($redirect) ?>">
@@ -18,7 +18,7 @@ if (isset($_SESSION['customer_id'])) {
         <p>Es rápido y fácil crear una cuenta para comprar más rápido y gurdar su pedido en la cuenta.</p>
       </div>
       <button type="submit" class="btn-register">
-        <img class="icon" src="/student014/boci/assets/icons/profile-icon-white.svg" alt="profile-icon">
+        <img draggable="false" class="icon" src="/student014/boci/assets/icons/profile-icon-white.svg" alt="profile-icon">
         CREA UNA CUENTA
       </button>
     </form>
@@ -28,14 +28,14 @@ if (isset($_SESSION['customer_id'])) {
       <h2>CLIENTES REGISTRADOS</h2>
       <div>
         <label for="email">Dirección de correo electrónico:</label>
-        <input type="email" id="email" name="email" required />
+        <input type="email" id="email" name="email" maxlength="100" required />
       </div>
       <div>
         <label for="password">Contraseña:</label>
         <div class="password-field">
-          <input type="password" id="password" name="password" required />
+          <input type="password" id="password" name="password" minlength="8" maxlength="72" required />
           <button type="button" class="btn-show-password">
-            <img src="/student014/boci/assets/icons/show-password-icon.svg" alt="show-password-icon">
+            <img draggable="false" src="/student014/boci/assets/icons/show-password-icon.svg" alt="show-password-icon">
           </button>
         </div>
       </div>
@@ -45,18 +45,18 @@ if (isset($_SESSION['customer_id'])) {
       </div>
       <div>
         <button type="submit" class="btn-login">
-          <img class="icon" src="/student014/boci/assets/icons/padlock-white-icon.svg" alt="padlock-icon">
+          <img draggable="false" class="icon" src="/student014/boci/assets/icons/padlock-white-icon.svg" alt="padlock-icon">
           INICIA SESIÓN
         </button>
       </div>
     </form>
   </div>
   <button class="btnShoppingCart">
-    <img src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
+    <img draggable="false" src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
     <span id="counter">0</span>
   </button>
   <button class="btnLogOut">
-    <img class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
+    <img draggable="false" class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
   </button>
 </main>
 

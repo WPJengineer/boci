@@ -1,5 +1,7 @@
 const password = document.querySelector(".password-field input");
 const showPassword = document.querySelector(".btn-show-password");
+const confirmPassword = document.querySelector(".confirm-password-field input");
+const showConfirmPassword = document.querySelector(".btn-show-confirm-password");
 const btnShoppingCart = document.querySelector(".btnShoppingCart");
 const counterCart = document.getElementById("counter");
 const cartParams = new URLSearchParams(window.location.search);
@@ -26,6 +28,46 @@ function animateValidation(input, type, duration = 3000) {
   }, duration);
 }
 
+function getValidationMessage(input) {
+  if (input.validity.valueMissing) {
+    return "Este campo es obligatorio.";
+  }
+
+  if (input.validity.typeMismatch) {
+    if (input.type === "email") {
+      return "Introduce un email válido.";
+    }
+
+    return "El formato introducido no es válido.";
+  }
+
+  if (input.validity.patternMismatch) {
+    return input.title || "El formato introducido no es válido.";
+  }
+
+  if (input.validity.tooShort) {
+    return `Debe tener al menos ${input.minLength} caracteres.`;
+  }
+
+  if (input.validity.tooLong) {
+    return `Debe tener como máximo ${input.maxLength} caracteres.`;
+  }
+
+  if (input.validity.rangeUnderflow) {
+    return `El valor debe ser como mínimo ${input.min}.`;
+  }
+
+  if (input.validity.rangeOverflow) {
+    return `El valor debe ser como máximo ${input.max}.`;
+  }
+
+  if (input.validity.stepMismatch) {
+    return "Introduce un valor válido.";
+  }
+
+  return "Revisa este campo.";
+}
+
 function validateInput(input, allowEmptyValid = false) {
   if (input.checkValidity()) {
     clearValidation(input);
@@ -37,6 +79,28 @@ function validateInput(input, allowEmptyValid = false) {
   clearValidation(input);
   animateValidation(input, "invalid");
   return false;
+}
+
+function validateFormInputs(inputs, ignoredNames = [], allowEmptyValid = true) {
+  let firstInvalidInput = null;
+
+  inputs.forEach((input) => {
+    if (ignoredNames.includes(input.name)) return;
+
+    const isValid = validateInput(input, allowEmptyValid);
+
+    if (!isValid && !firstInvalidInput) {
+      firstInvalidInput = input;
+    }
+  });
+
+  if (firstInvalidInput) {
+    showMessage(getValidationMessage(firstInvalidInput), "error");
+    firstInvalidInput.focus();
+    return false;
+  }
+
+  return true;
 }
 
 function animateMessage(messageElement) {
@@ -118,6 +182,16 @@ if (password && showPassword) {
   });
 }
 
+if (confirmPassword && showConfirmPassword) {
+  showConfirmPassword.addEventListener("pointerdown", () => {
+    confirmPassword.type = "text";
+  });
+
+  showConfirmPassword.addEventListener("pointerup", () => {
+    confirmPassword.type = "password";
+  });
+}
+
 // missing to check for if valid entry into form
 
 const formLogin = document.querySelector(".login");
@@ -135,41 +209,41 @@ const googlePayFields = document.getElementById("googlepay-fields");
 if (formLogin) {
   const inputsLogin = formLogin.querySelectorAll("input");
   const cartInput = document.getElementById("cart_data");
+
   formLogin.addEventListener("submit", (e) => {
     if (cartInput) {
       cartInput.value = localStorage.getItem("cart") || "[]";
     }
-    let formIsValid = true;
-    inputsLogin.forEach((input) => {
-      if (!validateInput(input, true)) {
-        formIsValid = false;
-      }
-    });
 
-    // prevent submit if invalid
-    if (!formIsValid) {
+    if (!validateFormInputs(inputsLogin)) {
       e.preventDefault();
-      showMessage("Revisa los campos obligatorios.", "error");
     }
   });
 }
 
 if (formNewRegister) {
   const inputsRegister = formNewRegister.querySelectorAll("input");
+  const passwordInput = formNewRegister.querySelector("#password");
+  const confirmPasswordInput = formNewRegister.querySelector("#confirm-password");
+
   formNewRegister.addEventListener("submit", (e) => {
-    let formIsValid = true;
-    inputsRegister.forEach((input) => {
-      if (input.name === "newsletter") return;
-
-      if (!validateInput(input, true)) {
-        formIsValid = false;
-      }
-    });
-
-    // prevent submit if invalid
-    if (!formIsValid) {
+    if (!validateFormInputs(inputsRegister, ["newsletter"])) {
       e.preventDefault();
-      showMessage("Revisa los campos obligatorios.", "error");
+      return;
+    }
+
+    if (
+      passwordInput &&
+      confirmPasswordInput &&
+      passwordInput.value !== confirmPasswordInput.value
+    ) {
+      e.preventDefault();
+
+      animateValidation(passwordInput, "invalid");
+      animateValidation(confirmPasswordInput, "invalid");
+
+      showMessage("Las contraseñas no coinciden.", "error");
+      confirmPasswordInput.focus();
     }
   });
 }
@@ -178,17 +252,8 @@ if (formNewAddress) {
   const inputsAddress = formNewAddress.querySelectorAll("input, select");
 
   formNewAddress.addEventListener("submit", (e) => {
-    let formIsValid = true;
-
-    inputsAddress.forEach((input) => {
-      if (!validateInput(input, false)) {
-        formIsValid = false;
-      }
-    });
-
-    if (!formIsValid) {
+    if (!validateFormInputs(inputsAddress, [], false)) {
       e.preventDefault();
-      showMessage("Revisa los campos obligatorios.", "error");
     }
   });
 }
@@ -229,72 +294,40 @@ if (methodSelect && cardFields && googlePayFields) {
 
 if (formNewPayment) {
   const inputsPayment = formNewPayment.querySelectorAll("input, select");
-  formNewPayment.addEventListener("submit", (e) => {
-    let formIsValid = true;
-    inputsPayment.forEach((input) => {
-      if (!validateInput(input, true)) {
-        formIsValid = false;
-      }
-    });
 
-    // prevent submit if invalid
-    if (!formIsValid) {
+  formNewPayment.addEventListener("submit", (e) => {
+    if (!validateFormInputs(inputsPayment)) {
       e.preventDefault();
-      showMessage("Revisa los campos obligatorios.", "error");
     }
   });
 }
 
 if (formNewEmail) {
   const inputsEmail = formNewEmail.querySelectorAll("input");
-  formNewEmail.addEventListener("submit", (e) => {
-    let formIsValid = true;
-    inputsEmail.forEach((input) => {
-      if (!validateInput(input, true)) {
-        formIsValid = false;
-      }
-    });
 
-    // prevent submit if invalid
-    if (!formIsValid) {
+  formNewEmail.addEventListener("submit", (e) => {
+    if (!validateFormInputs(inputsEmail)) {
       e.preventDefault();
-      showMessage("Revisa los campos obligatorios.", "error");
     }
   });
 }
 
 if (formNewPhone) {
   const inputsPhone = formNewPhone.querySelectorAll("input");
-  formNewPhone.addEventListener("submit", (e) => {
-    let formIsValid = true;
-    inputsPhone.forEach((input) => {
-      if (!validateInput(input, true)) {
-        formIsValid = false;
-      }
-    });
 
-    // prevent submit if invalid
-    if (!formIsValid) {
+  formNewPhone.addEventListener("submit", (e) => {
+    if (!validateFormInputs(inputsPhone)) {
       e.preventDefault();
-      showMessage("Revisa los campos obligatorios.", "error");
     }
   });
 }
 
 if (formNewPassword) {
-  const inputsPhone = formNewPassword.querySelectorAll("input");
-  formNewPassword.addEventListener("submit", (e) => {
-    let formIsValid = true;
-    inputsPhone.forEach((input) => {
-      if (!validateInput(input, true)) {
-        formIsValid = false;
-      }
-    });
+  const inputsPassword = formNewPassword.querySelectorAll("input");
 
-    // prevent submit if invalid
-    if (!formIsValid) {
+  formNewPassword.addEventListener("submit", (e) => {
+    if (!validateFormInputs(inputsPassword)) {
       e.preventDefault();
-      showMessage("Revisa los campos obligatorios.", "error");
     }
   });
 }

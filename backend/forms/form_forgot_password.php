@@ -1,9 +1,13 @@
 <?php
 require(__DIR__.'/../header.php');
+if (isset($_SESSION['customer_id'])) {
+  header("Location: /student014/boci/backend/forms/orders.php");
+  exit();
+}
 ?>
 
 <main>
-  <a href="/student014/boci/backend/forms/form_login.php"><img src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
+  <a href="/student014/boci/backend/forms/form_login.php"><img draggable="false" src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
   <form class="remember" action="/student014/boci/backend/db/db_forgot_password.php" method="POST" novalidate>
     <h2>¿OLVIDÓ SU CONTRASEÑA?</h2>
     <p>Por favor, introduzca la dirección de correo electrónico que utilizó para registrarse. Recibirá un enlace temporal para restablecer su contraseña.</p>
@@ -17,11 +21,11 @@ require(__DIR__.'/../header.php');
     </div>
   </form>
   <button class="btnShoppingCart">
-    <img src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
+    <img draggable="false" src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
     <span id="counter">0</span>
   </button>
   <button class="btnLogOut">
-    <img class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
+    <img draggable="false" class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
   </button>
 </main>
 

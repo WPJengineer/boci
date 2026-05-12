@@ -1,10 +1,14 @@
 <?php
 require(__DIR__.'/../header.php');
 $redirect = $_GET['redirect'] ?? '';
+if (isset($_SESSION['customer_id'])) {
+  header("Location: /student014/boci/backend/forms/orders.php");
+  exit();
+}
 ?>
 
 <main>
-  <a href="/student014/boci/backend/forms/form_login.php"><img src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
+  <a href="/student014/boci/backend/forms/form_login.php"><img draggable="false" src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
   <form class="new-register" action="/student014/boci/backend/db/db_register.php" method="POST" novalidate>
     <input type="hidden" name="redirect" value="<?= htmlspecialchars($redirect) ?>">
     <h2>CREA UNA CUENTA</h2>
@@ -24,25 +28,31 @@ $redirect = $_GET['redirect'] ?? '';
     </div>
     <div>
       <label for="name">Nombre:</label>
-      <input type="text" id="name" name="name" required />
+      <input type="text" id="name" name="name" minlength="3" maxlength="50" pattern="[A-Za-zÀ-ÿ\s'-]+" title="El nombre solo puede contener letras, espacios, apóstrofes o guiones." required />
     </div>
     <div>
       <label for="lastname">Apellidos:</label>
-      <input type="text" id="lastname" name="lastname" required />
+      <input type="text" id="lastname" name="lastname" minlength="3" maxlength="50" pattern="[A-Za-zÀ-ÿ\s'-]+" title="Los apellidos solo pueden contener letras, espacios, apóstrofes o guiones." required />
     </div>
     <div>
       <label for="email">Dirección de correo electrónico:</label>
-      <input type="email" id="email" name="email" required />
+      <input type="email" id="email" name="email" maxlength="100" required />
     </div>
     <div>
       <label for="password">Contraseña:</label>
       <div class="password-field">
-        <input type="password" id="password" name="password" required />
+        <input type="password" id="password" name="password" minlength="8" maxlength="72" required />
         <button type="button" class="btn-show-password">
-          <img src="/student014/boci/assets/icons/show-password-icon.svg" alt="show-password-icon">
+          <img draggable="false" src="/student014/boci/assets/icons/show-password-icon.svg" alt="show-password-icon">
         </button>
-        <button type="button" class="btnLogOut">
-          <img class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
+      </div>
+    </div>
+    <div>
+      <label for="confirm-password">Confirmar contraseña:</label>
+      <div class="confirm-password-field">
+        <input type="password" id="confirm-password" name="confirm-password" minlength="8" maxlength="72" required />
+        <button type="button" class="btn-show-confirm-password">
+          <img draggable="false" src="/student014/boci/assets/icons/show-password-icon.svg" alt="show-password-icon">
         </button>
       </div>
     </div>
@@ -60,9 +70,12 @@ $redirect = $_GET['redirect'] ?? '';
     </div>
   </form>
   <button class="btnShoppingCart">
-    <img src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
+    <img draggable="false" src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
     <span id="counter">0</span>
   </button>
+  <!-- <button type="button" class="btnLogOut">
+    <img draggable="false" class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
+  </button> -->
 </main>
 
 <?php

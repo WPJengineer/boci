@@ -10,7 +10,7 @@
             </div>
             <div>
                 <h3>SIGUENOS</h3>
-                <img class="icon" src="/student014/boci/assets/icons/instagram-icon.svg" alt="instagram-icon">
+                <img draggable="false" class="icon" src="/student014/boci/assets/icons/instagram-icon.svg" alt="instagram-icon">
             </div>
         </div>
         <div class="legal">

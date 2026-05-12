@@ -160,7 +160,7 @@ main {
       background-color: var(--light);
     }
 
-    .password-field {
+    .password-field, .confirm-password-field {
       display: flex;
       flex-direction: row;
       align-items: center;

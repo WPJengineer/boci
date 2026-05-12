@@ -11,7 +11,7 @@ require(__DIR__ . '/../db/db_get_addresses.php');
 ?>
 
 <main>
-  <a href="/student014/boci/backend/forms/form_login.php"><img src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
+  <a href="/student014/boci/backend/forms/form_login.php"><img draggable="false" src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
   <div class="profile">
     <div class="pages">
       <p><a href="/student014/boci/backend/forms/form_address.php">DIRECCIÓN DE ENVÍO</a></p>
@@ -47,7 +47,7 @@ require(__DIR__ . '/../db/db_get_addresses.php');
               </div>
             </div>
             <button type="button" class="btnDeleteAddress">
-              <img class="icon remove" src="/student014/boci/assets/icons/close-icon-yellow.svg" alt="remove-icon">
+              <img draggable="false" class="icon remove" src="/student014/boci/assets/icons/close-icon-yellow.svg" alt="remove-icon">
             </button>
           </label>
         <?php endforeach; ?>
@@ -69,26 +69,26 @@ require(__DIR__ . '/../db/db_get_addresses.php');
         <option value="US">Estados Unidos</option>
       </select>
       <label for="state">Provincia / Estado</label>
-      <input type="text" name="state" id="state" required>
+      <input type="text" name="state" id="state" minlength="2" maxlength="80" required>
       <label for="city">Ciudad</label>
-      <input type="text" name="city" id="city" required>
+      <input type="text" name="city" id="city" minlength="2" maxlength="80" required>
       <label for="postal_code">Código postal</label>
-      <input type="text" name="postal_code" id="postal_code" required>
+      <input type="text" name="postal_code" id="postal_code" minlength="4" maxlength="10" inputmode="numeric" required>
       <label for="street_name">Calle</label>
-      <input type="text" name="street_name" id="street_name" required>
+      <input type="text" name="street_name" id="street_name" minlength="2" maxlength="100" required>
       <label for="street_num">Número</label>
-      <input type="text" name="street_num" id="street_num">
+      <input type="text" name="street_num" id="street_num" maxlength="10">
       <div>
         <button class="btn-new-address" type="submit">GUARDAR</button>
       </div>
     </form>
   </div>
   <button class="btnShoppingCart">
-    <img src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
+    <img draggable="false" src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
     <span id="counter">0</span>
   </button>
   <button class="btnLogOut">
-    <img class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
+    <img draggable="false" class="icon" src="/student014/boci/assets/icons/logout-icon-black.svg" alt="log-out-icon">
   </button>
 </main>
 

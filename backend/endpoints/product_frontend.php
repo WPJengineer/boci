@@ -4,39 +4,60 @@ header("Content-Type: application/json");
 
 require(__DIR__ . '/../config/db_config.php');
 
-// this shows all products like in the products home page
-$sql = "SELECT * FROM `boci_products`";
-
-// this shows a specific product if we select it from the products home page
-if (isset($_GET['id']) && $_GET['id'] !== '') {
-    $product_id = intval($_GET['id']);
-    $sql .= " WHERE `product_id` = $product_id";
-}
-
-$result = mysqli_query($conn, $sql);
-
-if (!$result) {
-    http_response_code(500);
-    echo json_encode([
-        "error" => mysqli_error($conn),
-        "query" => $sql
-    ]);
-    exit;
-}
-
 $products = [];
 
-// if (mysqli_num_rows($result) > 0) {
-  while ($row = mysqli_fetch_assoc($result)) {
+if (isset($_GET['id']) && $_GET['id'] !== '') {
+  $productId = intval($_GET['id']);
+
+  $stmt = $conn->prepare("
+    SELECT *
+    FROM boci_products
+    WHERE product_id = ?
+  ");
+
+  if (!$stmt) {
+    http_response_code(500);
+    echo json_encode(["error" => "Could not prepare statement"]);
+    exit;
+  }
+
+  $stmt->bind_param("i", $productId);
+  $stmt->execute();
+
+  $result = $stmt->get_result();
+
+  while ($row = $result->fetch_assoc()) {
     $products[] = $row;
   }
-// }
 
-$json = json_encode($products, JSON_UNESCAPED_UNICODE);
+  $stmt->close();
 
-echo $json;
+} else {
+  $stmt = $conn->prepare("
+    SELECT *
+    FROM boci_products
+  ");
 
-mysqli_close($conn);
+  if (!$stmt) {
+    http_response_code(500);
+    echo json_encode(["error" => "Could not prepare statement"]);
+    exit;
+  }
+
+  $stmt->execute();
+
+  $result = $stmt->get_result();
+
+  while ($row = $result->fetch_assoc()) {
+    $products[] = $row;
+  }
+
+  $stmt->close();
+}
+
+echo json_encode($products, JSON_UNESCAPED_UNICODE);
+
+$conn->close();
 exit;
 
 ?>

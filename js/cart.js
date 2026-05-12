@@ -127,24 +127,24 @@ function renderCart(products, cartContainer) {
 
   cartContainer.innerHTML = products.map(product => `
     <article class="cart-item" data-id="${product.product_id}">
-      <img class="plush" src="${product.product_image}" alt="peluche-image">
+      <img draggable="false" class="plush" src="${product.product_image}" alt="peluche-image">
       <div class="quantity">
         <p>${product.product_name}</p>
         <div class="quantity-button">
           <span class="quantity-product">${product.quantity}</span>
           <div class="buttons">
             <button class="btnIncrease">
-              <img src="/student014/boci/assets/icons/chevron-up.svg" alt="up-arrow">
+              <img draggable="false" src="/student014/boci/assets/icons/chevron-up.svg" alt="up-arrow">
             </button>
             <button class="btnDecrease">
-              <img src="/student014/boci/assets/icons/chevron-down.svg" alt="down-arrow">
+              <img draggable="false" src="/student014/boci/assets/icons/chevron-down.svg" alt="down-arrow">
             </button>
           </div>
         </div>
       </div>
       <span class="price">${product.product_unit_price}€</span>
       <button class="btnDelete">
-        <img class="icon remove" src="/student014/boci/assets/icons/close-icon-yellow.svg" alt="remove-icon">
+        <img draggable="false" class="icon remove" src="/student014/boci/assets/icons/close-icon-yellow.svg" alt="remove-icon">
       </button>
     </article>
   `).join('');

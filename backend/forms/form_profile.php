@@ -16,7 +16,7 @@ if (!isset($_SESSION['customer_id'])) {
   <a href="/student014/boci/backend/forms/orders.php">Mis pedidos</a>
   <a href="/student014/boci/backend/db/db_logout.php">Log out</a>
   <button class="btnShoppingCart">
-    <img src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
+    <img draggable="false" src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
     <span id="counter">0</span>
   </button>
 </main>

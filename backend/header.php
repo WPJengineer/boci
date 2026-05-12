@@ -20,12 +20,12 @@ require(__DIR__ . '/components/messages.php');
     <header>
         <div class="logo-header">
             <a href="/student014/boci/index.html">
-                <img class="logo" src="/student014/boci/assets/images/logo.svg" alt="logo">
+                <img draggable="false" class="logo" src="/student014/boci/assets/images/logo.svg" alt="logo">
             </a>
                 <nav class="header-icons">
-                <!-- <img class="icon" src="/boci/assets/icons/profile-icon-black.svg" alt="profile-icon"> -->
+                <!-- <img draggable="false" class="icon" src="/boci/assets/icons/profile-icon-black.svg" alt="profile-icon"> -->
                 <!-- <div class="search-bar">
-                    <img class="icon" src="./assets/icons/search-icon-black.svg" alt="search-icon">
+                    <img draggable="false" class="icon" src="./assets/icons/search-icon-black.svg" alt="search-icon">
                 </div> -->
             </nav>
         </div>
