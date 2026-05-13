@@ -7,4 +7,7 @@ if (!isset($_SESSION['customer_id'])) {
 }
 
 $customerId = $_SESSION['customer_id'];
+
+
+
 ?>

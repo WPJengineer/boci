@@ -8,6 +8,31 @@ const btnCheckOut = document.querySelector(".btnCheckout");
 
 // FUNCTIONS
 
+function animateMessage(messageElement) {
+  if (!messageElement) return;
+
+  setTimeout(() => {
+    messageElement.classList.add("show");
+  }, 50);
+
+  setTimeout(() => {
+    messageElement.classList.remove("show");
+    setTimeout(() => messageElement.remove(), 300);
+  }, 3000);
+}
+
+function showMessage(text, type = "success") {
+  const oldMessage = document.querySelector(".message");
+  if (oldMessage) oldMessage.remove();
+
+  const newMessage = document.createElement("div");
+  newMessage.className = `message ${type}`;
+  newMessage.textContent = text;
+
+  document.body.appendChild(newMessage);
+  animateMessage(newMessage);
+}
+
 function getGuestCart() {
   try {
     const raw = localStorage.getItem("cart");
@@ -287,18 +312,45 @@ btnContinueShoppping.addEventListener('click', () => {
 
 checkoutForm.addEventListener('submit', async(e) => {
   e.preventDefault();
-
   const totalArticles = Number(numArticles.textContent || 0);
+
   if (totalArticles <= 0) {
-    alert("Tu carrito está vacío. Añade algún producto antes de continuar.");
+    showMessage("Tu carrito está vacío. Añade algún producto antes de continuar.", "warning");
     return;
   }
 
-  const user = await getSessionUser();
-  if (user?.loggedIn) {
-    window.location.href = "/student014/boci/backend/forms/form_checkout.php";
-  } else {
-    window.location.href = "/student014/boci/backend/forms/form_login.php?redirect=/student014/boci/backend/forms/form_checkout.php";
+  try {
+    const user = await getSessionUser();
+    if (!user?.loggedIn) {
+      showMessage("Inicia sesión para continuar con el pedido.", "warning");
+      setTimeout(() => {
+        window.location.href = "/student014/boci/backend/forms/form_login.php?redirect=/student014/boci/backend/forms/form_checkout.php";
+      }, 800);
+      return;
+    }
+  
+    const response = await fetch(
+      "/student014/boci/backend/endpoints/order_create.php",
+      {
+        method: "POST",
+        credentials: "include"
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok || !data.success) {
+      throw new Error(data.message || "No se ha podido crear el pedido.");
+    }
+
+    showMessage(data.message || "Pedido creado correctamente.", "success");
+
+    setTimeout(() => {
+      window.location.href =`/student014/boci/backend/forms/form_order_success.php?order=${encodeURIComponent(data.order_number)}`;
+    }, 800);
+
+  } catch (error) {
+    console.error(error);
+    showMessage(error.message || "Error al crear el pedido.", "error");
   }
-    
 });

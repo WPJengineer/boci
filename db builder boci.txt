@@ -1,5 +1,5 @@
 -- Relationships
-DROP TABLE IF EXISTS `boci_payment_events`,`boci_payments`,`boci_payment_methods`,`boci_orders`,`boci_shopping_cart`,`boci_product_category`, `boci_reviews`; 
+DROP TABLE IF EXISTS `boci_payment_events`,`boci_payments`,`boci_payment_methods`, `boci_order_items`,`boci_orders`,`boci_shopping_cart`,`boci_product_category`, `boci_reviews`; 
 -- Entities
 DROP TABLE IF EXISTS `boci_customers`,`boci_products`,`boci_categories`,`boci_address`,`boci_transport_fee`;
 
@@ -60,14 +60,29 @@ CREATE TABLE IF NOT EXISTS `boci_shopping_cart` (
 
 DROP TABLE IF EXISTS `boci_orders`;
 CREATE TABLE IF NOT EXISTS `boci_orders` (
-  `order_number` varchar(100) NOT NULL,
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_number` varchar(100) UNIQUE DEFAULT NULL,
   `customer_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `product_unit_price` decimal(10,2) DEFAULT NULL,
-  `placed_on` date DEFAULT current_timestamp(),
-  PRIMARY KEY (`order_number`,`customer_id`,`product_id`),
+  `address_id` int(11) NOT NULL,
+  `subtotal` decimal(10,2) NOT NULL,
+  `transport_fee` decimal(10,2) NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `order_status`  enum('pending','paid','shipped','delivered', 'cancelled') DEFAULT 'pending',
+  `placed_on` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`order_id`),
   KEY `customer_id` (`customer_id`),
+  KEY `address_id` (`address_id`)
+);
+
+DROP TABLE IF EXISTS `boci_order_items`;
+CREATE TABLE IF NOT EXISTS `boci_order_items` (
+  `order_item_id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `product_unit_price` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`order_item_id`),
+  KEY `order_id` (`order_id`),
   KEY `product_id` (`product_id`)
 );
 
