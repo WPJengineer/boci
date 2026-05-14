@@ -28,11 +28,11 @@ if (isset($_SESSION['customer_id'])) {
     </div>
     <div>
       <label for="name">Nombre:</label>
-      <input type="text" id="name" name="name" minlength="3" maxlength="50" pattern="[A-Za-zÀ-ÿ\s'-]+" title="El nombre solo puede contener letras, espacios, apóstrofes o guiones." required />
+      <input type="text" id="name" name="name" minlength="3" maxlength="50" pattern="^[A-Za-zÀ-ÿ\s'.\-]{2,80}$" title="El nombre solo puede contener letras, espacios, apóstrofes o guiones." required />
     </div>
     <div>
       <label for="lastname">Apellidos:</label>
-      <input type="text" id="lastname" name="lastname" minlength="3" maxlength="50" pattern="[A-Za-zÀ-ÿ\s'-]+" title="Los apellidos solo pueden contener letras, espacios, apóstrofes o guiones." required />
+      <input type="text" id="lastname" name="lastname" minlength="3" maxlength="50" pattern="^[A-Za-zÀ-ÿ\s'.\-]{2,80}$" title="Los apellidos solo pueden contener letras, espacios, apóstrofes o guiones." required />
     </div>
     <div>
       <label for="email">Dirección de correo electrónico:</label>

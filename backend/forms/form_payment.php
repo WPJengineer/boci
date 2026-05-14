@@ -111,7 +111,7 @@ require(__DIR__ . '/../db/db_get_payments.php');
 
         <div>
           <label for="card_holder">Nombre del titular*</label>
-          <input type="text" id="card_holder" name="card_holder" minlength="2" maxlength="80" pattern="[A-Za-zÀ-ÿ\s'-]+" title="El nombre del titular solo puede contener letras, espacios, apóstrofes o guiones." required>
+          <input type="text" id="card_holder" name="card_holder" minlength="2" maxlength="80" pattern="^[A-Za-zÀ-ÿ\s'.\-]{2,80}$" title="El nombre del titular solo puede contener letras, espacios, apóstrofes o guiones." required>
         </div>
 
         <div>

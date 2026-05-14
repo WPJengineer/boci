@@ -619,95 +619,83 @@ main {
   justify-content: center;
 }
 
-/*area where we add red or green higlight to verify inputs for forms*/
-
-/* VALID FIELDS */
-
-.forms-login form div input.valid,
-.forms-login form div select.valid,
-
-.new-register input.valid,
-.new-register select.valid,
-
-.address input.valid,
-.address select.valid,
-
-.payment input.valid,
-.payment select.valid,
-
-.account-email input.valid,
-.account-email select.valid,
-
-.account-phone input.valid,
-.account-phone select.valid,
-
-.account-password input.valid {
-  border: 2px solid var(--green-valid) !important;
+.orders-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
 }
 
+.order-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--blue);
+}
 
-/* INVALID FIELDS */
+.order-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 15px;
+  border-bottom: 1px solid var(--blue);
+  font-size: 18px;
+}
 
-.forms-login form div input.invalid,
-.forms-login form div select.invalid,
+.order-header h3 {
+  color: var(--violet);
+}
 
-.new-register input.invalid,
-.new-register select.invalid,
+.order-item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+}
 
-.address input.invalid,
-.address select.invalid,
+.order-item .plush {
+  width: 80px !important;
+  margin: 0;
+  flex-shrink: 0;
+}
 
-.payment input.invalid,
-.payment select.invalid,
+.order-item .quantity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+}
 
-.account-email input.invalid,
-.account-email select.invalid,
+.order-item .quantity p {
+  font-size: 18px;
+}
 
-.account-phone input.invalid,
-.account-phone select.invalid,
-.aacount-password {
-  border: 2px solid var(--red-invalid) !important;
+.order-item .quantity-button {
+  display: flex;
+  align-items: center;
+}
+
+.order-item .quantity-product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  height: 40px;
+  border: 1px solid var(--blue);
+}
+
+.order-item .price {
+  font-size: 22px;
+  color: var(--green);
+}
+
+.order-item:last-of-type {
+  border-bottom: none;
 }
 
 p .active {
   color: var(--violet);
-}
-
-.message {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translate(-50%, -20px);
-  opacity: 0;
-
-  padding: 12px 20px;
-  border-radius: 10px;
-  min-width: 250px;
-
-  text-align: center;
-  z-index: 100;
-
-  transition: all 0.3s ease;
-}
-
-.message.show {
-  opacity: 1;
-  transform: translate(-50%, 0);
-}
-
-.message.success {
-  background-color: var(--green-valid);
-  color: var(--light);
-}
-
-.message.warning {
-  background-color: var(--orange);
-  color: var(--light);
-}
-
-.message.error {
-  background-color: var(--red-invalid);
-  color: var(--light);
 }
 
 @media (min-width: 768px) {
@@ -772,7 +760,24 @@ p .active {
   }
 
   .copyright {
-      font-size: 16px;
+    font-size: 16px;
+  }
+
+  .order-item .plush {
+    width: 100px !important;
+  }
+
+  .order-header {
+    font-size: 20px;
+  }
+
+  .order-item .quantity p,
+  .order-item .quantity-product {
+    font-size: 20px;
+  }
+
+  .order-item .price {
+    font-size: 28px;
   }
 
 }
@@ -877,5 +882,29 @@ p .active {
     font-size: 20px;
     width: 25px;
     height: 25px;
+  }
+
+  .orders-container {
+    width: 75vw;
+  }
+
+  .order-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+  }
+
+  .order-item .plush {
+    width: 120px !important;
+  }
+
+  .order-item .quantity p,
+  .order-item .quantity-product {
+    font-size: 22px;
+  }
+
+  .order-item .price {
+    font-size: 32px;
   }
 }
