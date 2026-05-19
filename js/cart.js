@@ -310,6 +310,7 @@ btnContinueShoppping.addEventListener('click', () => {
   window.location.href = "/student014/boci/views/products.html";
 });
 
+// need to fix this part of the sequence.
 checkoutForm.addEventListener('submit', async(e) => {
   e.preventDefault();
   const totalArticles = Number(numArticles.textContent || 0);
@@ -319,7 +320,9 @@ checkoutForm.addEventListener('submit', async(e) => {
     return;
   }
 
-  try {
+  window.location = "/student014/boci/backend/forms/form_checkout.php";
+
+  /*try {
     const user = await getSessionUser();
     if (!user?.loggedIn) {
       showMessage("Inicia sesión para continuar con el pedido.", "warning");
@@ -352,5 +355,5 @@ checkoutForm.addEventListener('submit', async(e) => {
   } catch (error) {
     console.error(error);
     showMessage(error.message || "Error al crear el pedido.", "error");
-  }
+  }*/
 });

@@ -24,6 +24,14 @@ if (isset($_SESSION['customer_id'])) {
           <input type="radio" name="gender" value="sra">
           Sra.
         </label>
+        <label class="radio-option">
+          <input type="radio" name="gender" value="non-binary">
+          No binario
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="gender" value="prefer-not-to-say">
+          Prefiero no decirlo
+        </label>
       </div>
     </div>
     <div>
