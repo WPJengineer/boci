@@ -20,7 +20,7 @@ require(__DIR__ . '/../db/db_get_addresses.php');
       <p><a href="/student014/boci/views/cart.html">MI CARRITO</a></p>
       <p><a href="/student014/boci/backend/forms/orders.php">MIS PEDIDOS</a></p>
     </div>
-    <h2>Mis direcciones</h2>
+    <h2>MIS DIRECCIONES</h2>
     <div class="saved-addresses">
       <?php if (!empty($addresses)): ?>
         <?php foreach ($addresses as $address): ?>
@@ -55,7 +55,7 @@ require(__DIR__ . '/../db/db_get_addresses.php');
         <p>No tienes direcciones guardadas todavía.</p>
       <?php endif; ?>
     </div>
-    <h2>Añadir nueva dirección</h2>
+    <h2>AÑADIR NUEVA DIRECCIÓN</h2>
     <form class="address" action="/student014/boci/backend/db/db_address.php" method="POST" novalidate>
       <label for="country">País</label>
       <select name="country" id="country" required>

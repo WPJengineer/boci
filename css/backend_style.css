@@ -76,7 +76,7 @@ main {
   }
 }
 
-.btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment, .btn-new-email, .btn-new-phone, .btn-new-password {
+.btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment, .btn-personal-info, .btn-new-email, .btn-new-phone, .btn-new-password {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,11 +87,11 @@ main {
   font-size: 18px;
 }
 
-.btn-register:hover, .btn-login:hover, .btn-new-register:hover, .btn-forgot-password:hover, .btn-volver:hover, .btn-new-address:hover, .btn-new-payment:hover, .btn-new-email:hover, .btn-new-phone:hover, .btn-new-password:hover {
+.btn-register:hover, .btn-login:hover, .btn-new-register:hover, .btn-forgot-password:hover, .btn-volver:hover, .btn-new-address:hover, .btn-new-payment:hover, .btn-personal-info:hover, .btn-new-email:hover, .btn-new-phone:hover, .btn-new-password:hover {
   cursor: pointer;
 }
 
-.btn-register:active, .btn-login:active, .btn-new-register:active, .btn-forgot-password:active, .btn-volver:active, .btn-new-address:active, .btn-new-payment:active, .btn-new-email:active, .btn-new-phone:active, .btn-new-password:active {
+.btn-register:active, .btn-login:active, .btn-new-register:active, .btn-forgot-password:active, .btn-volver:active, .btn-new-address:active, .btn-new-payment:active, .btn-personal-info:active, .btn-new-email:active, .btn-new-phone:active, .btn-new-password:active {
   transform: scale(0.95);
 }
 
@@ -239,6 +239,10 @@ main {
   gap: 30px;
   margin-top: -10px;
   font-size: 18px;
+
+  h2 {
+    color: var(--violet);
+  }
 }
 
 .pages {
@@ -367,6 +371,11 @@ main {
     font-family: 'afacad';
     padding: 5px;
     background-color: var(--light);
+  }
+
+  h2 {
+    color: var(--violet);
+    font-size: 26px;
   }
 
   .btn-new-payment {
@@ -603,6 +612,67 @@ main {
 
 }
 
+.checkout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.personal-info {
+  min-width: 350px;
+  /* max-width: 600px; */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: 2px solid var(--blue);
+  font-size: 18px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .radio-group label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  .login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+
+    a {
+      color: var(--blue-highlight);
+      text-decoration: underline;
+    }
+  }
+
+  input {
+    border: 1px solid var(--blue);
+    height: 40px;
+    font-size: 18px;
+    font-family: 'afacad';
+    padding: 5px;
+    background-color: var(--light);
+  }
+
+  .btn-personal-info {
+    height: 40px;
+  }
+
+  h2 {
+    color: var(--violet);
+    font-size: 26px;
+  }
+}
+
 #counter {
   background-color: var(--red-invalid);
   color: var(--light);
@@ -726,7 +796,7 @@ p .active {
     }
   }
 
-  .btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment, .btn-new-email, .btn-new-phone {
+  .btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment, .btn-personal-info, .btn-new-email, .btn-new-phone {
     font-size: 20px;
   }
 
@@ -751,7 +821,7 @@ p .active {
     }
   }
 
-  .profile, .address, .address input, .address select, .payment, .payment input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input {
+  .profile, .address, .address input, .address select, .payment, .payment input, .personal-info, .personal-info input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input {
     font-size: 20px;
   }
 
@@ -846,11 +916,11 @@ p .active {
     }
   } 
 
-  .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment, .btn-new-email, .btn-new-phone {
+  .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment, .btn-personal-info, .btn-new-email, .btn-new-phone {
     font-size: 22px;
   }
 
-  .profile, .address, .address input, .address select, .payment, .payment input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input {
+  .profile, .address, .address input, .address select, .payment, .payment input, .personal-info, .personal-info input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input {
     font-size: 22px;
   }
 
