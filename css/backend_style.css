@@ -768,6 +768,45 @@ p .active {
   color: var(--violet);
 }
 
+.checkout form.is-collapsed > *:not(h2) {
+  display: none !important;
+}
+
+.place-order {
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: 2px solid var(--blue);
+  font-size: 18px;
+}
+
+.place-order h2 {
+  color: var(--violet);
+  font-size: 26px;
+}
+
+.btn-place-order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--green);
+  color: var(--light);
+  border: none;
+  padding: 5px;
+  font-size: 18px;
+  height: 40px;
+}
+
+.btn-place-order:hover {
+  cursor: pointer;
+}
+
+.btn-place-order:active {
+  transform: scale(0.95);
+}
+
 @media (min-width: 768px) {
 
   .buy {
@@ -796,7 +835,7 @@ p .active {
     }
   }
 
-  .btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment, .btn-personal-info, .btn-new-email, .btn-new-phone {
+  .btn-register, .btn-login, .btn-new-register, .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment, .btn-personal-info, .btn-new-email, .btn-new-phone, .place-order, .btn-place-order {
     font-size: 20px;
   }
 
@@ -825,7 +864,7 @@ p .active {
     font-size: 20px;
   }
 
-  .address {
+  .address, .place-order {
     width: 600px;
   }
 
@@ -916,7 +955,7 @@ p .active {
     }
   } 
 
-  .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment, .btn-personal-info, .btn-new-email, .btn-new-phone {
+  .btn-forgot-password, .btn-volver, .btn-new-address, .btn-new-payment, .btn-personal-info, .btn-new-email, .btn-new-phone, .place-order, .btn-place-order {
     font-size: 22px;
   }
 

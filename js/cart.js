@@ -311,8 +311,9 @@ btnContinueShoppping.addEventListener('click', () => {
 });
 
 // need to fix this part of the sequence.
-checkoutForm.addEventListener('submit', async(e) => {
+checkoutForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+
   const totalArticles = Number(numArticles.textContent || 0);
 
   if (totalArticles <= 0) {
@@ -320,40 +321,18 @@ checkoutForm.addEventListener('submit', async(e) => {
     return;
   }
 
-  window.location = "/student014/boci/backend/forms/form_checkout.php";
+  const user = await getSessionUser();
 
-  /*try {
-    const user = await getSessionUser();
-    if (!user?.loggedIn) {
-      showMessage("Inicia sesión para continuar con el pedido.", "warning");
-      setTimeout(() => {
-        window.location.href = "/student014/boci/backend/forms/form_login.php?redirect=/student014/boci/backend/forms/form_checkout.php";
-      }, 800);
-      return;
-    }
-  
-    const response = await fetch(
-      "/student014/boci/backend/endpoints/order_create.php",
-      {
-        method: "POST",
-        credentials: "include"
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok || !data.success) {
-      throw new Error(data.message || "No se ha podido crear el pedido.");
-    }
-
-    showMessage(data.message || "Pedido creado correctamente.", "success");
+  if (!user?.loggedIn) {
+    showMessage("Inicia sesión para continuar con el pedido.", "warning");
 
     setTimeout(() => {
-      window.location.href =`/student014/boci/backend/forms/form_order_success.php?order=${encodeURIComponent(data.order_number)}`;
+      window.location.href =
+        "/student014/boci/backend/forms/form_login.php?redirect=/student014/boci/backend/forms/form_checkout.php";
     }, 800);
 
-  } catch (error) {
-    console.error(error);
-    showMessage(error.message || "Error al crear el pedido.", "error");
-  }*/
+    return;
+  }
+
+  window.location.href = "/student014/boci/backend/forms/form_checkout.php";
 });

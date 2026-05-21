@@ -60,7 +60,7 @@ require(__DIR__.'/../header.php');
             <button class="btn-personal-info" type="submit">CONTINUAR</button>
         </div>
     </form>
-    <form class="address">
+    <form class="address" novalidate>
         <h2>2. DIRECCIONES</h2>
         <div>
             <label for="address-line1">Dirección</label>
@@ -107,7 +107,7 @@ require(__DIR__.'/../header.php');
             <button class="btn-new-address" type="submit">CONTINUAR</button>
         </div>
     </form>
-    <form class="payment">
+    <form class="payment" novalidate>
         <h2>3. MÉTODO DE PAGO</h2>
         <div>
             <label>Método de pago</label>
@@ -185,8 +185,16 @@ require(__DIR__.'/../header.php');
             <button class="btn-new-payment" type="submit">CONTINUAR</button>
         </div>
     </form>
+    <!-- each form needs to be auto filled with customer data if logged in or used as temporary values if done as a guest -->
+    <!-- missing to add green border to form that is correctly submitted and also icon to allow edit -->
+    <!-- need to show items in shopping cart we are purchasing-->
+    <form class="place-order is-collapsed">
+        <h2>4. CONFIRMAR PEDIDO</h2>
+        <div>
+            <button class="btn-place-order" type="submit">REALIZAR PEDIDO</button>
+        </div>
+    </form>
   </div>
-  <!-- need to show items in shopping cart we are purchasing-->
   <button class="btnShoppingCart">
     <img draggable="false" src="/student014/boci/assets/icons/shopping-bag-icon.svg" alt="shopping-bag-icon">
     <span id="counter">0</span>

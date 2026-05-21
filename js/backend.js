@@ -196,8 +196,16 @@ if (confirmPassword && showConfirmPassword) {
 
 const formLogin = document.querySelector(".login");
 const formNewRegister = document.querySelector(".new-register");
-const formNewAddress = document.querySelector(".address");
-const formNewPayment = document.querySelector(".payment");
+
+const checkout = document.querySelector(".checkout");
+
+const formPersonalInfo = checkout?.querySelector(".personal-info");
+const formCheckoutAddress = checkout?.querySelector(".address");
+const formCheckoutPayment = checkout?.querySelector(".payment");
+const formPlaceOrder = checkout?.querySelector(".place-order");
+
+const formNewAddress = document.querySelector(".profile .address");
+const formNewPayment = document.querySelector(".profile .payment");
 const formNewEmail = document.querySelector(".account-email");
 const formNewPhone = document.querySelector(".account-phone");
 const formNewPassword = document.querySelector(".account-password");
@@ -205,6 +213,23 @@ const links = document.querySelectorAll('.pages p a');
 const methodSelect = document.getElementById("method_type");
 const cardFields = document.getElementById("card-fields");
 const googlePayFields = document.getElementById("googlepay-fields");
+const checkoutForms = [
+  formPersonalInfo,
+  formCheckoutAddress,
+  formCheckoutPayment,
+  formPlaceOrder
+].filter(Boolean);
+
+function openCheckoutStep(stepIndex) {
+  checkoutForms.forEach((form, index) => {
+    form.classList.toggle("is-collapsed", index !== stepIndex);
+    form.classList.toggle("is-active", index === stepIndex);
+  });
+}
+
+if (checkoutForms.length > 0) {
+  openCheckoutStep(0);
+}
 
 if (formLogin) {
   const inputsLogin = formLogin.querySelectorAll("input");
@@ -248,13 +273,30 @@ if (formNewRegister) {
   });
 }
 
-if (formNewAddress) {
-  const inputsAddress = formNewAddress.querySelectorAll("input, select");
+if (formPersonalInfo) {
+  const inputsPersonalInfo = formPersonalInfo.querySelectorAll("input, select");
 
-  formNewAddress.addEventListener("submit", (e) => {
-    if (!validateFormInputs(inputsAddress, [], false)) {
-      e.preventDefault();
+  formPersonalInfo.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if (!validateFormInputs(inputsPersonalInfo, [], false)) {
+      return;
     }
+
+    openCheckoutStep(1);
+  });
+}
+
+if (formCheckoutAddress) {
+  const inputsAddress = formCheckoutAddress.querySelectorAll("input, select");
+  formCheckoutAddress.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if (!validateFormInputs(inputsAddress, [], false)) {
+      return;
+    }
+
+    openCheckoutStep(2);
   });
 }
 
@@ -292,11 +334,63 @@ if (methodSelect && cardFields && googlePayFields) {
   setPaymentFields();
 }
 
+if (formCheckoutPayment) {
+  const inputsPayment = formCheckoutPayment.querySelectorAll("input, select");
+  formCheckoutPayment.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if (!validateFormInputs(inputsPayment)) {
+      return;
+    }
+
+    openCheckoutStep(3);
+  });
+}
+
+if (formPlaceOrder) {
+  formPlaceOrder.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        "/student014/boci/backend/endpoints/order_create.php",
+        {
+          method: "POST",
+          credentials: "include"
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "No se pudo crear el pedido.");
+      }
+
+      window.location.href =
+        `/student014/boci/backend/forms/form_order_success.php?order_number=${encodeURIComponent(data.order_number)}`;
+
+    } catch (error) {
+      console.error(error);
+      showMessage(error.message || "No se pudo procesar el pedido.", "error");
+    }
+  });
+}
+
+if (formNewAddress) {
+  const inputsAddress = formNewAddress.querySelectorAll("input, select");
+
+  formNewAddress.addEventListener("submit", (e) => {
+    if (!validateFormInputs(inputsAddress, [], false)) {
+      e.preventDefault();
+    }
+  });
+}
+
 if (formNewPayment) {
   const inputsPayment = formNewPayment.querySelectorAll("input, select");
 
   formNewPayment.addEventListener("submit", (e) => {
-    if (!validateFormInputs(inputsPayment)) {
+    if (!validateFormInputs(inputsPayment, ["is_default"])) {
       e.preventDefault();
     }
   });
