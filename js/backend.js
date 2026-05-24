@@ -203,6 +203,7 @@ const formPersonalInfo = checkout?.querySelector(".personal-info");
 const formCheckoutAddress = checkout?.querySelector(".address");
 const formCheckoutPayment = checkout?.querySelector(".payment");
 const formPlaceOrder = checkout?.querySelector(".place-order");
+const guestPlaceOrder = document.getElementById("guest-place-order");
 
 const formNewAddress = document.querySelector(".profile .address");
 const formNewPayment = document.querySelector(".profile .payment");
@@ -347,16 +348,30 @@ if (formCheckoutPayment) {
   });
 }
 
-if (formPlaceOrder) {
+if (formPlaceOrder && !guestPlaceOrder) {
   formPlaceOrder.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     try {
+      const identificationInput = document.getElementById("identification");
+
+      if (!identificationInput || !identificationInput.checkValidity()) {
+        showMessage("Introduce un documento de identidad válido.", "error");
+        identificationInput?.focus();
+        return;
+      }
+
       const response = await fetch(
         "/student014/boci/backend/endpoints/order_create.php",
         {
           method: "POST",
-          credentials: "include"
+          headers: {
+            "Content-Type": "application/json"
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            identification: identificationInput ? identificationInput.value.trim() : ""
+          })
         }
       );
 
@@ -365,6 +380,48 @@ if (formPlaceOrder) {
       if (!response.ok || !data.success) {
         throw new Error(data.message || "No se pudo crear el pedido.");
       }
+
+      window.location.href =
+        `/student014/boci/backend/forms/form_order_success.php?order_number=${encodeURIComponent(data.order_number)}`;
+
+    } catch (error) {
+      console.error(error);
+      showMessage(error.message || "No se pudo procesar el pedido.", "error");
+    }
+  });
+}
+
+if (guestPlaceOrder) {
+  guestPlaceOrder.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    try {
+      const payload = {
+        personal_info: Object.fromEntries(new FormData(formPersonalInfo)),
+        address: Object.fromEntries(new FormData(formCheckoutAddress)),
+        payment: Object.fromEntries(new FormData(formCheckoutPayment)),
+        cart: JSON.parse(localStorage.getItem("cart") || "[]")
+      };
+
+      const response = await fetch(
+        "/student014/boci/backend/endpoints/order_create_guest.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          credentials: "include",
+          body: JSON.stringify(payload)
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "No se pudo crear el pedido.");
+      }
+
+      localStorage.removeItem("cart");
 
       window.location.href =
         `/student014/boci/backend/forms/form_order_success.php?order_number=${encodeURIComponent(data.order_number)}`;
@@ -648,3 +705,97 @@ if (btnDeletePayment.length > 0) {
     });
   });
 }
+
+async function getCheckoutProducts() {
+  const user = await getSessionUser();
+
+  if (user?.loggedIn) {
+    const response = await fetch(
+      "/student014/boci/backend/endpoints/cart_frontend.php",
+      { credentials: "include" }
+    );
+
+    if (!response.ok) {
+      throw new Error("No se pudo cargar el carrito.");
+    }
+
+    return await response.json();
+  }
+
+  const rawCart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  if (!Array.isArray(rawCart) || rawCart.length === 0) {
+    return [];
+  }
+
+  const response = await fetch(
+    "/student014/boci/backend/endpoints/product_frontend.php"
+  );
+
+  if (!response.ok) {
+    throw new Error("No se pudieron cargar los productos.");
+  }
+
+  const products = await response.json();
+
+  return rawCart
+    .map((cartItem) => {
+      const product = products.find(
+        (p) => Number(p.product_id) === Number(cartItem.product_id)
+      );
+
+      if (!product) return null;
+
+      return {
+        ...product,
+        quantity: cartItem.quantity
+      };
+    })
+    .filter(Boolean);
+}
+
+async function renderCheckoutProducts() {
+  const container = document.getElementById("checkout-products");
+
+  if (!container) return;
+
+  try {
+    const products = await getCheckoutProducts();
+
+    if (!products.length) {
+      container.innerHTML = "<p>Tu carrito está vacío.</p>";
+      return;
+    }
+
+    container.innerHTML = products.map((product) => `
+      <article class="cart-item order-item">
+        <img
+          draggable="false"
+          class="plush"
+          src="${product.product_image}"
+          alt="${product.product_name}"
+        >
+
+        <div class="quantity">
+          <p>${product.product_name}</p>
+
+          <div class="quantity-button">
+            <span class="quantity-product">
+              ${Number(product.quantity)}
+            </span>
+          </div>
+        </div>
+
+        <span class="price">
+          ${Number(product.product_unit_price).toFixed(2)}€
+        </span>
+      </article>
+    `).join("");
+
+  } catch (error) {
+    console.error(error);
+    container.innerHTML = "<p>No se pudieron cargar los productos.</p>";
+  }
+}
+
+renderCheckoutProducts();

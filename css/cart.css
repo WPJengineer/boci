@@ -116,7 +116,7 @@ main {
 
 .subtotal, .total, .payment-method {
   /* justify-content: space-between; */
-  border: 1px solid var(--blue);
+  /* border: 1px solid var(--blue); */
   padding: 20px;
 }
 
@@ -129,6 +129,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  border: none;
 }
 
 #checkout-form {
@@ -161,10 +162,11 @@ main {
 .btnCheckout {
   display: block;
   margin: 0 auto;
-  padding: 5px 20px;
+  padding: 5px 24px;
   background-color: var(--violet);
   color: var(--light);
   border: none;
+  border-radius: 30px;
   font-size: 18px;
 }
 

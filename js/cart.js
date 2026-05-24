@@ -323,16 +323,9 @@ checkoutForm.addEventListener("submit", async (e) => {
 
   const user = await getSessionUser();
 
-  if (!user?.loggedIn) {
-    showMessage("Inicia sesión para continuar con el pedido.", "warning");
-
-    setTimeout(() => {
-      window.location.href =
-        "/student014/boci/backend/forms/form_login.php?redirect=/student014/boci/backend/forms/form_checkout.php";
-    }, 800);
-
-    return;
+  if (user?.loggedIn) {
+    window.location.href = "/student014/boci/backend/forms/form_checkout.php";
+  } else {
+    window.location.href = "/student014/boci/backend/forms/form_checkout_guest.php";
   }
-
-  window.location.href = "/student014/boci/backend/forms/form_checkout.php";
 });

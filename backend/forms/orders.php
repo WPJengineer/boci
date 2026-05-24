@@ -1,7 +1,7 @@
 <?php
 require(__DIR__.'/../header.php');
 
-session_start();
+// session_start();
 
 if (!isset($_SESSION['customer_id'])) {
   header("Location: /student014/boci/backend/forms/form_login.php");

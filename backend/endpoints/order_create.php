@@ -16,6 +16,8 @@ if (!isset($_SESSION['customer_id'])) {
 }
 
 $customerId = $_SESSION['customer_id'];
+$input = json_decode(file_get_contents("php://input"), true);
+$identification = trim($input["identification"] ?? "");
 
 require(__DIR__ . '/../config/db_config.php');
 
@@ -247,12 +249,13 @@ $stmtOrder = $conn->prepare("
     order_number,
     customer_id,
     address_id,
+    customer_identification,
     subtotal,
     transport_fee,
     total,
     order_status
   )
-  VALUES (NULL, ?, ?, ?, ?, ?, 'paid')
+  VALUES (NULL, ?, ?, ?, ?, ?, ?, 'paid')
 ");
 
 if (!$stmtOrder) {
@@ -269,9 +272,10 @@ if (!$stmtOrder) {
 }
 
 $stmtOrder->bind_param(
-  "iiddd",
+  "iisddd",
   $customerId,
   $addressId,
+  $identification,
   $subtotal,
   $transportFee,
   $total

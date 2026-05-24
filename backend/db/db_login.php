@@ -12,6 +12,7 @@ $sql = "
   SELECT *
   FROM boci_customers
   WHERE customer_email = ?
+    AND customer_role IN ('customer', 'admin')
   LIMIT 1
 ";
 

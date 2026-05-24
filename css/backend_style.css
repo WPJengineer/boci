@@ -788,16 +788,28 @@ p .active {
 }
 
 .btn-place-order {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--green);
+  /* display: flex; */
+  display: block;
+  margin: 0 auto;
+  /* justify-content: center; */
+  /* align-items: center; */
+  background-color: var(--violet);
   color: var(--light);
   border: none;
-  padding: 5px;
+  border-radius: 30px;
+  padding: 5px 24px;
   font-size: 18px;
   height: 40px;
 }
+
+/* display: block;
+  margin: 0 auto;
+  padding: 5px 24px;
+  background-color: var(--violet);
+  color: var(--light);
+  border: none;
+  border-radius: 30px;
+  font-size: 18px; */
 
 .btn-place-order:hover {
   cursor: pointer;

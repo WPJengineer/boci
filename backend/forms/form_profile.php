@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 require(__DIR__.'/../header.php');
 
 session_start();
@@ -23,4 +23,4 @@ if (!isset($_SESSION['customer_id'])) {
 
 <?php
 require(__DIR__.'/../footer.php');
-?>
+?> -->
