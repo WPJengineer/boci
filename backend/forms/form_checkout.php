@@ -55,10 +55,14 @@ $conn->close();
 ?>
 
 <main>
-  <a href="/student014/boci/backend/forms/form_profile.php">
-    <img draggable="false" src="/student014/boci/assets/icons/profile-icon-black.svg" alt="profile-icon" class="buy">
-  </a>
-
+  <a href="/student014/boci/backend/forms/form_login.php"><img draggable="false" src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
+  <div class="pages">
+    <p><a href="/student014/boci/backend/forms/form_address.php">DIRECCIÓN DE ENVÍO</a></p>
+    <p><a href="/student014/boci/backend/forms/form_payment.php">OPCIONES DE PAGO</a></p>
+    <p><a href="/student014/boci/backend/forms/form_account.php">GESTIONAR MI CUENTA</a></p>
+    <p><a href="/student014/boci/views/cart.html">MI CARRITO</a></p>
+    <p><a href="/student014/boci/backend/forms/orders.php">MIS PEDIDOS</a></p>
+  </div>
   <div class="checkout">
 
     <form class="personal-info" novalidate>

@@ -2,6 +2,7 @@ main {
   position: relative;
   padding: 40px 20px 20px 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -122,8 +123,8 @@ main {
 
     .radio-group {
       display: flex;
-      flex-direction: row;
-      align-items: center;
+      /* flex-direction: row; */
+      /* align-items: center; */
       gap: 20px;
       
       .radio-option {
@@ -237,7 +238,7 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  margin-top: -10px;
+  /* margin-top: -10px; */
   font-size: 18px;
 
   h2 {
@@ -251,6 +252,8 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  margin-top: -10px;
+  font-size: 18px;
 
   p {
     text-align: center;
@@ -616,6 +619,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-top: 30px;
 }
 
 .personal-info {
@@ -817,6 +821,10 @@ p .active {
 
 .btn-place-order:active {
   transform: scale(0.95);
+}
+
+.success {
+  width: 200px;
 }
 
 @media (min-width: 768px) {

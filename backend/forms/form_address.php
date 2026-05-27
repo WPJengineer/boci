@@ -74,6 +74,7 @@ require(__DIR__ . '/../db/db_get_addresses.php');
       <input type="text" name="city" id="city" minlength="2" maxlength="80" required>
       <label for="postal_code">Código postal</label>
       <input type="text" name="postal_code" id="postal_code" minlength="4" maxlength="10" inputmode="numeric" required>
+      <!-- remove street num and join with street name -->
       <label for="street_name">Calle</label>
       <input type="text" name="street_name" id="street_name" minlength="2" maxlength="100" required>
       <label for="street_num">Número</label>
