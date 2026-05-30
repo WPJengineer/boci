@@ -27,29 +27,29 @@ require(__DIR__.'/../header.php');
       <p>Número de pedido</p>
       <span></span>
     </div>
-    <div>
-      <img src="" alt="email-icon">
+    <div class="order-email">
+      <img class="icon" src="/student014/boci/assets/icons/email-icon.svg" alt="email-icon">
       <p>Te hemos enviado un correo electrónico con el recibo y los detalles de tu pedido.</p>
     </div>
     <div class="order-details">
       <p>Resumen de pedido</p>
       <div class="order-date">
-        <img src="" alt="">
+        <img src="" alt="calender-icon">
         <p>Fecha</p>
         <span></span>
       </div>
       <div class="order-num">
-        <img src="" alt="">
+        <img src="" alt="receipt-icon">
         <p>Número de pedido</p>
         <span></span>
       </div>
       <div class="order-payment">
-        <img src="" alt="">
+        <img src="" alt="wallet-icon">
         <p>Método de pago</p>
         <span></span>
       </div>
       <div class="order-address">
-        <img src="" alt="">
+        <img src="" alt="delivery-icon">
         <p>Dirección de envío</p>
         <span></span>
       </div>

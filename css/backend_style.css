@@ -823,6 +823,38 @@ p .active {
   transform: scale(0.95);
 }
 
+.order-confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 20px; */
+}
+
+/* .order-num {
+  
+} */
+
+.order-num:not(.order-details>.order-num) {
+  padding: 10px;
+  border: 2px solid var(--violet);
+  border-radius: 2px;
+  color: var(--violet);
+}
+
+.order-email {
+  display: flex;
+}
+
+.order-details {
+  padding: 10px;
+  border: 2px solid var(--violet);
+  border-radius: 2px;
+}
+
+.order-details>p {
+  color: var(--violet);
+}
+
 .success {
   width: 200px;
 }
