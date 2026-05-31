@@ -23,34 +23,42 @@ require(__DIR__.'/../header.php');
     <img class="success" src="/student014/boci/assets/images/order_success_image.png" alt="order-success-image">
     <h1>¡Pedido confirmado!</h1>
     <p>Tu pedido se ha realizado correctamente.</p>
-    <div class="order-num">
+    <div class="order-num-main">
       <p>Número de pedido</p>
       <span></span>
     </div>
     <div class="order-email">
-      <img class="icon" src="/student014/boci/assets/icons/email-icon.svg" alt="email-icon">
+      <img src="/student014/boci/assets/icons/purple-email-icon.svg" alt="email-icon">
       <p>Te hemos enviado un correo electrónico con el recibo y los detalles de tu pedido.</p>
     </div>
     <div class="order-details">
       <p>Resumen de pedido</p>
       <div class="order-date">
-        <img src="" alt="calender-icon">
-        <p>Fecha</p>
+        <div>
+          <img src="/student014/boci/assets/icons/calender-icon.svg" alt="calender-icon">
+          <p>Fecha</p>
+        </div>
         <span></span>
       </div>
       <div class="order-num">
-        <img src="" alt="receipt-icon">
-        <p>Número de pedido</p>
+        <div>
+          <img src="/student014/boci/assets/icons/receipt-icon.svg" alt="receipt-icon">
+          <p>Número de pedido</p>
+        </div>
         <span></span>
       </div>
       <div class="order-payment">
-        <img src="" alt="wallet-icon">
-        <p>Método de pago</p>
+        <div>
+          <img src="/student014/boci/assets/icons/wallet-icon.svg" alt="wallet-icon">
+          <p>Método de pago</p>
+        </div>
         <span></span>
       </div>
       <div class="order-address">
-        <img src="" alt="delivery-icon">
-        <p>Dirección de envío</p>
+        <div>
+          <img src="/student014/boci/assets/icons/truck-icon.svg" alt="delivery-icon">
+          <p>Dirección de envío</p>
+        </div>
         <span></span>
       </div>
       <div class="order-subtotal">

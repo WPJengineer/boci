@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <rect width="1024" height="1024" fill="#FFFFFF"/>
+  <circle cx="512" cy="512" r="410" fill="#E9D2FF"/>
+
+  <!-- Back wallet -->
+  <g fill="none" stroke="#000000" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M343 385 H641 C663 385 681 403 681 425 V450"/>
+    <path d="M681 632 C681 655 663 673 641 673 H365 C342 673 324 655 324 632 V425 C324 403 342 385 365 385"/>
+  </g>
+
+  <!-- Front wallet section (reverted width change) -->
+  <g fill="#E9D2FF" stroke="#000000" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M365 450
+             H675
+             C697 450 715 468 715 490
+             V632
+             C715 655 697 673 675 673
+             H365"/>
+  </g>
+
+  <!-- Top fold -->
+  <g fill="none" stroke="#000000" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M365 385
+             H641
+             C663 385 681 403 681 425
+             V450
+             H365
+             C342 450 324 432 324 410"/>
+  </g>
+
+  <!-- Clasp centered vertically on side -->
+  <g fill="#E9D2FF" stroke="#000000" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M630 510
+             H708
+             C722 510 734 522 734 536
+             V577
+             C734 591 722 603 708 603
+             H630
+             C604 603 583 582 583 556
+             C583 530 604 510 630 510
+             Z"/>
+  </g>
+
+  <circle cx="634" cy="556" r="14" fill="#000000"/>
+</svg>
