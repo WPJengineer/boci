@@ -3,13 +3,13 @@
   <circle cx="512" cy="512" r="410" fill="#E9D2FF"/>
 
   <!-- Back wallet -->
-  <g fill="none" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="none" stroke="#000000" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
     <path d="M343 385 H641 C663 385 681 403 681 425 V450"/>
     <path d="M681 632 C681 655 663 673 641 673 H365 C342 673 324 655 324 632 V425 C324 403 342 385 365 385"/>
   </g>
 
   <!-- Front wallet section (reverted width change) -->
-  <g fill="#E9D2FF" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="#E9D2FF" stroke="#000000" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
     <path d="M365 450
              H675
              C697 450 715 468 715 490
@@ -19,7 +19,7 @@
   </g>
 
   <!-- Top fold -->
-  <g fill="none" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="none" stroke="#000000" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
     <path d="M365 385
              H641
              C663 385 681 403 681 425
@@ -29,7 +29,7 @@
   </g>
 
   <!-- Clasp centered vertically on side -->
-  <g fill="#E9D2FF" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="#E9D2FF" stroke="#000000" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
     <path d="M630 510
              H708
              C722 510 734 522 734 536

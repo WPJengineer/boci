@@ -68,8 +68,8 @@ require(__DIR__.'/../header.php');
     </div>
     <p>Prepararemos tu pedido lo antes posible. Puedes consultar el estado del pedido en <a href="/student014/boci/backend/forms/orders.php">Mis pedidos</a>.</p>
     <div class="order-buttons">
-      <button>VER MIS PEDIDOS</button>
-      <button>SEGUIR COMPRANDO</button>
+      <button class="view">VER MIS PEDIDOS</button>
+      <button class="follow">SEGUIR COMPRANDO</button>
     </div>
   </div>
 
