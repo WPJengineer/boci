@@ -2,10 +2,86 @@
 
 require(__DIR__.'/../header.php');
 
-// show successful purchase with details and then also send email of receipt (inform them that an email containing details of purchase has been sent to their email).
-// buttons to:
-// seguir comprando
-// mis pedidos
+if (!isset($_SESSION['customer_id'])) {
+  header("Location: /student014/boci/backend/forms/form_login.php");
+  exit();
+}
+
+if (empty($_GET['order_number'])) {
+  header("Location: /student014/boci/backend/forms/orders.php");
+  exit();
+}
+
+require(__DIR__ . '/../config/db_config.php');
+
+$customerId = $_SESSION['customer_id'];
+$orderNumber = trim($_GET['order_number']);
+
+$stmt = $conn->prepare("
+  SELECT
+    o.order_number,
+    o.placed_on,
+    o.total,
+    o.order_status,
+
+    a.street,
+    a.number,
+    a.city,
+    a.state,
+    a.postal_code,
+    a.country,
+
+    pay.method_type,
+    pay.payment_status
+
+  FROM boci_orders AS o
+
+  INNER JOIN boci_address AS a
+    ON o.address_id = a.address_id
+
+  LEFT JOIN boci_payments AS pay
+    ON o.order_number = pay.order_number
+
+  WHERE o.order_number = ?
+    AND o.customer_id = ?
+
+  LIMIT 1
+");
+
+if (!$stmt) {
+  header("Location: /student014/boci/backend/forms/orders.php");
+  exit();
+}
+
+$stmt->bind_param("si", $orderNumber, $customerId);
+$stmt->execute();
+
+$order = $stmt->get_result()->fetch_assoc();
+
+$stmt->close();
+$conn->close();
+
+if (!$order) {
+  header("Location: /student014/boci/backend/forms/orders.php");
+  exit();
+}
+
+$paymentMethod = 'No disponible';
+
+if (($order['method_type'] ?? '') === 'card') {
+  $paymentMethod = 'Tarjeta';
+} elseif (($order['method_type'] ?? '') === 'google_pay') {
+  $paymentMethod = 'Google Pay';
+}
+
+$address = trim(
+  ($order['street'] ?? '') . ' ' .
+  ($order['number'] ?? '') . ', ' .
+  ($order['postal_code'] ?? '') . ' ' .
+  ($order['city'] ?? '') . ', ' .
+  ($order['state'] ?? '') . ', ' .
+  ($order['country'] ?? '')
+);
 
 ?>
 
@@ -25,7 +101,7 @@ require(__DIR__.'/../header.php');
     <p>Tu pedido se ha realizado correctamente.</p>
     <div class="order-num-main">
       <p>Número de pedido</p>
-      <span></span>
+      <span><?= htmlspecialchars($order['order_number']) ?></span>
     </div>
     <div class="order-email">
       <img src="/student014/boci/assets/icons/purple-email-icon.svg" alt="email-icon">
@@ -38,38 +114,38 @@ require(__DIR__.'/../header.php');
           <img src="/student014/boci/assets/icons/calender-icon.svg" alt="calender-icon">
           <p>Fecha</p>
         </div>
-        <span></span>
+        <span><?= htmlspecialchars($order['placed_on']) ?></span>
       </div>
       <div class="order-num">
         <div>
           <img src="/student014/boci/assets/icons/receipt-icon.svg" alt="receipt-icon">
           <p>Número de pedido</p>
         </div>
-        <span></span>
+        <span><?= htmlspecialchars($order['order_number']) ?></span>
       </div>
       <div class="order-payment">
         <div>
           <img src="/student014/boci/assets/icons/wallet-icon.svg" alt="wallet-icon">
           <p>Método de pago</p>
         </div>
-        <span></span>
+        <span><?= htmlspecialchars($paymentMethod) ?></span>
       </div>
       <div class="order-address">
         <div>
           <img src="/student014/boci/assets/icons/truck-icon.svg" alt="delivery-icon">
           <p>Dirección de envío</p>
         </div>
-        <span></span>
+        <span><?= htmlspecialchars($address) ?></span>
       </div>
       <div class="order-subtotal">
         <p>Total pagado</p>
-        <span></span>
+        <span><?= number_format((float)$order['total'], 2) ?>€</span>
       </div>
     </div>
     <p>Prepararemos tu pedido lo antes posible. Puedes consultar el estado del pedido en <a href="/student014/boci/backend/forms/orders.php">Mis pedidos</a>.</p>
     <div class="order-buttons">
-      <button class="view">VER MIS PEDIDOS</button>
-      <button class="follow">SEGUIR COMPRANDO</button>
+      <button type="button" class="view">VER MIS PEDIDOS</button>
+      <button type="button" class="follow">SEGUIR COMPRANDO</button>
     </div>
   </div>
 

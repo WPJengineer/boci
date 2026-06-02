@@ -835,6 +835,11 @@ p .active {
   }
 }
 
+.order-confirm>p {
+  width: 75%;
+  text-align: center;
+}
+
 .order-num-main {
   padding: 10px;
   border: 2px solid var(--violet);
@@ -843,6 +848,10 @@ p .active {
   margin: 10px;
   font-size: 24px;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
 .order-email {
@@ -864,7 +873,7 @@ p .active {
   padding: 20px;
   border: 2px solid var(--violet);
   border-radius: 5px;
-  width: 75%;
+  /* width: 75%; */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -882,6 +891,8 @@ p .active {
 
 .order-date {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--violet);
 
@@ -894,6 +905,8 @@ p .active {
 
 .order-num {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--violet);
 
@@ -906,6 +919,8 @@ p .active {
 
 .order-payment {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--violet);
 
@@ -918,8 +933,12 @@ p .active {
 
 .order-address {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--violet);
+  text-align: justify;
 
   div {
     display: flex;
@@ -931,6 +950,7 @@ p .active {
 .order-subtotal {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 24px;
 
   p {
@@ -944,7 +964,7 @@ p .active {
 
 .order-buttons {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   gap: 10px;
   margin-top: 10px;
 }
