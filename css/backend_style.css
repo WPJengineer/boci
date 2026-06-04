@@ -274,6 +274,10 @@ main {
   border: 2px solid var(--blue);
   font-size: 18px;
 
+  img {
+    width: 30px;
+  }
+
   div {
     display: flex;
     flex-direction: column;
@@ -360,6 +364,10 @@ main {
   padding: 20px;
   border: 2px solid var(--blue);
   font-size: 18px;
+
+  img {
+    width: 30px;
+  }
 
   div {
     display: flex;
@@ -631,6 +639,10 @@ main {
   padding: 20px;
   border: 2px solid var(--blue);
   font-size: 18px;
+
+  img {
+    width: 30px;
+  }
 
   div {
     display: flex;
