@@ -67,7 +67,7 @@ $conn->close();
 
     <form class="personal-info" novalidate>
       <h2>1. INFORMACIÓN PERSONAL</h2>
-      <img src="/student014/boci/assets/icons/edit-icon.svg" alt="edit-icon">
+      <img class="edit-step" src="/student014/boci/assets/icons/edit-icon.svg" alt="edit-icon">
       <div>
         <p>Tratamiento</p>
         <div class="radio-group">
@@ -142,7 +142,7 @@ $conn->close();
 
     <form class="address" novalidate>
       <h2>2. DIRECCIONES</h2>
-      <img src="/student014/boci/assets/icons/edit-icon.svg" alt="edit-icon">
+      <img class="edit-step" src="/student014/boci/assets/icons/edit-icon.svg" alt="edit-icon">
       <div>
         <label for="address-line1">Dirección</label>
         <input
@@ -255,7 +255,7 @@ $conn->close();
 
     <form class="payment" novalidate>
       <h2>3. MÉTODO DE PAGO</h2>
-      <img src="/student014/boci/assets/icons/edit-icon.svg" alt="edit-icon">
+      <img class="edit-step" src="/student014/boci/assets/icons/edit-icon.svg" alt="edit-icon">
       <div>
         <label>Método de pago</label>
         <select name="method_type" id="method_type" required>

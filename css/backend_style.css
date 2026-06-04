@@ -784,7 +784,30 @@ p .active {
   color: var(--violet);
 }
 
-.checkout form.is-collapsed > *:not(h2) {
+.checkout form {
+  position: relative;
+}
+
+.checkout form h2 {
+  padding-right: 45px;
+}
+
+.edit-step {
+  width: 30px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.edit-step:hover {
+  cursor: pointer;
+}
+
+.edit-step:active {
+  transform: scale(0.95);
+}
+
+.checkout form.is-collapsed > *:not(h2):not(.edit-step) {
   display: none !important;
 }
 

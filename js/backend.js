@@ -228,6 +228,21 @@ function openCheckoutStep(stepIndex) {
   });
 }
 
+const checkoutStepButtons = checkout?.querySelectorAll(".edit-step");
+
+if (checkoutStepButtons && checkoutStepButtons.length > 0) {
+  checkoutStepButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedForm = button.closest("form");
+      const selectedIndex = checkoutForms.indexOf(selectedForm);
+
+      if (selectedIndex !== -1) {
+        openCheckoutStep(selectedIndex);
+      }
+    });
+  });
+}
+
 if (checkoutForms.length > 0) {
   openCheckoutStep(0);
 }

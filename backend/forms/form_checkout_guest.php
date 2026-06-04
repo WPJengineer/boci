@@ -11,6 +11,7 @@ if (isset($_SESSION['customer_id'])) {
   <div class="checkout">
     <form class="personal-info" novalidate>
         <h2>1. INFORMACIÓN PERSONAL</h2>
+        <img class="edit-step" src="/student014/boci/assets/icons/edit-icon.svg" alt="edit-icon">
         <!-- this shouldnt be visible if they are already logged in -->
         <?php if (!isset($_SESSION['customer_id'])): ?>
             <div class="login">
@@ -57,6 +58,7 @@ if (isset($_SESSION['customer_id'])) {
     </form>
     <form class="address" novalidate>
         <h2>2. DIRECCIONES</h2>
+        <img class="edit-step" src="/student014/boci/assets/icons/edit-icon.svg" alt="edit-icon">
         <div>
             <label for="address-line1">Dirección</label>
             <input type="text" name="address-line1" id="address-line1" minlength="2" maxlength="100" required>
@@ -104,6 +106,7 @@ if (isset($_SESSION['customer_id'])) {
     </form>
     <form class="payment" novalidate>
         <h2>3. MÉTODO DE PAGO</h2>
+        <img class="edit-step" src="/student014/boci/assets/icons/edit-icon.svg" alt="edit-icon">
         <div>
             <label>Método de pago</label>
             <select name="method_type" id="method_type" required>
