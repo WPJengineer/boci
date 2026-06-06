@@ -143,7 +143,7 @@ $address = trim(
         <span><?= number_format((float)$order['total'], 2) ?>€</span>
       </div>
     </div>
-    <p>Prepararemos tu pedido lo antes posible. Puedes consultar el estado del pedido en <a href="/student014/boci/backend/forms/orders.php">Mis pedidos</a>.</p>
+    <p>Prepararemos tu pedido lo antes posible.</p>
     <div class="order-buttons">
       <!-- <button type="button" class="view">VER MIS PEDIDOS</button> -->
       <button type="button" class="follow">SEGUIR COMPRANDO</button>

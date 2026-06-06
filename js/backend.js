@@ -9,6 +9,8 @@ const btnLogOut = document.querySelector(".btnLogOut");
 const message = document.querySelector(".message");
 const btnDeleteAddress = document.querySelectorAll(".btnDeleteAddress");
 const btnDeletePayment = document.querySelectorAll(".btnDeletePayment");
+const btnViewOrders = document.querySelector(".view");
+const btnKeepShopping = document.querySelector(".follow");
 
 if (cartParams.get("clearCart") === "1") {
   localStorage.removeItem("cart");
@@ -615,6 +617,18 @@ if (paymentMethodRadios.length > 0) {
     });
 
     radio.dataset.wasChecked = radio.checked ? "true" : "false";
+  });
+}
+
+if (btnViewOrders) {
+  btnViewOrders.addEventListener('click', () => {
+    window.location = '/student014/boci/backend/forms/orders.php';
+  });
+}
+
+if (btnKeepShopping) {
+  btnKeepShopping.addEventListener('click', () => {
+    window.location = '/student014/boci/views/products.html';
   });
 }
 
