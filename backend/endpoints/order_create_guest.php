@@ -407,6 +407,8 @@ try {
 
   $conn->commit();
 
+  $_SESSION['guest_order_number'] = $orderNumber;
+
   echo json_encode([
     "success" => true,
     "message" => "Pedido creado correctamente.",

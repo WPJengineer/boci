@@ -439,7 +439,7 @@ if (guestPlaceOrder) {
       localStorage.removeItem("cart");
 
       window.location.href =
-        `/student014/boci/backend/forms/form_order_success.php?order_number=${encodeURIComponent(data.order_number)}`;
+        `/student014/boci/backend/forms/form_order_success_guest.php?order_number=${encodeURIComponent(data.order_number)}`;
 
     } catch (error) {
       console.error(error);
