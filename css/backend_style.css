@@ -1049,6 +1049,10 @@ p .active {
     height: 23px;
   }
 
+  .pages {
+    font-size: 24px;
+  }
+
   .forms-login form {
     h2 {
       font-size: 32px;
@@ -1088,8 +1092,12 @@ p .active {
     }
   }
 
-  .profile, .address, .address input, .address select, .payment, .payment input, .personal-info, .personal-info input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input {
+  .profile, .address, .address input, .address select, .payment, .payment input, .payment select, .personal-info, .personal-info input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input {
     font-size: 20px;
+  }
+
+  .personal-info h2, .address h2, .payment h2, .place-order h2 {
+    font-size: 32px;
   }
 
   .address, .place-order {
@@ -1123,6 +1131,10 @@ p .active {
 
   .buy {
     right: 50px;
+  }
+
+  .pages {
+    font-size: 28px;
   }
 
   .forms-login {
@@ -1187,8 +1199,18 @@ p .active {
     font-size: 22px;
   }
 
-  .profile, .address, .address input, .address select, .payment, .payment input, .personal-info, .personal-info input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input {
+  .profile, .address, .address input, .address select, .payment, .payment input, .payment select, .personal-info, .personal-info input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input {
     font-size: 22px;
+  }
+
+  .personal-info h2, .address h2, .payment h2, .place-order h2 {
+    font-size: 40px;
+  }
+
+  .personal-info img.edit-step,
+  .address img.edit-step,
+  .payment img.edit-step  {
+    width: 40px;
   }
 
   .btnShoppingCart {
@@ -1221,9 +1243,9 @@ p .active {
     height: 25px;
   }
 
-  .orders-container {
+  /* .orders-container {
     width: 75vw;
-  }
+  } */
 
   .order-header {
     flex-direction: row;
