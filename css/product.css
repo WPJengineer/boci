@@ -156,6 +156,10 @@ main {
 
 @media (min-width: 768px) {
 
+    main {
+        padding: 50px 50px;
+    }
+
     .show-image img {
         width: 400px;
     }
@@ -191,6 +195,10 @@ main {
 }
 
 @media (min-width: 992px) {
+
+    main {
+        padding: 50px 100px;
+    }
 
     .product {
         flex-direction: row;
