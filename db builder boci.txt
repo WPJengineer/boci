@@ -138,7 +138,7 @@ CREATE TABLE `boci_payment_methods` (
     `provider_payment_method_id` VARCHAR(255) NOT NULL,
     `method_type` ENUM('card', 'google_pay') NOT NULL,
     `card_brand` VARCHAR(50) DEFAULT NULL,
-    `card_last4` CHAR(4) DEFAULT NULL,
+    `card_num` CHAR(16) DEFAULT NULL,
     `exp_month` TINYINT UNSIGNED DEFAULT NULL,
     `exp_year` SMALLINT UNSIGNED DEFAULT NULL,
     `is_default` BOOLEAN NOT NULL DEFAULT FALSE,

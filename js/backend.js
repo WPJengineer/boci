@@ -307,11 +307,40 @@ if (formPersonalInfo) {
 
 if (formCheckoutAddress) {
   const inputsAddress = formCheckoutAddress.querySelectorAll("input, select");
-  formCheckoutAddress.addEventListener("submit", (e) => {
+
+  formCheckoutAddress.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     if (!validateFormInputs(inputsAddress, [], false)) {
       return;
+    }
+
+    const hasSavedAddress = formCheckoutAddress.dataset.hasAddress === "true";
+
+    if (!hasSavedAddress) {
+      try {
+        const response = await fetch(
+          "/student014/boci/backend/endpoints/checkout_save_address.php",
+          {
+            method: "POST",
+            body: new FormData(formCheckoutAddress),
+            credentials: "include"
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.message || "No se pudo guardar la dirección.");
+        }
+
+        formCheckoutAddress.dataset.hasAddress = "true";
+
+      } catch (error) {
+        console.error(error);
+        showMessage(error.message || "No se pudo guardar la dirección.", "error");
+        return;
+      }
     }
 
     openCheckoutStep(2);
@@ -354,11 +383,47 @@ if (methodSelect && cardFields && googlePayFields) {
 
 if (formCheckoutPayment) {
   const inputsPayment = formCheckoutPayment.querySelectorAll("input, select");
-  formCheckoutPayment.addEventListener("submit", (e) => {
+
+  formCheckoutPayment.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     if (!validateFormInputs(inputsPayment)) {
       return;
+    }
+
+    const hasSavedPayment = formCheckoutPayment.dataset.hasPayment === "true";
+
+    if (!hasSavedPayment) {
+      try {
+        const response = await fetch(
+          "/student014/boci/backend/endpoints/checkout_save_payment.php",
+          {
+            method: "POST",
+            body: new FormData(formCheckoutPayment),
+            credentials: "include"
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.message || "No se pudo guardar el método de pago.");
+        }
+
+        formCheckoutPayment.dataset.hasPayment = "true";
+
+        const cardNum = formCheckoutPayment.querySelector("#card_num");
+        if (cardNum && cardNum.value.length >= 4) {
+          cardNum.value = "************" + cardNum.value.slice(-4);
+          cardNum.readOnly = true;
+          cardNum.removeAttribute("required");
+        }
+
+      } catch (error) {
+        console.error(error);
+        showMessage(error.message || "No se pudo guardar el método de pago.", "error");
+        return;
+      }
     }
 
     openCheckoutStep(3);

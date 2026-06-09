@@ -57,30 +57,84 @@ require(__DIR__ . '/../db/db_get_addresses.php');
     </div>
     <h2>AÑADIR NUEVA DIRECCIÓN</h2>
     <form class="address" action="/student014/boci/backend/db/db_address.php" method="POST" novalidate>
-      <label for="country">País</label>
-      <select name="country" id="country" required>
-        <option value="">Selecciona un país</option>
-        <option value="ES">España</option>
-        <option value="FR">Francia</option>
-        <option value="DE">Alemania</option>
-        <option value="IT">Italia</option>
-        <option value="PT">Portugal</option>
-        <option value="UK">Reino Unido</option>
-        <option value="US">Estados Unidos</option>
-      </select>
-      <label for="state">Provincia / Estado</label>
-      <input type="text" name="state" id="state" minlength="2" maxlength="80" required>
-      <label for="city">Ciudad</label>
-      <input type="text" name="city" id="city" minlength="2" maxlength="80" required>
-      <label for="postal_code">Código postal</label>
-      <input type="text" name="postal_code" id="postal_code" minlength="4" maxlength="10" inputmode="numeric" required>
-      <!-- remove street num and join with street name -->
-      <label for="street_name">Calle</label>
-      <input type="text" name="street_name" id="street_name" minlength="2" maxlength="100" required>
-      <label for="street_num">Número</label>
-      <input type="text" name="street_num" id="street_num" maxlength="10">
       <div>
-        <button class="btn-new-address" type="submit">GUARDAR</button>
+        <label for="address-line1">Dirección</label>
+        <input
+          type="text"
+          name="address-line1"
+          id="address-line1"
+          minlength="2"
+          maxlength="100"
+          required
+        >
+      </div>
+
+      <div>
+        <label for="address-line2">Información adicional (opcional)</label>
+        <input
+          type="text"
+          name="address-line2"
+          id="address-line2"
+          minlength="2"
+          maxlength="100"
+        >
+      </div>
+
+      <div>
+        <label for="postal_code">Zip / Código postal</label>
+        <input
+          type="text"
+          name="postal_code"
+          id="postal_code"
+          minlength="4"
+          maxlength="10"
+          inputmode="numeric"
+          required
+        >
+      </div>
+
+      <div>
+        <label for="city">Ciudad</label>
+        <input
+          type="text"
+          name="city"
+          id="city"
+          minlength="2"
+          maxlength="80"
+          required
+        >
+      </div>
+
+      <div>
+        <label for="state">Provincia / Estado</label>
+        <input
+          type="text"
+          name="state"
+          id="state"
+          minlength="2"
+          maxlength="80"
+          required
+        >
+      </div>
+
+      <div>
+        <label for="country">País</label>
+        <select name="country" id="country" required>
+          <option value="">Selecciona un país</option>
+          <option value="ES">España</option>
+          <option value="FR">Francia</option>
+          <option value="DE">Alemania</option>
+          <option value="IT">Italia</option>
+          <option value="PT">Portugal</option>
+          <option value="UK">Reino Unido</option>
+          <option value="US">Estados Unidos</option>
+        </select>
+      </div>
+
+      <div>
+        <button class="btn-new-address" type="submit">
+          GUARDAR
+        </button>
       </div>
     </form>
   </div>

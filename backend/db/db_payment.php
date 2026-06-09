@@ -12,7 +12,7 @@ require(__DIR__ . '/../config/db_config.php');
 $customerId = $_SESSION['customer_id'];
 $method_type = $_POST['method_type'] ?? '';
 $card_brand = trim($_POST['card_brand'] ?? '');
-$card_last4 = trim($_POST['card_last4'] ?? '');
+$card_num = trim($_POST['card_num'] ?? '');
 $exp_month = $_POST['exp_month'] ?? null;
 $exp_year = $_POST['exp_year'] ?? null;
 $is_default = isset($_POST['is_default']) ? 1 : 0;
@@ -24,7 +24,7 @@ if (!in_array($method_type, ['card', 'google_pay'])) {
 }
 
 if ($method_type === 'card') {
-  if (!$card_brand || !preg_match('/^[0-9]{4}$/', $card_last4)) {
+  if (!$card_brand || !preg_match('/^[0-9]{4}$/', $card_num)) {
     $_SESSION['error'] = "Revisa los datos de la tarjeta.";
     header("Location: /student014/boci/backend/forms/form_payment.php");
     exit();
@@ -39,7 +39,7 @@ if ($method_type === 'card') {
 
 if ($method_type === 'google_pay') {
   $card_brand = null;
-  $card_last4 = null;
+  $card_num = null;
   $exp_month = null;
   $exp_year = null;
 }
@@ -83,7 +83,7 @@ $stmt = $conn->prepare("
     provider_payment_method_id,
     method_type,
     card_brand,
-    card_last4,
+    card_num,
     exp_month,
     exp_year,
     is_default,
@@ -99,7 +99,7 @@ $stmt->bind_param(
   $provider_payment_method_id,
   $method_type,
   $card_brand,
-  $card_last4,
+  $card_num,
   $exp_month,
   $exp_year,
   $is_default

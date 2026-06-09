@@ -115,7 +115,7 @@ if (!isset($_SESSION['customer_id'])) {
             <h3><?= htmlspecialchars($order['order_number']) ?></h3>
             <p><?= htmlspecialchars($order['placed_on']) ?></p>
             <p><?= htmlspecialchars($order['order_status']) ?></p>
-            <strong><?= number_format($order['total'], 2) ?>€</strong>
+            <strong class="price"><?= number_format($order['total'], 2) ?>€</strong>
           </div>
 
           <?php foreach ($order['items'] as $item): ?>

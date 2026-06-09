@@ -12,8 +12,8 @@ $country = trim($_POST['country'] ?? '');
 $state = trim($_POST['state'] ?? '');
 $city = trim($_POST['city'] ?? '');
 $postCode = trim($_POST['postal_code'] ?? '');
-$streetName = trim($_POST['street_name'] ?? '');
-$streetNum = trim($_POST['street_num'] ?? '');
+$streetName = trim($_POST['address-line1'] ?? '');
+$streetNum = trim($_POST['address-line2'] ?? '');
 
 // echo $customerId, $country, $state, $city, $postCode, $streetName, $streetNum;
 

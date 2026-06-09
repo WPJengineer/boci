@@ -10,7 +10,7 @@ require(__DIR__ . '/../config/db_config.php');
 $customerId = $_SESSION['customer_id'];
 
 $stmt = $conn->prepare("
-  SELECT payment_method_id, provider, method_type, card_brand, card_last4, exp_month, exp_year, is_default
+  SELECT payment_method_id, provider, method_type, card_brand, card_num, exp_month, exp_year, is_default
   FROM boci_payment_methods
   WHERE customer_id = ? AND is_active = 1
   ORDER BY created_at DESC

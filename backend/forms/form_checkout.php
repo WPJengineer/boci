@@ -37,7 +37,7 @@ $address = $stmtAddress->get_result()->fetch_assoc();
 $stmtAddress->close();
 
 $stmtPayment = $conn->prepare("
-  SELECT method_type, card_last4, exp_month, exp_year
+  SELECT method_type, card_num, exp_month, exp_year
   FROM boci_payment_methods
   WHERE customer_id = ?
     AND is_default = 1
@@ -49,6 +49,9 @@ $stmtPayment->bind_param("i", $customerId);
 $stmtPayment->execute();
 $payment = $stmtPayment->get_result()->fetch_assoc();
 $stmtPayment->close();
+
+$hasAddress = !empty($address);
+$hasPayment = !empty($payment) && !empty($payment['method_type']);
 
 $conn->close();
 
@@ -140,7 +143,7 @@ $conn->close();
       </div>
     </form>
 
-    <form class="address" novalidate>
+    <form class="address" data-has-address="<?= $hasAddress ? 'true' : 'false' ?>" novalidate>
       <h2>2. DIRECCIONES</h2>
       <img class="edit-step" src="/student014/boci/assets/icons/edit-icon.svg" alt="edit-icon">
       <div>
@@ -204,6 +207,7 @@ $conn->close();
           minlength="2"
           maxlength="80"
           value="<?= htmlspecialchars($address['state'] ?? '') ?>"
+          required
         >
       </div>
 
@@ -253,7 +257,7 @@ $conn->close();
       </div>
     </form>
 
-    <form class="payment" novalidate>
+    <form class="payment" data-has-payment="<?= $hasPayment ? 'true' : 'false' ?>" novalidate>
       <h2>3. MÉTODO DE PAGO</h2>
       <img class="edit-step" src="/student014/boci/assets/icons/edit-icon.svg" alt="edit-icon">
       <div>
@@ -287,8 +291,17 @@ $conn->close();
             type="text"
             id="card_num"
             name="card_num"
-            value="<?= !empty($payment['card_last4']) ? '************' . htmlspecialchars($payment['card_last4']) : '' ?>"
-            readonly
+            minlength="16"
+            maxlength="16"
+            pattern="[0-9]{16}"
+            inputmode="numeric"
+            title="Introduce el número de la tarjeta."
+            value="<?= (($payment['method_type'] ?? '') === 'card' && !empty($payment['card_num']))
+              ? '************' . htmlspecialchars(substr($payment['card_num'], -4))
+              : '' ?>"
+            <?= (($payment['method_type'] ?? '') === 'card' && !empty($payment['card_num']))
+              ? 'readonly'
+              : 'required' ?>
           >
         </div>
 

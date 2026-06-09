@@ -771,7 +771,7 @@ main {
   border: 1px solid var(--blue);
 }
 
-.order-item .price {
+.price {
   font-size: 22px;
   color: var(--green);
 }
@@ -1092,7 +1092,7 @@ p .active {
     }
   }
 
-  .profile, .address, .address input, .address select, .payment, .payment input, .payment select, .personal-info, .personal-info input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input {
+  .profile, .address, .address input, .address select, .payment, .payment input, .payment select, .personal-info, .personal-info input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input, .order-buttons button {
     font-size: 20px;
   }
 
@@ -1121,8 +1121,24 @@ p .active {
     font-size: 20px;
   }
 
-  .order-item .price {
+  .price {
     font-size: 28px;
+  }
+
+  .order-confirm {
+    font-size: 20px;
+  }
+
+  .order-num-main {
+    font-size: 26px;
+  }
+
+  .order-details>p {
+    font-size: 26px;
+  }
+
+  .order-subtotal {
+    font-size: 26px;
   }
 
 }
@@ -1199,7 +1215,7 @@ p .active {
     font-size: 22px;
   }
 
-  .profile, .address, .address input, .address select, .payment, .payment input, .payment select, .personal-info, .personal-info input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input {
+  .profile, .address, .address input, .address select, .payment, .payment input, .payment select, .personal-info, .personal-info input, .account-email, .account-email input, .account-phone, .account-phone input, .account-password, .account-password input, .order-buttons button {
     font-size: 22px;
   }
 
@@ -1243,10 +1259,6 @@ p .active {
     height: 25px;
   }
 
-  /* .orders-container {
-    width: 75vw;
-  } */
-
   .order-header {
     flex-direction: row;
     justify-content: space-between;
@@ -1263,7 +1275,32 @@ p .active {
     font-size: 22px;
   }
 
-  .order-item .price {
+  .price {
     font-size: 32px;
+  }
+
+  .order-confirm {
+    font-size: 22px;
+  }
+
+  .order-num-main {
+    font-size: 28px;
+  }
+
+  .order-details>p {
+    font-size: 28px;
+  }
+
+  .order-subtotal {
+    font-size: 28px;
+  }
+
+  .success {
+    width: 300px;
+    margin-bottom: -30px;
+  }
+
+  .order-email img, .order-details img {
+    width: 40px;
   }
 }

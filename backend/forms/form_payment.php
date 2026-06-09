@@ -40,7 +40,9 @@ require(__DIR__ . '/../db/db_get_payments.php');
 
                 <strong class="saved-payment-title">
                   <?= htmlspecialchars($payment['card_brand'] ?? 'Tarjeta') ?>
-                  terminada en <?= htmlspecialchars($payment['card_last4'] ?? '----') ?>
+                  terminada en <?= !empty($payment['card_num'])
+                    ? htmlspecialchars(substr($payment['card_num'], -4))
+                    : '----' ?>
                 </strong>
 
                 <p>
@@ -114,7 +116,7 @@ require(__DIR__ . '/../db/db_get_payments.php');
           <input type="text" id="card_holder" name="card_holder" minlength="2" maxlength="80" pattern="^[A-Za-zÀ-ÿ\s'.\-]{2,80}$" title="El nombre del titular solo puede contener letras, espacios, apóstrofes o guiones." required>
         </div>
 
-        <div>
+        <!-- <div>
           <label for="card_brand">Tipo de tarjeta*</label>
           <select id="card_brand" name="card_brand" required>
             <option value="">Selecciona una tarjeta</option>
@@ -122,21 +124,21 @@ require(__DIR__ . '/../db/db_get_payments.php');
             <option value="Mastercard">Mastercard</option>
             <option value="American Express">American Express</option>
           </select>
-        </div>
+        </div> -->
 
         <div>
-          <label for="card_last4">Últimos 4 dígitos*</label>
-          <input 
+            <label for="card_num">Número de tarjeta*</label>
+            <input 
             type="text" 
-            id="card_last4" 
-            name="card_last4"
-            minlength="4"
-            maxlength="4" 
-            pattern="[0-9]{4}"
+            id="card_num" 
+            name="card_num"
+            minlength="16"
+            maxlength="16" 
+            pattern="[0-9]{16}"
             inputmode="numeric"
-            title="Introduce exactamente los últimos 4 dígitos de la tarjeta."
+            title="Introduce el número de la tarjeta."
             required
-          >
+            >
         </div>
 
         <div>

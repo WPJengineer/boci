@@ -198,7 +198,7 @@ try {
       provider,
       provider_payment_method_id,
       method_type,
-      card_last4,
+      card_num,
       exp_month,
       exp_year,
       is_default,

@@ -2,7 +2,7 @@
         <div class="links">
             <div>
                 <h3>MI CUENTA</h3>
-                <p>Acceder a Mi Cuenta</p>
+                <a href="/student014/boci/backend/forms/form_login.php"><p>Acceder a Mi Cuenta</p></a>
             </div>
             <div>
                 <h3>CONTACTO</h3>
