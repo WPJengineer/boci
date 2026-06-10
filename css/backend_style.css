@@ -19,7 +19,31 @@ main {
   cursor: pointer;
 }
 
+.add-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blue);
+  color: var(--light);
+  border: 1px solid var(--dark);
+  border-radius: 30px;
+  padding: 10px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 4px 2px 2px var(--dark);
+}
+
+.add-product:hover {
+  cursor: pointer;
+}
+
+.add-product:active {
+  transform: scale(0.95);
+  box-shadow: -2px -2px 1px var(--dark);
+}
+
 .products {
+    margin-top: 10px;
     padding: 50px;
     display: flex;
     justify-content: center;
@@ -32,6 +56,8 @@ main {
 .peluches {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 5px;
     color: var(--dark);
     border: 3px solid var(--green);
@@ -56,6 +82,44 @@ main {
     &:active {
         transform: scale(0.95);
     }
+}
+
+.admin-buttons {
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+
+  button {
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--blue);
+    color: var(--light);
+    border: 1px solid var(--dark);
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    /* box-shadow: 4px 2px 2px var(--dark); */
+  }
+
+  img {
+    width: 30px;
+  }
+
+  .delete {
+    background-color: var(--violet);
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  button:active {
+    transform: scale(0.95);
+  }
 }
 
 .forms-login {

@@ -12,11 +12,25 @@ require(__DIR__.'/../header.php');
 
 <main>
     <a href="/student014/boci/backend/forms/form_login.php"><img draggable="false" src="/student014/boci/assets/icons/profile-icon-black.svg" alt="buy-icon" class="buy"></a>
+    <button class="add-product">
+      <img draggable="false" src="/student014/boci/assets/icons/plus-icon.svg" alt="add-product-icon">
+      Añadir producto
+    </button>
     <div class="products">
         <!-- have to retrieve all of products from the database and build the products screen, they need an A tag between article and image/p -->
         <article class="peluches" data-id="1">
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/vaquita-lita.svg" alt="peluche-image">
             <p>LITA</p>
+            <div class="admin-buttons">
+              <button>
+                <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
+                Editar
+              </button>
+              <button class="delete">
+                <img draggable="false" src="/student014/boci/assets/icons/delete-icon.svg" alt="delete-icon">  
+                Eliminar
+              </button>
+            </div>
         </article>
         <article class="peluches" data-id="2">
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/gina.svg" alt="peluche-image">
