@@ -16,6 +16,8 @@ if (errorCode && errorMessages[errorCode]) {
   const cleanUrl = window.location.pathname;
   window.history.replaceState({}, document.title, cleanUrl);
 }
+const editButtons = document.querySelectorAll(".admin-buttons .edit");
+const deleteButtons = document.querySelectorAll(".admin-buttons .delete");
 const btnLogOut = document.querySelector(".btnLogOut");
 const message = document.querySelector(".message");
 const btnDeleteAddress = document.querySelectorAll(".btnDeleteAddress");
@@ -151,6 +153,24 @@ if (articles) {
     });
   });
 }
+
+editButtons.forEach(button => {
+  button.addEventListener("click", e => {
+    e.stopPropagation();
+
+    console.log("edit");
+    // edit code here
+  });
+});
+
+deleteButtons.forEach(button => {
+  button.addEventListener("click", e => {
+    e.stopPropagation();
+
+    console.log("delete");
+    // delete code here
+  });
+});
 
 async function getCart() {
   try {

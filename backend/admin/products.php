@@ -22,7 +22,7 @@ require(__DIR__.'/../header.php');
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/vaquita-lita.svg" alt="peluche-image">
             <p>LITA</p>
             <div class="admin-buttons">
-              <button>
+              <button class="edit">
                 <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
                 Editar
               </button>
@@ -36,7 +36,7 @@ require(__DIR__.'/../header.php');
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/gina.svg" alt="peluche-image">
             <p>GINA</p>
             <div class="admin-buttons">
-              <button>
+              <button class="edit">
                 <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
                 Editar
               </button>
@@ -50,7 +50,7 @@ require(__DIR__.'/../header.php');
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/floreti.svg" alt="peluche-image">
             <p>FLORETI</p>
             <div class="admin-buttons">
-              <button>
+              <button class="edit">
                 <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
                 Editar
               </button>
@@ -64,7 +64,7 @@ require(__DIR__.'/../header.php');
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/pincetes.svg" alt="peluche-image">
             <p>PINCETES</p>
             <div class="admin-buttons">
-              <button>
+              <button class="edit">
                 <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
                 Editar
               </button>
@@ -78,7 +78,7 @@ require(__DIR__.'/../header.php');
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/quesito-tendre.svg" alt="peluche-image">
             <p>TENDRE</p>
             <div class="admin-buttons">
-              <button>
+              <button class="edit">
                 <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
                 Editar
               </button>
@@ -92,7 +92,7 @@ require(__DIR__.'/../header.php');
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/deta.svg" alt="peluche-image">
             <p>DETA</p>
             <div class="admin-buttons">
-              <button>
+              <button class="edit">
                 <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
                 Editar
               </button>
@@ -106,7 +106,7 @@ require(__DIR__.'/../header.php');
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/quesito-semi.svg" alt="peluche-image">
             <p>SEMI</p>
             <div class="admin-buttons">
-              <button>
+              <button class="edit">
                 <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
                 Editar
               </button>
@@ -120,7 +120,7 @@ require(__DIR__.'/../header.php');
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/neta.svg" alt="peluche-image">
             <p>NETA</p>
             <div class="admin-buttons">
-              <button>
+              <button class="edit">
                 <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
                 Editar
               </button>
@@ -134,7 +134,7 @@ require(__DIR__.'/../header.php');
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/floquet.svg" alt="peluche-image">
             <p>FLOQUET</p>
             <div class="admin-buttons">
-              <button>
+              <button class="edit">
                 <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
                 Editar
               </button>
@@ -148,7 +148,7 @@ require(__DIR__.'/../header.php');
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/gueta.svg" alt="peluche-image">
             <p>GÜETA</p>
             <div class="admin-buttons">
-              <button>
+              <button class="edit">
                 <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
                 Editar
               </button>
@@ -162,7 +162,7 @@ require(__DIR__.'/../header.php');
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/quesito-curat.svg" alt="peluche-image">
             <p>CURAT</p>
             <div class="admin-buttons">
-              <button>
+              <button class="edit">
                 <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
                 Editar
               </button>
