@@ -35,42 +35,142 @@ require(__DIR__.'/../header.php');
         <article class="peluches" data-id="2">
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/gina.svg" alt="peluche-image">
             <p>GINA</p>
+            <div class="admin-buttons">
+              <button>
+                <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
+                Editar
+              </button>
+              <button class="delete">
+                <img draggable="false" src="/student014/boci/assets/icons/delete-icon.svg" alt="delete-icon">  
+                Eliminar
+              </button>
+            </div>
         </article>
         <article class="peluches" data-id="3">
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/floreti.svg" alt="peluche-image">
             <p>FLORETI</p>
+            <div class="admin-buttons">
+              <button>
+                <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
+                Editar
+              </button>
+              <button class="delete">
+                <img draggable="false" src="/student014/boci/assets/icons/delete-icon.svg" alt="delete-icon">  
+                Eliminar
+              </button>
+            </div>
         </article>
         <article class="peluches" data-id="4">
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/pincetes.svg" alt="peluche-image">
             <p>PINCETES</p>
+            <div class="admin-buttons">
+              <button>
+                <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
+                Editar
+              </button>
+              <button class="delete">
+                <img draggable="false" src="/student014/boci/assets/icons/delete-icon.svg" alt="delete-icon">  
+                Eliminar
+              </button>
+            </div>
         </article>
         <article class="peluches" data-id="5">
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/quesito-tendre.svg" alt="peluche-image">
             <p>TENDRE</p>
+            <div class="admin-buttons">
+              <button>
+                <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
+                Editar
+              </button>
+              <button class="delete">
+                <img draggable="false" src="/student014/boci/assets/icons/delete-icon.svg" alt="delete-icon">  
+                Eliminar
+              </button>
+            </div>
         </article>
         <article class="peluches" data-id="6">
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/deta.svg" alt="peluche-image">
             <p>DETA</p>
+            <div class="admin-buttons">
+              <button>
+                <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
+                Editar
+              </button>
+              <button class="delete">
+                <img draggable="false" src="/student014/boci/assets/icons/delete-icon.svg" alt="delete-icon">  
+                Eliminar
+              </button>
+            </div>
         </article>
         <article class="peluches" data-id="7">
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/quesito-semi.svg" alt="peluche-image">
             <p>SEMI</p>
+            <div class="admin-buttons">
+              <button>
+                <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
+                Editar
+              </button>
+              <button class="delete">
+                <img draggable="false" src="/student014/boci/assets/icons/delete-icon.svg" alt="delete-icon">  
+                Eliminar
+              </button>
+            </div>
         </article>
         <article class="peluches" data-id="8">
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/neta.svg" alt="peluche-image">
             <p>NETA</p>
+            <div class="admin-buttons">
+              <button>
+                <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
+                Editar
+              </button>
+              <button class="delete">
+                <img draggable="false" src="/student014/boci/assets/icons/delete-icon.svg" alt="delete-icon">  
+                Eliminar
+              </button>
+            </div>
         </article>
         <article class="peluches" data-id="9">
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/floquet.svg" alt="peluche-image">
             <p>FLOQUET</p>
+            <div class="admin-buttons">
+              <button>
+                <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
+                Editar
+              </button>
+              <button class="delete">
+                <img draggable="false" src="/student014/boci/assets/icons/delete-icon.svg" alt="delete-icon">  
+                Eliminar
+              </button>
+            </div>
         </article>
         <article class="peluches" data-id="10">
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/gueta.svg" alt="peluche-image">
             <p>GÜETA</p>
+            <div class="admin-buttons">
+              <button>
+                <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
+                Editar
+              </button>
+              <button class="delete">
+                <img draggable="false" src="/student014/boci/assets/icons/delete-icon.svg" alt="delete-icon">  
+                Eliminar
+              </button>
+            </div>
         </article>
         <article class="peluches" data-id="11">
             <img draggable="false" src="/student014/boci/assets/images/image-plushes/old/quesito-curat.svg" alt="peluche-image">
             <p>CURAT</p>
+            <div class="admin-buttons">
+              <button>
+                <img draggable="false" src="/student014/boci/assets/icons/edit-icon-white.svg" alt="edit-icon">
+                Editar
+              </button>
+              <button class="delete">
+                <img draggable="false" src="/student014/boci/assets/icons/delete-icon.svg" alt="delete-icon">  
+                Eliminar
+              </button>
+            </div>
         </article>
     </div>
     <button class="btnShoppingCart">

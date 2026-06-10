@@ -102,11 +102,11 @@ main {
     padding: 10px;
     font-size: 18px;
     font-weight: bold;
-    /* box-shadow: 4px 2px 2px var(--dark); */
   }
 
   img {
     width: 30px;
+    border-radius: 0;
   }
 
   .delete {
