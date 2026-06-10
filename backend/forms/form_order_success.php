@@ -3,7 +3,7 @@
 require(__DIR__.'/../header.php');
 
 if (!isset($_SESSION['customer_id'])) {
-  header("Location: /student014/boci/backend/forms/form_login.php");
+  header("Location: /student014/boci/backend/forms/form_login.php?error=login_required");
   exit();
 }
 

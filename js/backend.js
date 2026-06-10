@@ -5,12 +5,24 @@ const showConfirmPassword = document.querySelector(".btn-show-confirm-password")
 const btnShoppingCart = document.querySelector(".btnShoppingCart");
 const counterCart = document.getElementById("counter");
 const cartParams = new URLSearchParams(window.location.search);
+const errorMessages = {
+  admin_required: "No tienes permisos de administrador para acceder a esta página.",
+  login_required: "Debes iniciar sesión para acceder a esta página."
+};
+const errorCode = cartParams.get("error");
+if (errorCode && errorMessages[errorCode]) {
+  showMessage(errorMessages[errorCode], "error");
+
+  const cleanUrl = window.location.pathname;
+  window.history.replaceState({}, document.title, cleanUrl);
+}
 const btnLogOut = document.querySelector(".btnLogOut");
 const message = document.querySelector(".message");
 const btnDeleteAddress = document.querySelectorAll(".btnDeleteAddress");
 const btnDeletePayment = document.querySelectorAll(".btnDeletePayment");
 const btnViewOrders = document.querySelector(".view");
 const btnKeepShopping = document.querySelector(".follow");
+const articles = document.querySelectorAll("article");
 
 if (cartParams.get("clearCart") === "1") {
   localStorage.removeItem("cart");
@@ -131,6 +143,14 @@ function showMessage(text, type = "success") {
 }
 
 animateMessage(message);
+
+if (articles) {
+  articles.forEach(article => {
+    article.addEventListener("click", () => {
+      window.location.href = `/student014/boci/backend/admin/product.php?id=${article.dataset.id}`;
+    });
+  });
+}
 
 async function getCart() {
   try {

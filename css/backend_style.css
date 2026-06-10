@@ -19,6 +19,45 @@ main {
   cursor: pointer;
 }
 
+.products {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    background-color: var(--light);
+}
+
+.peluches {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--dark);
+    border: 3px solid var(--green);
+    border-radius: 25px;
+    
+    img {
+        width: 200px;
+        border-radius: 25px;
+    }
+
+    p {
+        text-align: center;
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    &:hover {
+        cursor: pointer;
+        border-color: var(--dark);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
 .forms-login {
   display: flex;
   flex-direction: column;
@@ -1043,6 +1082,10 @@ p .active {
     right: 30px;
   }
 
+  .peluches p {
+      font-size: 24px;
+  }
+
   #counter {
     font-size: 18px;
     width: 23px;
@@ -1147,6 +1190,10 @@ p .active {
 
   .buy {
     right: 50px;
+  }
+
+  .peluches p {
+      font-size: 32px;
   }
 
   .pages {
