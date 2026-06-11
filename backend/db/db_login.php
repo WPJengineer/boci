@@ -61,6 +61,11 @@ if ($result && mysqli_num_rows($result) > 0) {
 
     $_SESSION['success'] = "¡Bienvenido de nuevo, " . $row['customer_forename'] . "!";
 
+    if ($row['customer_role'] === 'admin') {
+      header("Location: /student014/boci/backend/admin/dashboard.php?clearCart=1");
+      exit();
+    }
+
     $redirect = $_POST['redirect'] ?? '/student014/boci/backend/forms/orders.php';
 
     header("Location: $redirect?clearCart=1");

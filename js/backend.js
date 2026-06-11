@@ -355,6 +355,13 @@ if (formCheckoutAddress) {
       return;
     }
 
+    const isGuestCheckout = Boolean(guestPlaceOrder);
+
+    if (isGuestCheckout) {
+      openCheckoutStep(2);
+      return;
+    }
+
     const hasSavedAddress = formCheckoutAddress.dataset.hasAddress === "true";
 
     if (!hasSavedAddress) {
@@ -428,6 +435,13 @@ if (formCheckoutPayment) {
     e.preventDefault();
 
     if (!validateFormInputs(inputsPayment)) {
+      return;
+    }
+
+    const isGuestCheckout = Boolean(guestPlaceOrder);
+
+    if (isGuestCheckout) {
+      openCheckoutStep(3);
       return;
     }
 

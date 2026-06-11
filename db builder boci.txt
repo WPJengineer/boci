@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `boci_customers` (
   `customer_lastname` varchar(100) NOT NULL,
   `customer_role` enum('customer','admin') NOT NULL DEFAULT 'customer',
   -- `customer_username` varchar(100) UNIQUE DEFAULT NULL,
-  `customer_email` varchar(300) NOT NULL,
+  `customer_email` varchar(300) UNIQUE NOT NULL,
   `customer_phone` int(11) DEFAULT NULL,
   `customer_password` varchar(300) NOT NULL,
   `customer_gender` varchar(100) NOT NULL,
@@ -206,6 +206,9 @@ INSERT INTO `boci_products` (`product_id`, `product_name`, `product_unit_price`,
 (9, 'floquet', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/floquet.svg', 'https://remotehost.es/student014/boci/assets/images/image-plushes/floquet-top.svg', 'https://remotehost.es/student014/boci/assets/images/image-plushes/floquet-back.svg', 'Peluche caballo FLOQUET con diseño de caballo menorquín, elegante y único. Hecho de algodón y poliéster. Perfecto como recuerdo cultural de Menorca. Suave, resistente y coleccionable.'),
 (10, 'güeta', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/gueta.svg', 'https://remotehost.es/student014/boci/assets/images/image-plushes/gueta-side.svg', 'https://remotehost.es/student014/boci/assets/images/image-plushes/gueta-top.svg', 'Peluche tortuga GÜETA inspirado en tortuga menorquina, adorable y natural. Fabricado en algodón y poliéster. Ideal como souvenir de fauna de Menorca. Compacto y suave.'),
 (11, 'quesito curat', 12.95, 'https://remotehost.es/student014/boci/assets/images/image-plushes/quesito-curat.svg', 'https://remotehost.es/student014/boci/assets/images/image-plushes/quesito-curat-side.svg', 'https://remotehost.es/student014/boci/assets/images/image-plushes/quesito-curat-back.svg', 'Peluche queso QUESITO CURAT con diseño de queso curado menorquín, icónico y atractivo. Material de algodón y poliéster. Perfecto como recuerdo gastronómico de Menorca. Suave y fácil de transportar.');
+
+INSERT INTO `boci_customers` (`customer_id`,`customer_forename`,`customer_lastname`,`customer_role`,`customer_email`,`customer_password`, `customer_gender`) VALUES
+(1,'Joshua','Kelly','admin','jjk172011@gmail.com','12345678','sr');
 
 INSERT INTO `boci_transport_fee` (`transport_zone`, `transport_fee_value`) VALUES
 ('local', 0.00),
